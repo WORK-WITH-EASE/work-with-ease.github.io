@@ -136,7 +136,7 @@ main .eyebrow:before{content:'';display:block;width:30px;height:4px;flex:0 0 30p
 
 /* Der gemeinsame Ansatz als hervorgehobener Übergang. */
 .situations-transition{position:relative;isolation:isolate;display:block;border:0;margin-top:62px;padding:42px 125px 46px 42px;color:var(--ink)}
-.situations-transition:before{content:"";position:absolute;inset:0;z-index:-1;background:#e6ffac;clip-path:polygon(0 .9%,14% 0,32% 1.2%,53% .2%,72% 1%,90% 0,100% 1.2%,99.7% 42%,100% 75%,99.5% 99%,81% 98.6%,65% 100%,44% 98.8%,25% 100%,9% 98.9%,0 100%,.3% 65%)}
+.situations-transition:before{content:"";position:absolute;inset:0;z-index:-1;background:var(--lime);clip-path:polygon(0 .9%,14% 0,32% 1.2%,53% .2%,72% 1%,90% 0,100% 1.2%,99.7% 42%,100% 75%,99.5% 99%,81% 98.6%,65% 100%,44% 98.8%,25% 100%,9% 98.9%,0 100%,.3% 65%)}
 .situations-transition .transition-intro{font-size:20px;margin:0 0 21px}
 .transition-questions{display:flex;flex-wrap:wrap;gap:18px 48px;margin-bottom:24px}
 .situations-transition .transition-questions p{font-size:clamp(27px,3vw,42px);font-weight:600;line-height:1.35;letter-spacing:-1px}
