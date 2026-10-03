@@ -1,0 +1,12 @@
+# GitHub Pages publishes generated root files, not their build sources.
+exclude:
+  - src
+  - scripts
+  - node_modules
+  - package.json
+  - package-lock.json
+  - eleventy.config.js
+  - AGENTS.md
+  - CLAUDE.md
+  - README.md
+  - tests

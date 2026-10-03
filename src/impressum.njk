@@ -1,0 +1,23 @@
+---
+layout: layouts/legal.njk
+title: Impressum
+permalink: impressum.html
+legal: true
+---
+<section id="impressum">
+
+
+            <h3>Anbieterin</h3>
+            <p><strong>{{ site.company }}</strong></p>
+            <p>{{ site.street }}<br>{{ site.city }}<br>{{ site.country }}</p>
+            <p>Vertreten durch die Geschäftsführerin (CEO):<br>{{ site.director }}</p>
+
+            <h3>Kontakt</h3>
+            <p>E-Mail: <a href="mailto:{{ site.email }}">{{ site.email }}</a><br>Telefon: <a href="tel:{{ site.phoneLink }}">{{ site.phone }}</a></p>
+
+            <h3>Register- und Steuerangaben</h3>
+            <p>Unternehmensidentifikationsnummer (UIC): {{ site.uic }}<br>Umsatzsteuer-Identifikationsnummer: {{ site.vat }}</p>
+
+            <h3>Verantwortlich für den Inhalt</h3>
+            <p>{{ site.director }}<br>Anschrift wie oben</p>
+          </section>

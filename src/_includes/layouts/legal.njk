@@ -1,0 +1,7 @@
+---
+layout: layouts/base.njk
+---
+<main class="legal-main" id="inhalt"><p class="eyebrow">Rechtliche Angaben</p><h1>{{ title }}</h1>
+<nav class="legal-nav" aria-label="Rechtliche Seiten"><a href="/impressum.html"{% if page.url == '/impressum.html' %} aria-current="page"{% endif %}>Impressum</a><a href="/datenschutz.html"{% if page.url == '/datenschutz.html' %} aria-current="page"{% endif %}>Datenschutz</a></nav>
+<aside class="legal-draft">Lokaler Entwurf. Die Hosting-Angaben beschreiben die vorgesehene öffentliche Website auf GitHub Pages.</aside>
+<div class="legal-copy">{{ content | safe }}</div></main>

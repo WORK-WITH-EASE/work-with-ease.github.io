@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Serve public homepage files locally without exposing repository notes."""
 
+import json
+
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
@@ -16,7 +18,8 @@ class HomepageHandler(SimpleHTTPRequestHandler):
         path = unquote(urlsplit(self.path).path)
         relative = path.lstrip("/") or "index.html"
         parts = Path(relative).parts
-        allowed = relative in {"index.html", "style.css", "legal.css", "cases.js", "impressum.html", "datenschutz.html"} or (
+        generated = json.loads((ROOT / ".generated-files.json").read_text())
+        allowed = relative in generated or (
             parts and parts[0] in {"images", "assets"}
         )
         target = ROOT / relative

@@ -1,0 +1,29 @@
+[
+  {
+    "label": "Praxis",
+    "footerLabel": "Praxisbeispiele",
+    "href": "/#praxisbeispiele"
+  },
+  {
+    "label": "Arbeitsweise",
+    "footerLabel": "So arbeiten wir",
+    "href": "/#so-arbeiten-wir"
+  },
+  {
+    "label": "Kurse",
+    "footerLabel": "Kurse & Termine",
+    "preview": "Kurse & Termine"
+  },
+  {
+    "label": "Vorträge & Seminare",
+    "preview": "Vorträge & Seminare"
+  },
+  {
+    "label": "Über uns",
+    "href": "/#ueber-uns"
+  },
+  {
+    "label": "Blog",
+    "preview": "Blog"
+  }
+]

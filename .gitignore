@@ -1,3 +1,5 @@
 .planning/
 __pycache__/
 .DS_Store
+node_modules/
+.produce-lock/
