@@ -195,3 +195,5 @@ main .eyebrow:before{content:'';display:block;width:30px;height:4px;flex:0 0 30p
 .case-picker button:hover{color:var(--ink);background:#e2e9e3}
 .case-picker [aria-pressed=true]:hover{background:var(--pink)}
 @media(max-width:760px){.case-picker{gap:5px;overflow:visible;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}.case-picker button,.case-picker button:last-child{white-space:normal;min-width:0;font-size:13px;padding:12px 7px;gap:5px;flex-direction:column;justify-content:center;text-align:center;overflow-wrap:anywhere}.case-picker button span{font-size:12px}.case-panel{padding-top:28px;border-radius:0 0 10px 10px}}
+
+.map-destination .goal-flag{display:block;width:100%;height:auto;max-height:76px;transform:rotate(-6deg)}
