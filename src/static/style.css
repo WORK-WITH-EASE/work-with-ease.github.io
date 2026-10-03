@@ -204,3 +204,5 @@ main .eyebrow:before{content:'';display:block;width:30px;height:4px;flex:0 0 30p
 
 /* Desktop-Navigation rechts zusammen mit den Kontaktaktionen. */
 @media(min-width:1551px){.desktop-nav{margin-left:auto}.header-inner>.quick-contact{margin-left:0}}
+/* Unterseiten: gemeinsamer Rahmen, solange die Inhalte entstehen. */
+.subpage{max-width:1600px;margin:auto;padding:90px 4% 120px}.subpage-intro{max-width:900px}.subpage-draft{padding:18px 22px;border-left:4px solid var(--pink);background:#fff1f8;font-size:18px;line-height:1.6;margin:0}@media(max-width:600px){.subpage{padding-top:50px}}
