@@ -7,6 +7,7 @@ function setState(panel,state,announce=true){
 }
 section.querySelectorAll('[data-case]').forEach(button=>button.addEventListener('click',()=>{
  section.querySelectorAll('[data-case]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
+ section.querySelectorAll('[data-case-closing]').forEach(note=>{note.hidden=note.dataset.caseClosing!==button.dataset.case;});
  section.querySelectorAll('.case-panel').forEach(panel=>{panel.hidden=panel.id!=='fall-'+button.dataset.case;if(!panel.hidden)setState(panel,'before');});
 }));
 section.querySelectorAll('[data-state]').forEach(button=>button.addEventListener('click',()=>setState(button.closest('.case-panel'),button.dataset.state)));
