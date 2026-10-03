@@ -4,10 +4,12 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="{{ site.robots }}"><title>{{ title }}{% if legal %} | Work with Ease{% endif %}</title>
 <link rel="stylesheet" href="/style.css">{% if legal %}<link rel="stylesheet" href="/legal.css">{% endif %}
+{% if practicePage %}<link rel="stylesheet" href="/practice.css">{% endif %}
 </head><body><a class="skip" href="#inhalt">Zum Inhalt</a>
 {% include "components/header.njk" %}
 {{ content | safe }}
 {% include "components/footer.njk" %}
 {% include "components/dialog.njk" %}
 <script src="/site.js" defer></script>{% if cases %}<script src="/cases.js" defer></script>{% endif %}
+{% if practicePage %}<script src="/practice.js" defer></script>{% endif %}
 </body></html>
