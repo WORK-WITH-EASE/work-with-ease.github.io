@@ -16,7 +16,7 @@ class HomepageHandler(SimpleHTTPRequestHandler):
         path = unquote(urlsplit(self.path).path)
         relative = path.lstrip("/") or "index.html"
         parts = Path(relative).parts
-        allowed = relative in {"index.html", "styles.css", "script.js"} or (
+        allowed = relative in {"index.html", "style.css", "legal.css", "cases.js", "impressum.html", "datenschutz.html"} or (
             parts and parts[0] in {"images", "assets"}
         )
         target = ROOT / relative

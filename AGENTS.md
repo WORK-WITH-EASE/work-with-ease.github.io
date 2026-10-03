@@ -1,7 +1,7 @@
 # Zusammenarbeit
 
 - Mit Andrea auf Deutsch arbeiten.
-- Planung, Entwürfe und Gesprächsnotizen in `.planning/` halten. Dieser Ordner bleibt lokal und wird nicht committed. Das Repository ist öffentlich.
+- Nur Dokumentation, Ideen, textliche Entwürfe und Gesprächsnotizen in `.planning/` halten. Website-Dateien (HTML, CSS, JavaScript und benötigte Assets) entstehen von Anfang an im Repository-Root bzw. dessen Asset-Ordnern, auch während der Entwicklung auf einem Branch. Dieser Ordner bleibt lokal und wird nicht committed. Das Repository ist öffentlich.
 - Nur zur Veröffentlichung bestimmte Inhalte in den Seiten-Code übernehmen.
 - Sinnvolle, abgeschlossene Arbeitsstände selbstständig committen.
 - Nur auf ausdrückliche Anweisung von Andrea pushen.
