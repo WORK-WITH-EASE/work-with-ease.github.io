@@ -190,7 +190,7 @@ main .eyebrow:before{content:'';display:block;width:30px;height:4px;flex:0 0 30p
 .case-picker{gap:10px;padding-left:0}
 .case-picker button{background:#eef1ee;color:#53675d;border-color:#d5ded7;font-weight:500}
 .case-picker [aria-pressed=true]{background:var(--pink);border-color:var(--pink);color:var(--ink);font-weight:700}
-.case-picker [aria-pressed=true]:after{left:calc(50% - 10px);right:auto;bottom:-11px;width:20px;height:12px;clip-path:polygon(0 0,100% 0,50% 100%);background:var(--pink)}
+.case-picker [aria-pressed=true]:after{left:calc(50% - 16px);right:auto;bottom:-19px;width:32px;height:20px;clip-path:polygon(0 0,100% 0,50% 100%);background:var(--pink)}
 .case-panel{border-top:4px solid var(--pink);border-radius:0 10px 10px 10px;padding-top:34px;box-shadow:0 8px 24px -18px #092f2638}
 .case-picker button:hover{color:var(--ink);background:#e2e9e3}
 .case-picker [aria-pressed=true]:hover{background:var(--pink)}
