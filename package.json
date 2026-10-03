@@ -6,7 +6,7 @@
     "produce": "node scripts/produce.mjs",
     "check": "node scripts/produce.mjs --check",
     "dev": "node scripts/produce.mjs --watch",
-    "test": "python3 tests/test_produce.py"
+    "test": "python3 -m unittest discover -s tests -p 'test_*.py'"
   },
   "devDependencies": {
     "@11ty/eleventy": "3.1.6"

@@ -12,7 +12,7 @@ Einmal nach dem Klonen: `npm ci` (Node.js 24 LTS).
 4. **`npm run check`** prüft, dass die Root-Ausgabe den Quellen entspricht.
 5. Quellen und erzeugte Dateien kleinschrittig gemeinsam committen. Standardmäßig direkt auf `main` arbeiten; neue Branches nur auf ausdrücklichen Wunsch. `produce` selbstständig ausführen. Push nur auf Andreas Anweisung für den auf `main` zusammengeführten Stand, mit Versions-Tag gemäß `AGENTS.md`.
 
-Für laufende Arbeit in einem zweiten Terminal **`npm run dev`** starten. Es beobachtet die Quellen und führt produce automatisch aus. Danach den Browser neu laden. Mit Strg+C beenden. Der Vorschau-Server bleibt derselbe und liefert ausschließlich Website-Dateien aus.
+Für laufende Arbeit in einem zweiten Terminal **`npm run dev`** starten. Es beobachtet die Quellen und führt produce automatisch aus. Der Vorschau-Server übernimmt CSS automatisch ohne Seitenwechsel (ausgewähltes Beispiel bleibt erhalten); bei HTML-, JavaScript- oder Asset-Änderungen lädt er die Seite neu. Nach erstmaligem Aktivieren von Live Reload die offene Vorschau einmal manuell neu laden. Mit Strg+C beenden. Der Vorschau-Server bleibt derselbe und liefert ausschließlich Website-Dateien aus.
 
 ## Wo ändere ich was?
 
@@ -41,3 +41,5 @@ Der Umbau verändert noch nicht die Veröffentlichungseinstellungen: `noindex`, 
 Generator-Prüfungen: `npm test` (temporäre Testprojekte, keine Änderung der Arbeitskopie).
 
 Bekannter Befund: `npm audit` meldet bei Eleventy 3.1.6 eine transitive Schwachstelle in `braces` (GHSA-vfj7-8cjw-p6xm; fünf betroffene Abhängigkeiten). Der Generator verarbeitet nur unsere lokalen, vertrauenswürdigen Quellen; keine Nutzereingaben. Der Eleventy-Dev-Server wird nicht verwendet. Abhängigkeiten vor späteren Updates erneut prüfen; kein automatisches `audit fix --force`.
+
+Live Reload wird ausschließlich vom lokalen Server in HTML-Antworten eingefügt; die Dateien im Root und die veröffentlichte Website enthalten keinen Reload-Client. Während `produce` läuft, werden keine Zwischenstände zum Neuladen gemeldet.
