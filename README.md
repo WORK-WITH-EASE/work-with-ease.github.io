@@ -10,7 +10,7 @@ Einmal nach dem Klonen: `npm ci` (Node.js 24 LTS).
 2. **`npm run produce`** setzt die Website zusammen.
 3. **`python3 scripts/serve.py`** startet http://localhost:4000 zur Prüfung.
 4. **`npm run check`** prüft, dass die Root-Ausgabe den Quellen entspricht.
-5. Quellen und erzeugte Dateien gemeinsam committen. Push nur auf Andreas Anweisung, mit Versions-Tag gemäß `AGENTS.md`.
+5. Quellen und erzeugte Dateien kleinschrittig gemeinsam committen. Standardmäßig direkt auf `main` arbeiten; neue Branches nur auf ausdrücklichen Wunsch. `produce` selbstständig ausführen. Push nur auf Andreas Anweisung für den auf `main` zusammengeführten Stand, mit Versions-Tag gemäß `AGENTS.md`.
 
 Für laufende Arbeit in einem zweiten Terminal **`npm run dev`** starten. Es beobachtet die Quellen und führt produce automatisch aus. Danach den Browser neu laden. Mit Strg+C beenden. Der Vorschau-Server bleibt derselbe und liefert ausschließlich Website-Dateien aus.
 
