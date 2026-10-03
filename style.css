@@ -131,3 +131,5 @@ main .eyebrow:before{content:'';display:block;width:30px;height:4px;flex:0 0 30p
 @media(max-width:480px){.header-inner{flex-wrap:wrap;gap:14px}.header-inner>.menu-toggle{margin-left:auto}.header-inner>.quick-contact{order:3;width:100%;justify-content:flex-end;margin:0}}
 
 .desktop-nav a,.mobile-nav a{text-decoration:none;color:inherit}.desktop-nav a:hover{text-decoration:underline;text-underline-offset:6px}
+
+.quick-contact .booking-contact span{line-height:1.15;text-align:center}
