@@ -147,3 +147,17 @@ main .eyebrow:before{content:'';display:block;width:30px;height:4px;flex:0 0 30p
 .transition-arrow svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
 .transition-arrow:hover{color:#9b0055}
 @media(max-width:760px){.situations-transition{margin-top:40px;padding:30px 24px 32px}.situations-transition .transition-intro{font-size:18px;margin-bottom:20px}.transition-questions{flex-direction:column;gap:15px;margin-bottom:26px}.situations-transition .transition-questions p{font-size:clamp(26px,6.5vw,38px);letter-spacing:-.7px}.situations-transition .transition-next{font-size:19px;padding-right:34px}.transition-arrow{width:43px;height:65px;right:10px;bottom:24px}}
+
+/* Register und Geschichte bilden eine gemeinsame Inhaltsfläche. */
+.case-picker{position:relative;z-index:1;gap:8px;flex-wrap:nowrap;align-items:stretch;margin:0;padding:0 0 0 16px}
+.case-picker button{position:relative;border-radius:9px 9px 0 0;border-bottom:0;background:#f5f7f4;padding:16px 20px;color:#41594f;min-height:56px}
+.case-picker [aria-pressed=true]{background:var(--pink);color:var(--ink);border-color:var(--pink)}
+.case-picker [aria-pressed=true]:after{content:"";position:absolute;left:-1px;right:-1px;bottom:-3px;height:4px;background:var(--pink)}
+.case-picker button:focus-visible{outline-offset:-5px}
+.case-panel{border:1px solid #ccd8d1;border-radius:10px;background:#fff;padding:28px 26px 12px}
+.case-panel .case-tag{margin-top:0}
+@media(max-width:760px){
+  .case-picker{gap:5px;padding-left:0;overflow-x:auto;scrollbar-width:thin;padding-top:3px}
+  .case-picker button,.case-picker button:last-child{flex:0 0 auto;white-space:nowrap;font-size:15px;gap:7px;padding:13px 12px;min-height:50px}
+  .case-panel{padding:24px 14px 8px;border-radius:0 0 10px 10px}
+}
