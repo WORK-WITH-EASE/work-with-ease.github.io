@@ -161,3 +161,22 @@ main .eyebrow:before{content:'';display:block;width:30px;height:4px;flex:0 0 30p
   .case-picker button,.case-picker button:last-child{flex:0 0 auto;white-space:nowrap;font-size:15px;gap:7px;padding:13px 12px;min-height:50px}
   .case-panel{padding:24px 14px 8px;border-radius:0 0 10px 10px}
 }
+
+/* Vorher: greifbare Papierzettel. Heute: aufgeräumte App-Oberfläche. */
+.desk-paper{background:linear-gradient(115deg,#fffef9 0%,#fff 60%,#f6f4ec 100%);border:1px solid #e5e2d8;border-radius:2px 2px 15px 2px;box-shadow:2px 5px 0 -1px #eeeee8,3px 7px 0 -1px #d6dcd5,0 14px 22px -12px #19352b55;padding-top:32px}
+.desk-paper:before{content:"";position:absolute;top:-12px;left:calc(50% - 34px);width:68px;height:25px;background:repeating-linear-gradient(95deg,#ebe7d0b3 0 3px,#f4eed9b3 3px 6px);border:1px solid #d9d3b733;transform:rotate(-5deg);clip-path:polygon(2% 0,100% 4%,97% 27%,100% 48%,97% 72%,99% 100%,0 95%,3% 68%,0 40%)}
+.desk-paper:nth-of-type(2):before{transform:rotate(7deg)}
+.desk-paper:after{content:"";position:absolute;right:0;bottom:0;width:22px;height:22px;background:linear-gradient(135deg,#e2e0d5 0%,#f4f2e8 48%,#fff 50%);border-radius:3px 0 13px 0;box-shadow:-2px -2px 3px #243a2510}
+.paper-trail{padding-top:22px}.desk-paper .form-lines{opacity:.75}
+.digital-scene{grid-template-columns:.8fr 3.5fr .8fr;gap:18px}
+.desk-app{border:1px solid #bccac4;border-radius:14px;background:#f5f8f7;box-shadow:0 24px 45px -22px #092f2660,0 3px 8px #092f2612}
+.desk-app .app-chrome{padding:12px 16px;background:white;color:var(--ink);border-bottom:1px solid #dce5e0;gap:12px;font-size:14px;font-weight:600}
+.app-chrome .app-window-dots{display:flex;gap:5px;letter-spacing:0}.app-window-dots i{width:7px;height:7px;border-radius:50%;background:#c3cfc9}.app-window-dots i:first-child{background:var(--pink)}
+.app-avatar{display:grid;place-items:center;width:28px;height:28px;border-radius:8px;background:var(--ink);color:var(--lime);font-size:10px;flex-shrink:0}
+.app-toolbar{display:flex;align-items:center;gap:16px;padding:0 18px;background:#fff;border-bottom:1px solid #dce5e0;font-size:12px;min-height:43px}
+.app-current-view{font-weight:600;border-bottom:3px solid var(--pink);align-self:stretch;display:flex;align-items:center}.app-view-label{color:#65796e}.app-online{margin-left:auto;display:flex;align-items:center;gap:5px;color:#426753;font-size:11px}.app-online i{width:6px;height:6px;background:#318457;border-radius:50%}
+.desk-app h4{margin:23px 20px 18px;font-size:23px;font-weight:600}
+.desk-app .app-row{margin:9px 16px;padding:14px 12px;gap:12px;background:#fff;border:1px solid #e0e7e3;border-radius:8px;font-size:17px;box-shadow:0 2px 3px #092f2604}
+.desk-app .row-check{width:25px;height:25px;border-radius:7px;background:#e4f6d3;color:#285c32;font-weight:600}
+.desk-app .app-foot{background:#fff;border-top:1px solid #dce5e0;margin-top:21px;padding:13px 18px;color:#52685c;font-size:13px}.app-foot>span{color:var(--ink);font-size:18px}
+@media(max-width:760px){.desk-paper{padding-top:28px}.paper-trail{gap:16px}.desk-app h4{font-size:21px;margin:19px 16px 15px}.desk-app .app-row{margin:8px 10px;padding:12px 10px;font-size:16px}.app-toolbar{padding:0 12px;gap:10px}.app-chrome>span:nth-child(2){font-size:12px}.app-view-label{display:none}.desk-app .app-chrome{padding:10px 12px;gap:8px}}
