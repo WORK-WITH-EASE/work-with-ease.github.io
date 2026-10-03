@@ -199,5 +199,5 @@ main .eyebrow:before{content:'';display:block;width:30px;height:4px;flex:0 0 30p
 .map-destination .goal-flag{display:block;width:100%;height:auto;max-height:76px;transform:rotate(-6deg)}
 
 /* Bergfoto: natürliche Restfarbe und ein frischer Collage-Akzent. */
-.people-photo img{filter:grayscale(.45) saturate(.85) brightness(1.13) contrast(1.03)}
+.people-photo img,.photo img{filter:grayscale(.45) saturate(.85) brightness(1.13) contrast(1.03)}
 .people-photo:before{background:linear-gradient(105deg,#e7e7e1 0%,#e7e7e1 78%,var(--lime) 78%,var(--lime) 100%);transform:rotate(2.5deg)}
