@@ -205,6 +205,38 @@ main .eyebrow:before{content:'';display:block;width:30px;height:4px;flex:0 0 30p
 /* Desktop-Navigation rechts zusammen mit den Kontaktaktionen. */
 @media(min-width:1551px){.desktop-nav{margin-left:auto}.header-inner>.quick-contact{margin-left:0}}
 
+/* Einstieg: zwei Bühnenfotos als diagonal versetzte Abzüge statt einer Fotomontage.
+   Ralf oben rechts, Andrea unten links; die Zettel füllen die freien Ecken und
+   überlappen die Abzüge nur an den Rändern, nie an Kopf oder Gesicht. */
+.collage .photo-andrea,.collage .photo-ralf{padding:9px;background:#f7f5ef}
+.collage .photo-andrea,.collage .photo-ralf{display:flex;flex-direction:column}
+.collage .photo-andrea img,.collage .photo-ralf img{flex:1 1 0;min-height:0;height:auto}
+.collage .photo-andrea{padding-top:16px}.collage .photo-ralf{padding-bottom:12px}
+/* Namen als bewusst schräg aufgeklebte Etiketten, gegen die Drehung des jeweiligen Abzugs gestellt. */
+.print-caption{position:relative;z-index:1;flex-shrink:0;align-self:flex-start;padding:5px 10px 5px;background:var(--ink);font-size:12px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;line-height:1.2;white-space:nowrap;color:#f7f5ef;box-shadow:1px 2px 2px #092f2633}
+.photo-andrea .print-caption{margin:2px 0 9px 4px;transform:rotate(-4deg)}
+.photo-ralf .print-caption{margin:9px 0 2px 6px;transform:rotate(3.5deg)}
+.collage .photo-andrea{left:3%;right:47%;top:29%;bottom:0;transform:rotate(-3deg);z-index:1}
+.collage .photo-ralf{left:45%;right:3%;top:3%;bottom:25%;transform:rotate(2.5deg);z-index:2}
+.photo-andrea img{object-position:38% 20%;transform:scale(1.04);transform-origin:40% 25%}
+.photo-ralf img{object-position:46% 20%;transform:scale(1.04);transform-origin:45% 25%}
+.collage .tape{z-index:3;left:24%;top:26.5%;transform:rotate(-5deg)}
+.collage .tape-ralf{left:62%;top:1%;transform:rotate(5deg)}
+.collage .note-lime{left:-4%;top:-4%;transform:rotate(-10deg) scale(.88);transform-origin:0 0}
+.collage .note-pink{top:auto;right:-2%;bottom:5%;transform:rotate(7deg)}
+.collage .arrow{right:3%;bottom:auto;top:58%;transform:rotate(12deg)}
+.collage .scribble{top:64%;left:-5%;transform:rotate(-10deg)}
+@media(max-width:760px){.print-caption{font-size:10px;letter-spacing:.7px}.collage .note-lime{left:-5%;top:-4%}.collage .photo-andrea{top:33%}.collage .tape{top:31%}.collage .tape-ralf{top:1%}.collage .note-pink{bottom:4%}.collage .arrow{top:57%;right:1%}.collage .scribble{top:68%;left:-6%}}
+/* So arbeiten wir: die Zeichnung als angehefteter Abzug, behandelt wie die Fotos. */
+.explorer-print{position:relative;isolation:isolate;margin:22px 6% 0;padding:12px 12px 14px;background:#f7f5ef;transform:rotate(-2deg);filter:drop-shadow(2px 5px 5px #092f262b)}
+.explorer-print:before{content:'';position:absolute;z-index:-1;inset:-10px -16px 10px 12px;background:linear-gradient(105deg,#e7e7e1 0%,#e7e7e1 80%,var(--lime) 80%,var(--lime) 100%);transform:rotate(4deg);clip-path:polygon(2% 2%,16% 0,35% 2%,60% 0,83% 3%,100% 1%,98% 24%,100% 49%,97% 70%,99% 97%,78% 100%,52% 98%,26% 100%,1% 98%,2% 70%,0 44%,2% 20%)}
+.explorer-print:after{content:'';position:absolute;top:-13px;left:calc(50% - 50px);width:100px;height:29px;background:#eeece3c4;transform:rotate(-4deg);clip-path:polygon(2% 0,98% 3%,100% 92%,3% 100%,0 65%)}
+.explorer-team .explorer-print img{width:100%;height:auto;filter:grayscale(.45) saturate(.85) brightness(1.08) contrast(1.03);clip-path:polygon(1% 0,99% 1%,100% 28%,99% 59%,100% 99%,77% 98%,51% 100%,27% 98%,0 99%,1% 65%,0 30%)}
+.explorer-print+figcaption{margin-top:22px}
+@media(max-width:760px){.explorer-print{margin:18px 4% 0}}
+/* Am Seitenende: gemeinsames Bühnenfoto im Hochformat, auf Köpfe und Oberkörper zugeschnitten. */
+.people-photo img{aspect-ratio:4/3;object-position:50% 2%}
+
 /* Arbeitsweise: die Grundhaltung als gemeinsame Arbeitsfläche. */
 .stance{position:relative;background:#f1f3f0 radial-gradient(#aab8ad60 .7px,transparent .7px) 0 0/17px 17px}
 .stance:after{content:'';position:absolute;left:0;right:0;bottom:-9px;height:12px;background:#f1f3f0;z-index:1;clip-path:polygon(0 0,100% 0,100% 45%,87% 90%,74% 55%,58% 100%,43% 50%,32% 90%,19% 40%,8% 80%,0 50%)}
