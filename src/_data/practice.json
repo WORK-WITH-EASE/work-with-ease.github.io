@@ -1,0 +1,78 @@
+[
+  [
+    {
+      "id": "angebote",
+      "number": "01",
+      "category": "Angebote",
+      "title": "Das Angebot? Fast fertig. Seit Dienstag.",
+      "teaser": "Wenn Wissen in Köpfen steckt und jedes Angebot wieder bei null beginnt.",
+      "heading": "Ein Angebot, das mitdenkt.",
+      "before": "In einem fiktiven Handwerksbetrieb entstehen Angebote aus alten Dokumenten, Preislisten und Rückfragen. Die Chefin ergänzt abends, was tagsüber liegen geblieben ist. Jeder Auftrag ist anders – aber viele Arbeitsschritte wiederholen sich.",
+      "approach": "Zuerst wird gemeinsam sortiert: Welche Angaben braucht jedes Angebot? Was lässt sich wiederverwenden, und wo ist Erfahrung gefragt? Daraus entsteht eine kleine digitale Eingabemaske. Leistungen und Preise kommen aus einer gepflegten Quelle. KI kann aus Stichpunkten einen verständlichen Textentwurf formulieren.",
+      "after": "Das Team prüft Leistungen, Preise und Formulierungen, bevor etwas an Kunden geht. Sonderfälle bleiben sichtbar und lassen sich ergänzen. So muss niemand mehr ein altes Dokument nach der richtigen Passage durchsuchen.",
+      "note": "Einmal durchdenken. Nicht jedes Mal neu anfangen."
+    },
+    {
+      "id": "einarbeitung",
+      "number": "02",
+      "category": "Einarbeitung",
+      "title": "Neu im Team. Und voller Fragezeichen.",
+      "teaser": "Wie neue Kolleginnen und Kollegen ihren Weg finden, ohne ständig jemanden zu unterbrechen.",
+      "heading": "Ein guter Anfang braucht Orientierung.",
+      "before": "In einem erfundenen Dienstleistungsunternehmen beginnt eine neue Kollegin. Zugänge fehlen, Anleitungen liegen an verschiedenen Orten und die zuständige Person ist gerade im Kundentermin. Alle helfen gern – aber vieles wird mehrfach erklärt.",
+      "approach": "Das Team sammelt die Fragen, die in den ersten Wochen wirklich auftauchen. Daraus entsteht ein einfacher digitaler Einstieg: Was brauche ich heute? Wer hilft mir weiter? Welche Aufgabe probiere ich als Nächstes aus? Die Inhalte folgen dem Arbeitsalltag und nicht dem Organigramm.",
+      "after": "Kurze Erklärungen, konkrete Beispiele und persönliche Ansprechpartner gehören zusammen. Eine verantwortliche Person hält die Inhalte aktuell. Im gemeinsamen Gespräch wird geprüft, was noch fehlt. Die neue Kollegin kann selbstständig beginnen und weiß zugleich, wann sie nachfragen sollte.",
+      "note": "Gut ankommen. Selbst loslegen."
+    },
+    {
+      "id": "besprechungen",
+      "number": "03",
+      "category": "Besprechungen",
+      "title": "Viel besprochen. Was passiert jetzt?",
+      "teaser": "Wenn nach dem Meeting erst die Suche nach Entscheidungen und Aufgaben beginnt.",
+      "heading": "Aus Gesprächen werden nächste Schritte.",
+      "before": "Ein fiktives Projektteam trifft sich regelmäßig. Notizen entstehen in mehreren Dokumenten. Eine Woche später ist unklar, wer die Rückfrage klärt und ob eine Entscheidung schon gefallen ist. Das nächste Meeting beginnt mit einem Rückblick auf das letzte.",
+      "approach": "Gemeinsam wird das Besprechungsformat vereinfacht: Welche Frage müssen wir entscheiden? Wer muss dafür dabei sein? Entscheidungen und Aufgaben werden direkt an einem gemeinsamen Ort festgehalten – mit Verantwortlichen und Termin.",
+      "after": "Für geeignete, freigegebene Notizen kann KI eine Zusammenfassung vorschlagen. Das Team prüft sie, ergänzt Kontext und bestätigt die Aufgaben. Der Nutzen liegt nicht in einem längeren Protokoll, sondern darin, dass alle wissen, was als Nächstes passiert.",
+      "note": "Weniger nachbesprechen. Mehr umsetzen."
+    }
+  ],
+  [
+    {
+      "id": "anfragen",
+      "number": "04",
+      "category": "Kundenanfragen",
+      "title": "Drei Postfächer. Eine offene Frage.",
+      "teaser": "Damit eine Anfrage nicht zwischen Weiterleiten, Nachfragen und Urlaub verschwindet.",
+      "heading": "Jede Anfrage hat einen nächsten Schritt.",
+      "before": "In einem erfundenen kleinen Betrieb landen Kundenanfragen per E-Mail bei verschiedenen Personen. Manche werden weitergeleitet, andere als ungelesen markiert. Sobald jemand fehlt, ist schwer zu erkennen, was bereits beantwortet wurde.",
+      "approach": "Zuerst vereinbart das Team wenige verständliche Zustände: neu, in Bearbeitung, wartet auf Rückmeldung und erledigt. Eine gemeinsame Übersicht zeigt Zuständigkeit und nächsten Schritt. Wiederkehrende Fragen bekommen gepflegte Antwortbausteine.",
+      "after": "KI kann passende Textentwürfe vorbereiten, die vor dem Versand geprüft werden. Bei ungewöhnlichen Anliegen übernimmt direkt ein Mensch. Eine Vertretung sieht den bisherigen Verlauf und kann weiterarbeiten, ohne erst mehrere Postfächer zu durchsuchen.",
+      "note": "Eine Frage. Ein klarer Weg."
+    },
+    {
+      "id": "wissen",
+      "number": "05",
+      "category": "Wissenssuche",
+      "title": "Irgendwer weiß das. Aber wer?",
+      "teaser": "Erfahrungswissen zugänglich machen, ohne ein neues Ablage-Labyrinth zu schaffen.",
+      "heading": "Antworten dort finden, wo sie gebraucht werden.",
+      "before": "In einem fiktiven Unternehmen kennen erfahrene Mitarbeitende viele Sonderfälle auswendig. Andere suchen in Ordnern, Chats und alten E-Mails. Die Dokumentation ist umfangreich, doch welche Anleitung noch gilt, lässt sich nicht immer erkennen.",
+      "approach": "Gemeinsam werden zuerst häufige Fragen und verlässliche Quellen gesammelt. Veraltete Inhalte werden aussortiert, Zuständigkeiten geklärt und kurze Antworten mit konkreten Beispielen ergänzt. Erst dann wird über eine KI-gestützte Suche nachgedacht.",
+      "after": "Eine solche Suche soll ihre Quellen zeigen und fehlendes Wissen offen benennen. Zugriffsrechte gelten weiterhin. Fachkundige Mitarbeitende testen typische Fragen und prüfen die Antworten. So entsteht Schritt für Schritt eine Wissensbasis, die im Alltag gepflegt und genutzt werden kann.",
+      "note": "Wissen teilen. Suchen sparen."
+    },
+    {
+      "id": "planung",
+      "number": "06",
+      "category": "Terminplanung",
+      "title": "Der Plan steht. Bis jemand anruft.",
+      "teaser": "Änderungen gemeinsam überblicken, statt ständig eine neue Liste herumzuschicken.",
+      "heading": "Ein Plan, den alle im Blick haben.",
+      "before": "In einem erfundenen Servicebetrieb werden Einsätze in einer Tabelle geplant. Kurzfristige Änderungen kommen telefonisch, per Nachricht oder auf einem Zettel. Die Disposition behält vieles im Kopf. Unterwegs fehlt manchmal die aktuelle Information.",
+      "approach": "Das Team klärt, welche Angaben für einen Einsatz wirklich nötig sind. Termine, Zuständigkeiten und Hinweise kommen in eine gemeinsame digitale Übersicht. Änderungen werden an einer Stelle gepflegt und für die jeweils beteiligten Personen sichtbar.",
+      "after": "Die Lösung wird mit typischen Situationen ausprobiert: Ein Termin fällt aus, Material fehlt oder eine Kollegin übernimmt. Auch der Umgang mit schlechter Verbindung wird geklärt. Die Übersicht unterstützt die Abstimmung und lässt Raum für Entscheidungen, die Erfahrung brauchen.",
+      "note": "Pläne ändern sich. Der Überblick bleibt."
+    }
+  ]
+]
