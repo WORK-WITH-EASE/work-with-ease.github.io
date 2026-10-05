@@ -1,1 +1,0 @@
-{% for item in navigation %}{% if item.href %}<a href="{{ item.href }}">{{ item.label }}{% if mobileMenu %} <span aria-hidden="true">↗</span>{% endif %}</a>{% else %}<button data-preview="{{ item.preview }}">{{ item.label }}{% if mobileMenu %} <span aria-hidden="true">↗</span>{% endif %}</button>{% endif %}{% endfor %}
