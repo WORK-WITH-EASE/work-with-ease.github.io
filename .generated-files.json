@@ -15,6 +15,9 @@
   "assets/practice-wissen.jpg",
   "assets/ralf-buehne.jpg",
   "assets/space-grotesk.ttf",
+  "assets/ueber-uns-bergsee.jpg",
+  "assets/ueber-uns-pirin.jpg",
+  "assets/ueber-uns-schnee.jpg",
   "cases.js",
   "datenschutz.html",
   "impressum.html",
@@ -25,5 +28,6 @@
   "practice.js",
   "praxis.html",
   "site.js",
-  "style.css"
+  "style.css",
+  "ueber-uns.html"
 ]
