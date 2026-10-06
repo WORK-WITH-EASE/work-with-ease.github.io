@@ -18,5 +18,5 @@ document.querySelectorAll('[data-preview]').forEach(button => button.addEventLis
 }));
 document.querySelectorAll('.dialog-close,.dialog-back').forEach(button => button.addEventListener('click', () => dialog.close()));
 document.addEventListener('keydown', event => { if (event.key === 'Escape' && !mobile.hidden) { closeMenu(); toggle.focus(); } });
-matchMedia('(min-width:1551px)').addEventListener('change', event => { if(event.matches) closeMenu(); });
+matchMedia('(min-width:1181px)').addEventListener('change', event => { if(event.matches) closeMenu(); });
 document.querySelectorAll('[data-scroll]').forEach(button => button.addEventListener('click', () => document.getElementById(button.dataset.scroll)?.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'})));
