@@ -743,3 +743,66 @@ html:has(.offer-tabs){--tabs:66px;scroll-padding-top:calc(var(--header-h,var(--h
   .tool-m365{margin-left:-24px;margin-right:-24px}
 }
 @media(max-width:760px){.flow-targets{gap:6px}.flow-targets .flow-step{font-size:13px;padding:8px 9px}.tools-board .anywhere-note-pink{bottom:-16px}}
+/* Themenseite Selbstorganisation und Zusammenarbeit: Zettelwand der Symptome. */
+.topic-hero-text{align-items:end;padding-bottom:50px}
+.topic-hero-side .intro{max-width:620px}
+.symptom-board.is-active{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:50px;align-items:start}
+.symptom-wall{list-style:none;margin:0;padding:34px 28px 38px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px 22px;border-radius:10px;background:#e9e4d6 radial-gradient(#c9bfa860 .8px,transparent .8px) 0 0/15px 15px;box-shadow:inset 0 0 0 1px #d8d0bd}
+.symptom-wall li{display:flex}
+.symptom-note{position:relative;flex:1;min-height:118px;padding:24px 14px 18px;border:0;background:#fffef7;color:#0a1713;font:600 clamp(22px,1.7vw,27px)/1.05 Caveat,cursive;text-align:left;box-shadow:2px 4px 6px #092f2622;transform:rotate(-2deg);transition:transform .2s,box-shadow .2s;clip-path:polygon(1% 1%,28% 0,53% 1%,98% 0,100% 38%,98% 66%,100% 98%,67% 100%,33% 98%,0 100%,2% 69%,0 37%)}
+.symptom-note:before{content:'';position:absolute;top:7px;left:calc(50% - 7px);width:14px;height:14px;border-radius:50%;background:#c3cfc9;box-shadow:1px 2px 2px #092f2640}
+.symptom-wall li:nth-child(3n+2) .symptom-note{transform:rotate(1.5deg);background:#e5ffa0}
+.symptom-wall li:nth-child(3n) .symptom-note{transform:rotate(-.5deg);background:#ffe0ef}
+.symptom-wall li:nth-child(4n) .symptom-note{transform:rotate(2.5deg);background:#fff}
+.symptom-wall li:nth-child(5n) .symptom-note{background:#eef4ff}
+.symptom-wall li .symptom-note:hover{transform:rotate(0) scale(1.03)}
+.symptom-wall li .symptom-note[aria-pressed=true]{transform:rotate(0) scale(1.05);box-shadow:0 0 0 3px var(--pink),4px 10px 16px #092f2640}
+.symptom-note[aria-pressed=true]:before{background:var(--pink)}
+.symptom-note:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.symptom-details{display:grid;gap:22px}
+.symptom-board.is-active .symptom-details{position:sticky;top:calc(var(--header-h,var(--header)) + var(--tabs) + 24px);display:block}
+.symptom-board.is-active .symptom-detail{display:none}
+.symptom-board.is-active .symptom-detail.is-open{display:block}
+.symptom-prompt{margin:0;padding:60px 30px;border:2px dashed #c3cfc9;border-radius:12px;font:600 32px/1.15 Caveat,cursive;text-align:center;color:#52685c}
+.symptom-detail{padding:28px 30px 26px;background:linear-gradient(115deg,#fffef9 0%,#fff 60%,#f6f4ec 100%);border:1px solid #e5e2d8;border-radius:2px 2px 15px 2px;box-shadow:2px 5px 0 -1px #eeeee8,3px 7px 0 -1px #d6dcd5,0 14px 22px -12px #19352b55}
+.symptom-board.is-active .symptom-detail{border-color:var(--pink);box-shadow:0 0 0 3px var(--pink),0 18px 30px -16px #19352b66}
+.symptom-detail.is-entering{animation:format-in .4s cubic-bezier(.2,.8,.2,1)}
+.symptom-quote{margin:0 0 6px;font:600 30px/1.1 Caveat,cursive;color:#c3006d}
+.symptom-detail h3{width:fit-content;margin:0 0 12px -6px;padding:1px 7px;font-size:26px;font-weight:600;letter-spacing:-.5px;background:linear-gradient(177deg,transparent 9%,var(--lime) 13%,var(--lime) 85%,transparent 91%)}
+.symptom-behind{margin:0 0 18px;font-size:18px;line-height:1.6}
+.symptom-help{display:grid;gap:10px;margin:0;padding-top:16px;border-top:1px solid #092f2626}
+.symptom-help div{display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px;align-items:baseline}
+.symptom-help dt{font-size:13px;font-weight:700;letter-spacing:.8px;text-transform:uppercase}
+.symptom-help dd{margin:0;font-size:16.5px;line-height:1.5}
+.symptom-principle dd{font-weight:600}
+.symptom-back{display:none;margin-top:18px;padding:8px 0;border:0;background:none;font-size:16px;font-weight:600;text-decoration:underline;text-underline-offset:5px}
+.good-work{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px;counter-reset:good}
+.good-work li{position:relative;padding:22px 18px 20px;border-top:5px solid var(--ink);counter-increment:good}
+.good-work li:before{content:'✓';position:absolute;top:-19px;right:14px;display:grid;place-items:center;width:32px;height:32px;border:4px solid #fff;border-radius:50%;background:var(--lime);font-weight:700}
+.good-work strong{display:block;margin-bottom:6px;font-size:22px;font-weight:600;letter-spacing:-.4px}
+.good-work span{font-size:17px;line-height:1.5}
+.good-work-note{width:fit-content;margin:34px 0 0 auto;padding:8px 18px 10px;background:var(--pink);font:600 32px/1 Caveat,cursive;transform:rotate(-2deg)}
+.toolbox{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.toolbox-item{padding:22px 22px 20px;background:#fff;border:1px solid #e0e7e3;border-radius:10px;box-shadow:0 2px 3px #092f260a}
+.toolbox-item h3{margin:0 0 8px;font-size:22px;font-weight:600}
+.toolbox-tools{width:fit-content;margin:0 0 10px;padding:2px 8px;border-radius:4px;background:#e5ebe7;font-size:14.5px;font-weight:600}
+.toolbox-item>p:last-child{margin:0;font-size:16.5px;line-height:1.55}
+.toolbox-ground{max-width:900px;margin:30px 0 0;font-size:17px;line-height:1.6;color:#33493f}
+.toolbox-ground a{font-weight:600;text-underline-offset:5px;text-decoration-color:var(--pink);text-decoration-thickness:2px}
+@media(max-width:1100px){.good-work{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:34px}}
+@media(max-width:1000px){.toolbox{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:900px){.symptom-board.is-active{grid-template-columns:minmax(0,1fr);gap:30px}.symptom-board.is-active .symptom-details{position:static}.symptom-back{display:inline-block}.symptom-wall{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){
+  .topic-hero-text{padding-bottom:36px}
+  .symptom-wall{margin:0 -24px;padding:26px 18px 30px;gap:20px 14px;border-radius:0}.symptom-note{min-height:104px;padding:22px 10px 14px;font-size:22px}
+  .symptom-detail{padding:22px 18px}.symptom-quote{font-size:27px}.symptom-detail h3{font-size:23px}.symptom-behind{font-size:17px}
+  .symptom-help div{grid-template-columns:minmax(0,1fr);gap:2px}
+  .symptom-prompt{padding:30px 20px;font-size:27px}
+  .good-work{grid-template-columns:minmax(0,1fr);row-gap:30px}.good-work-note{margin-right:0}
+  .toolbox{grid-template-columns:minmax(0,1fr)}
+}
+/* Schatten und Auswahl außerhalb des Zettel-Ausrisses, sonst schneidet clip-path sie ab. */
+.symptom-wall li{filter:drop-shadow(2px 4px 4px #092f2626)}
+.symptom-wall li .symptom-note,.symptom-wall li .symptom-note[aria-pressed=true]{box-shadow:none}
+.symptom-wall li .symptom-note[aria-pressed=true]{background:var(--pink)}
+.symptom-wall li .symptom-note[aria-pressed=true]:before{background:var(--ink)}
