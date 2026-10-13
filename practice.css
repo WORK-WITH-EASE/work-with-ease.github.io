@@ -102,3 +102,15 @@
 @media(max-width:650px){.tree-panel{padding:14px 12px;font-size:14px}}
 .case{overflow-x:clip}
 .cases-index img.is-photo{object-position:center 60%}
+/* Unternehmensgröße, in den Farben der Referenzbögen auf der Startseite. */
+.size-tag{display:inline-block;flex:0 0 auto;padding:3px 9px 3px;border-radius:3px;font-size:11.5px;font-style:normal;font-weight:700;letter-spacing:.8px;text-transform:uppercase;line-height:1.3;color:var(--ink);transform:rotate(-1deg)}
+.size-klein{background:#ffcce6}
+.size-mittel{background:#e5ffa0}
+.size-konzern{background:#e5ebe7}
+.cases-index-meta{display:flex;align-items:center;gap:8px}
+.cases-index .cases-index-meta>span{display:inline-block;width:fit-content;padding:2px 8px;border-radius:12px;background:var(--pink);color:#092219;font-size:12px}
+.cases-index .size-tag{font-size:10.5px;padding:2px 7px}
+.case-kicker{flex-wrap:wrap;row-gap:8px}
+.case-kicker .size-tag{letter-spacing:.8px}
+.cases-index .cases-index-meta{display:flex;padding:0;border-radius:0;background:none}
+.case-kicker .size-tag{font-size:12.5px;padding:4px 10px}
