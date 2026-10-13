@@ -821,3 +821,11 @@ html:has(.offer-tabs){--tabs:66px;scroll-padding-top:calc(var(--header-h,var(--h
 @media(prefers-reduced-motion:reduce){.marquee{overflow-x:auto;-webkit-mask-image:none;mask-image:none}.marquee-inner{animation:none}.marquee-track[aria-hidden]{display:none}}
 @media(max-width:760px){.tool-marquee{padding:24px 0 26px}.tool-marquee-title{padding:0 24px;font-size:12px;letter-spacing:1.35px}.marquee-inner{animation-duration:85s}.marquee-track{gap:12px;padding:0 6px}.marquee-track li{width:88px}.marquee-logo{width:72px;height:62px}.marquee-logo img{height:34px;max-width:56px}}
 .marquee-wordmark{font-size:13px;font-weight:700;letter-spacing:-.3px;color:#111}
+/* Eigene 404-Seite. */
+.not-found{max-width:1600px;margin:auto;padding:80px 4% 120px}
+.not-found .intro{margin-bottom:34px}
+.not-found-links{display:flex;flex-wrap:wrap;gap:12px;margin:0;padding:0;list-style:none}
+.not-found-links a{display:inline-block;padding:13px 20px;border:1px solid #c3cfc9;border-radius:30px;font-size:17px;font-weight:500;text-decoration:none}
+.not-found-links li:first-child a{border-color:var(--pink);background:var(--pink);color:#092219}
+.not-found-links a:hover{border-color:var(--ink)}
+@media(max-width:760px){.not-found{padding:50px 24px 80px}}
