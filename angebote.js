@@ -5,9 +5,11 @@ const explorer=document.querySelector('.format-explorer');
 if(!explorer)return;
 const finder=explorer.querySelector('.format-finder'),index=explorer.querySelector('.format-index'),result=finder.querySelector('.finder-result');
 const cards=[...explorer.querySelectorAll('.format-card')],buttons=[...index.querySelectorAll('[data-format]')];
+// Texts of the page language come from data-texte on the explorer.
+const T=Object.assign({oder:'oder',passend:'Passend',ungewoehnlich:'Für diese Gruppengröße ungewöhnlich – sprechen Sie uns an.',keins:'Kein Format passt genau – sprechen Sie uns an.',naechstes:'Nächstes Format',vorheriges:'Vorheriges Format'},JSON.parse(explorer.dataset.texte||'{}'));
 const has=(card,key,value)=>card.dataset[key].split(' ').includes(value);
 const nameOf=card=>card.querySelector('h4').textContent;
-const join=list=>list.length>1?list.slice(0,-1).join(', ')+' oder '+list.at(-1):list[0];
+const join=list=>list.length>1?list.slice(0,-1).join(', ')+' '+T.oder+' '+list.at(-1):list[0];
 const stage=explorer.querySelector('.format-stage'),flipBox=document.createElement('div');
 flipBox.className='format-flip';
 flipBox.innerHTML='<button type="button"><b aria-hidden="true">←</b> <span></span></button><button type="button"><span></span> <b aria-hidden="true">→</b></button>';
@@ -26,16 +28,16 @@ function show(card,animate=true){
  const pressed=index.querySelector('[aria-pressed=true]'),list=pressed.parentElement,box=list.getBoundingClientRect(),r=pressed.getBoundingClientRect();
  if(r.left<box.left||r.right>box.right)list.scrollLeft+=r.left-box.left-24;
  const i=cards.indexOf(card);
- [cards[(i+cards.length-1)%cards.length],cards[(i+1)%cards.length]].forEach((c,dir)=>{flip[dir].querySelector('span').textContent=nameOf(c);flip[dir].setAttribute('aria-label',(dir?'Nächstes':'Vorheriges')+' Format: '+nameOf(c));});
+ [cards[(i+cards.length-1)%cards.length],cards[(i+1)%cards.length]].forEach((c,dir)=>{flip[dir].querySelector('span').textContent=nameOf(c);flip[dir].setAttribute('aria-label',(dir?T.naechstes:T.vorheriges)+': '+nameOf(c));});
  if(animate&&!matchMedia('(prefers-reduced-motion: reduce)').matches){card.classList.remove('is-entering');void card.offsetWidth;card.classList.add('is-entering');}
 }
 function update(){
  const groesse=finder.querySelector('[name=groesse]:checked')?.value,stand=finder.querySelector('[name=stand]:checked')?.value;
  let matches=cards.filter(c=>(!groesse||has(c,'groessen',groesse))&&(!stand||has(c,'stand',stand)));
  let hint='';
- if(groesse&&stand&&!matches.length){matches=cards.filter(c=>has(c,'stand',stand));hint=' Für diese Gruppengröße ungewöhnlich – sprechen Sie uns an.';}
+ if(groesse&&stand&&!matches.length){matches=cards.filter(c=>has(c,'stand',stand));hint=' '+T.ungewoehnlich;}
  buttons.forEach(b=>b.classList.toggle('is-match',matches.some(c=>c.id==='format-'+b.dataset.format)));
- result.textContent=matches.length?'Passend: '+join(matches.map(nameOf))+'.'+hint:'Kein Format passt genau – sprechen Sie uns an.';
+ result.textContent=matches.length?T.passend+': '+join(matches.map(nameOf))+'.'+hint:T.keins;
  if(matches.length&&!matches.includes(focus))show(matches[0]);
 }
 finder.addEventListener('change',update);

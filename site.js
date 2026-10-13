@@ -32,3 +32,7 @@ if (offerTabs) {
 // The header wraps onto two lines on narrow screens; sticky elements below it need its real height.
 const header = document.querySelector('.header');
 new ResizeObserver(() => document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px')).observe(header);
+// Remember the language chosen with DE | EN for all further pages (see the script in the page head).
+document.querySelectorAll('.lang-switch a').forEach(link => link.addEventListener('click', () => {
+  try { localStorage.setItem('wwe-sprache', link.hreflang); } catch (e) {}
+}));

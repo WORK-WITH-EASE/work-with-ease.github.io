@@ -3,7 +3,7 @@ const section=document.querySelector('.cases'),status=section.querySelector('.ca
 function setState(panel,state,announce=true){
  panel.querySelectorAll('[data-state]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.state===state)));
  panel.querySelectorAll('[data-view]').forEach(v=>v.hidden=v.dataset.view!==state);
- if(announce)status.textContent=panel.querySelector('.case-tag').textContent+': '+(state==='after'?'So geht’s heute.':'So lief’s bisher.');
+ if(announce)status.textContent=panel.querySelector('.case-tag').textContent+': '+(state==='after'?section.dataset.heute:section.dataset.vorher)+'.';
 }
 section.querySelectorAll('[data-case]').forEach(button=>button.addEventListener('click',()=>{
  section.querySelectorAll('[data-case]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
