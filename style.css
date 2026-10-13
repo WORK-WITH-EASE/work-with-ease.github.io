@@ -829,3 +829,8 @@ html:has(.offer-tabs){--tabs:66px;scroll-padding-top:calc(var(--header-h,var(--h
 .not-found-links li:first-child a{border-color:var(--pink);background:var(--pink);color:#092219}
 .not-found-links a:hover{border-color:var(--ink)}
 @media(max-width:760px){.not-found{padding:50px 24px 80px}}
+/* Terminbuchung ist ein Link (TidyCal), sieht aber aus wie die bisherigen Knöpfe. */
+a.booking-contact,a.mobile-contact,.hero-actions a.primary{text-decoration:none}
+.quick-contact a.booking-contact{width:auto;height:56px;border:0;border-radius:30px;background:var(--pink)}
+.quick-contact a.booking-contact:hover{background:#ec0783;transform:none}
+.mobile-nav a.mobile-contact{display:flex;justify-content:space-between;align-items:center}
