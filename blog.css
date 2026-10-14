@@ -74,6 +74,32 @@
 .blog-article-foot{margin-top:56px;padding-top:24px;border-top:1px solid #d3dcd7;font-size:18px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 30px}
 .blog-article-foot p{margin:0}
 
+/* LinkedIn-Posts: kleiner Notizzettel auf der Übersicht, kompakte Leseansicht mit Weg zur Diskussion. */
+.blog-post-tag{padding:2px 7px;border-radius:4px;background:var(--ink);color:#fff;margin-right:4px}
+.blog-card-post{align-self:start;border:0;border-radius:2px;background:#f6f4ee;filter:drop-shadow(2px 4px 3px #092f261f);transform:rotate(-.6deg);overflow:visible}
+.blog-grid>.blog-card-post:nth-child(even){transform:rotate(.6deg)}
+.blog-card-post:hover{border-color:transparent;box-shadow:none;filter:drop-shadow(3px 7px 6px #092f2633)}
+.blog-card-post .blog-card-body{padding:22px 24px 24px}
+.blog-card-post .blog-card-excerpt{-webkit-line-clamp:6}
+/* Bild eines Posts neben dem Text statt darüber; auf schmalen Karten als flacher Streifen oben. */
+.blog-card-post{container-type:inline-size}
+.blog-post-inner{display:grid}
+.blog-card-post-bild .blog-post-inner{grid-template-columns:minmax(0,36%) minmax(0,1fr)}
+.blog-card-post-bild .blog-card-image{height:100%;min-height:180px;aspect-ratio:auto;object-fit:cover}
+.blog-card-post-bild .blog-card-body{padding-left:20px}
+.blog-card-post :is(h2,.blog-card-excerpt){hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
+.blog-post-tag,.blog-draft-tag{white-space:nowrap}
+@container (max-width:420px){
+  .blog-card-post-bild .blog-post-inner{grid-template-columns:1fr}
+  .blog-card-post-bild .blog-card-image{height:auto;min-height:0;aspect-ratio:3/1}
+  .blog-card-post-bild .blog-card-body{padding-left:24px}
+}
+.blog-post{max-width:calc(680px + 8%)}
+.blog-linkedin{margin-top:48px;padding:24px 26px;border-radius:10px;background:#f6f4ee;font-size:17px;line-height:1.55}
+.blog-linkedin p{margin:0 0 16px}
+.blog-linkedin-button{display:inline-flex;align-items:center;gap:10px;padding:14px 20px;border-radius:8px;background:var(--pink);color:#092219;font-weight:600;text-decoration:none}
+.blog-linkedin-button:hover{background:#f00083}
+
 @media(max-width:960px){
   .blog-layout{grid-template-columns:1fr;gap:30px}
   .blog-side{position:static}

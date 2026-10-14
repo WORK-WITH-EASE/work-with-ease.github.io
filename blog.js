@@ -18,7 +18,7 @@
   document.querySelector('.blog-results').prepend(grid, pages);
 
   const normalize = text => text.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ß/g, 'ss');
-  for (const a of articles) a.suchtext = normalize([a.titel, a.untertitel, a.auszug, a.autoren.join(' '), a.tags.join(' ')].join(' '));
+  for (const a of articles) a.suchtext = normalize([a.titel, a.untertitel, a.auszug, a.anriss || '', a.autoren.join(' '), a.tags.join(' ')].join(' '));
   const tagCounts = new Map();
   for (const a of articles) for (const t of a.tags) tagCounts.set(t, (tagCounts.get(t) || 0) + 1);
   const tags = [...tagCounts.keys()].sort((x, y) => x.localeCompare(y, 'de'));
@@ -29,7 +29,16 @@
   function card(a) {
     const meta = el('p', { className: 'blog-meta' });
     if (a.entwurf) meta.append(el('span', { className: 'blog-draft-tag', textContent: 'Entwurf' }), ' ');
+    if (a.linkedin) meta.append(el('span', { className: 'blog-post-tag', textContent: 'LinkedIn-Post' }), ' ');
     meta.append(el('time', { dateTime: a.datum, textContent: a.datumText }), ' · ' + a.autoren.join(', ').replace(/, ([^,]*)$/, ' und $1'));
+    // LinkedIn posts: a small note card with the opening lines, its image (if any) beside the text.
+    if (a.linkedin) return el('article', { className: 'blog-card blog-card-post' + (a.bild ? ' blog-card-post-bild' : '') },
+      el('div', { className: 'blog-post-inner' },
+        a.bild ? el('img', { className: 'blog-card-image', src: a.bild, alt: '', loading: 'lazy', decoding: 'async' }) : null,
+        el('div', { className: 'blog-card-body' }, meta,
+          el('h2', {}, el('a', { href: a.url, textContent: a.titel })),
+          a.anriss ? el('p', { className: 'blog-card-excerpt', textContent: a.anriss }) : null,
+          a.tags.length ? tagList(a.tags) : null)));
     return el('article', { className: 'blog-card' },
       a.bild ? el('img', { className: 'blog-card-image', src: a.bild, alt: '', loading: 'lazy', decoding: 'async' }) : null,
       el('div', { className: 'blog-card-body' }, meta,
