@@ -859,6 +859,7 @@ a.booking-contact,a.mobile-contact,.hero-actions a.primary{text-decoration:none}
 .fees-note{font-size:17px;line-height:1.6;color:#52685c;max-width:780px;margin:50px 0 0}.fees-note a{color:var(--ink);font-weight:600;text-decoration-color:var(--pink);text-underline-offset:5px}
 .fees-special{width:fit-content;max-width:100%;margin:28px 0 0;padding:10px 20px 12px;font:600 clamp(26px,2.4vw,32px)/1.15 Caveat,cursive;background:var(--lime);transform:rotate(-1.5deg);clip-path:polygon(1% 4%,98% 0,100% 92%,2% 100%)}
 .talks-assistants{font-size:17px;line-height:1.6;color:#52685c;text-align:center;margin:55px auto 0;max-width:640px}
+.talks-assistants.talks-video{margin-top:14px}
 @media(max-width:760px){.talks-form{margin-bottom:38px}.talks-form li{font-size:23px}.talks-list .talk-subtitle{font-size:18px}.talks-list .benefit-sheet>p:not(.talk-subtitle){font-size:17px}}
 /* Home page: links from the overview to topic pages, show cases, apps and blog. */
 .situations-transition .transition-topics{font-size:19px;line-height:1.6;margin-top:18px}.transition-topics a{font-weight:500;text-decoration-color:var(--pink);text-decoration-thickness:2px;text-underline-offset:5px;white-space:nowrap}
