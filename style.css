@@ -205,6 +205,8 @@ main .eyebrow:before{content:'';display:block;width:30px;height:4px;flex:0 0 30p
 
 /* Desktop-Navigation rechts zusammen mit den Kontaktaktionen. */
 @media(min-width:1281px){.desktop-nav{margin-left:auto}.header-inner>.quick-contact{margin-left:0}}
+/* Seven menu items: a little tighter until the header has room. */
+@media(min-width:1281px) and (max-width:1420px){.header-inner{gap:14px}.desktop-nav{gap:9px}.desktop-nav :is(button,a){font-size:16.5px}.desktop-nav>*+*:before{margin-right:9px}}
 
 /* Einstieg: zwei Bühnenfotos als diagonal versetzte Abzüge statt einer Fotomontage.
    Ralf oben rechts, Andrea unten links; die Zettel füllen die freien Ecken und

@@ -1,0 +1,61 @@
+/* App library: small cards with a faded screenshot, details in a dialog. Hero and outro come from practice.css. */
+.apps-page .cases-intro{margin-bottom:10px}
+
+/* Overview. */
+.app-grid{list-style:none;margin:40px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.app-card{position:relative;display:flex;flex-direction:column;justify-content:flex-end;height:100%;min-height:230px;overflow:hidden;border:1px solid #d3dcd7;border-radius:10px;background:#fff;text-decoration:none;isolation:isolate;transition:border-color .2s,box-shadow .2s,transform .2s}
+.app-card-shot{position:absolute;inset:0;z-index:-1;width:100%;height:100%;object-fit:cover;object-position:top left;opacity:.22;filter:saturate(.6);transition:opacity .25s}
+.app-card:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#fff0 25%,#fffd 62%,#fff 100%)}
+.app-card-body{display:flex;flex-direction:column;gap:8px;padding:18px}
+.app-card b{font:700 22px/1.18 Georgia,serif;letter-spacing:-.4px;color:#111}
+.app-card-for{font-size:15px;line-height:1.4}
+a.app-card:hover{border-color:var(--pink);box-shadow:0 10px 26px #092f2614;transform:translateY(-2px)}
+a.app-card:hover .app-card-shot{opacity:.42}
+.app-card.is-pending{justify-content:center;align-items:center;border-style:dashed;background:#f7f9f8;font-size:14px;color:#7a8580}
+
+/* Details: listed one below the other without JavaScript, otherwise moved into the dialog. */
+.app-details{margin-top:80px}
+.app-detail{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px;padding:50px 0;border-top:1px solid #e5ebe8;scroll-margin-top:calc(var(--header-h,var(--header)) + 10px)}
+.app-shots{display:flex;flex-direction:column;gap:14px;min-width:0}
+.app-shot-main{margin:0;display:grid;place-items:center;padding:14px;border-radius:8px;background:#eef3f0}
+.app-shot-main img{display:block;max-width:100%;height:auto;max-height:58vh;width:auto;border-radius:4px;box-shadow:0 6px 20px #092f261c}
+.app-thumbs{display:flex;gap:10px;overflow-x:auto;padding:2px}
+.app-thumbs button{flex:0 0 auto;width:96px;height:68px;padding:0;border:2px solid #d3dcd7;border-radius:6px;background:#fff;overflow:hidden;transition:border-color .2s}
+.app-thumbs button[aria-pressed=true]{border-color:var(--pink)}
+.app-thumbs img{display:block;width:100%;height:100%;object-fit:cover;object-position:top left}
+.app-copy h2{font:700 clamp(28px,2.6vw,38px)/1.12 Georgia,serif;letter-spacing:-1px;color:#111;margin:4px 50px 20px 0}
+.app-part{padding:14px 0;border-top:1px solid #092f2622;font-size:16.5px;line-height:1.55}
+.app-part h3{margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:#c3006d}
+.app-part h4{margin:14px 0 4px;font-size:16.5px}
+.app-part p{margin:0}.app-part p+p,.app-part p+ul,.app-part ul+p{margin-top:8px}
+.app-part ul,.app-part ol{margin:0;padding-left:20px}.app-part li+li{margin-top:4px}
+/* Dialog. */
+.app-box{width:min(1200px,94vw);max-width:none;height:min(820px,90vh);max-height:none;padding:0;border:0;border-radius:12px;color:var(--ink);background:#fff;box-shadow:0 30px 80px #092f2640;overflow:hidden}
+.app-box[open]{display:flex;flex-direction:column}
+.app-box::backdrop{background:#092f26b3}
+.app-box-close{position:absolute;top:10px;right:12px;z-index:2;width:44px;height:44px;border:0;border-radius:50%;background:#fff;font-size:30px;line-height:1}
+.app-box-close:hover{background:#ffe1f1}
+.app-box-slot{flex:1;min-height:0;overflow:auto;scrollbar-gutter:stable}
+.app-box .app-detail{min-height:100%;padding:34px 40px 30px;border:0;align-items:start}
+.app-box .app-shots{position:sticky;top:0}
+.app-box .app-shot-main img{cursor:zoom-in}
+.app-box .app-detail.is-zoomed{grid-template-columns:1fr}
+.app-box .is-zoomed .app-copy{display:none}
+.app-box .is-zoomed .app-shot-main img{max-height:none;cursor:zoom-out}
+.app-box-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 18px;border-top:1px solid #e5ebe8;background:#f7f9f8}
+.app-box-foot button{border:0;background:none;padding:10px 8px;font-size:15px;font-weight:500}
+.app-box-foot button:hover{color:#c3006d}
+.app-box-ask{padding:10px 16px;border-radius:8px;background:var(--pink);font-size:15px;font-weight:500;text-decoration:none}
+.app-box-slot.is-entering .app-detail{animation:app-in .25s ease-out}
+@keyframes app-in{from{opacity:0}}
+
+@media(max-width:1100px){.app-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:860px){.app-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.app-card{min-height:200px}.app-card b{font-size:19px}.app-card-body{padding:14px}.app-detail{grid-template-columns:1fr;gap:24px}.app-box .app-shots{position:static}}
+@media(max-width:760px){
+  .app-box{width:100vw;height:100dvh;border-radius:0}
+  .app-box .app-detail{padding:56px 18px 24px}
+  .app-shot-main{padding:8px}.app-shot-main img{max-height:46vh}
+  .app-box-foot{padding:8px 10px;gap:6px}.app-box-foot button{font-size:0;padding:10px 14px}.app-box-foot button span{font-size:22px}
+  .app-box-ask{font-size:14px;padding:10px 12px;text-align:center}
+}
+@media(max-width:480px){.app-grid{grid-template-columns:1fr}.app-card{min-height:170px}}
