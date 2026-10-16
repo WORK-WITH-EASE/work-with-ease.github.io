@@ -11,6 +11,9 @@
 .app-card-for{font-size:15px;line-height:1.4}
 a.app-card:hover{border-color:var(--pink);box-shadow:0 10px 26px #092f2614;transform:translateY(-2px)}
 a.app-card:hover .app-card-shot{opacity:.42}
+/* Pale screenshots (white with light grey text) get a stronger card image: karte: kräftig in de.md. */
+.app-card.is-strong .app-card-shot{opacity:.62;filter:saturate(.9) contrast(1.9)}
+a.app-card.is-strong:hover .app-card-shot{opacity:.8}
 .app-card.is-pending{justify-content:center;align-items:center;border-style:dashed;background:#f7f9f8;font-size:14px;color:#7a8580}
 
 /* Details: listed one below the other without JavaScript, otherwise moved into the dialog. */
