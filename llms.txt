@@ -15,8 +15,8 @@ WORK WITH EASE sind Andrea Kaden (CEO, Digitalberaterin und Speakerin) und Ralf 
 - [Selbstorganisation und Zusammenarbeit](https://work-with-ease.com/selbstorganisation-zusammenarbeit.html): Zusagen halten nicht, ständig Unterbrechungen, zu viele Meetings? Wir bringen einfache Techniken für Selbstorganisation und Zusammenarbeit im Team.
 - [Über uns – Andrea Kaden und Ralf Westphal](https://work-with-ease.com/ueber-uns.html): Andrea Kaden und Ralf Westphal: Büroorganisation trifft Softwareentwicklung. Wir arbeiten mit Unternehmen in Deutschland, Österreich und der Schweiz.
 - [Blog](https://work-with-ease.com/blog/): Artikel von Andrea Kaden und Ralf Westphal über einfachere Prozesse, digitale Werkzeuge und KI im Office.
-- [Andrea Kaden: Vorträge zu KI, Führung und Arbeit](https://work-with-ease.com/vortraege.html): Keynotes und Impulsvorträge von Andrea Kaden für Führungskräfte und Teams im Mittelstand: Mensch und KI, Führung, Selbstmanagement, Vibe Coding, Authentizität.
 - [Maßgeschneiderte Apps für Büro und Betrieb](https://work-with-ease.com/apps.html): Beispiele aus der Praxis: Türen aufmessen statt 92 Excel-Spalten, Reisekosten ohne Papierkram, Zeiterfassung, Rechnungen. Was die Apps machen und für wen.
+- [Andrea Kaden: Vorträge zu KI, Führung und Arbeit](https://work-with-ease.com/vortraege.html): Keynotes und Impulsvorträge von Andrea Kaden für Führungskräfte und Teams im Mittelstand: Mensch und KI, Führung, Selbstmanagement, Vibe Coding, Authentizität.
 
 ## Blog
 
@@ -39,8 +39,8 @@ WORK WITH EASE sind Andrea Kaden (CEO, Digitalberaterin und Speakerin) und Ralf 
 - [Case studies: going digital in practice](https://work-with-ease.com/en/praxis.html): Ten real cases: paperless payroll, ERP in metalworking, an app instead of 92 Excel columns, SharePoint across a whole company and more.
 - [Self-organisation and collaboration](https://work-with-ease.com/en/selbstorganisation-zusammenarbeit.html): Promises that don’t hold, constant interruptions, too many meetings? We bring simple techniques for self-organisation and collaboration in teams.
 - [About us – Andrea Kaden and Ralf Westphal](https://work-with-ease.com/en/ueber-uns.html): Andrea Kaden and Ralf Westphal: office organisation meets software development. We work with companies in Germany, Austria and Switzerland.
-- [Andrea Kaden: talks on AI, leadership and work](https://work-with-ease.com/en/vortraege.html): Keynotes and talks by Andrea Kaden for leaders and teams in medium-sized businesses: people and AI, leadership, self-management, vibe coding, authenticity.
 - [Tailor-made apps for office and business](https://work-with-ease.com/en/apps.html): Examples from practice: measuring doors instead of 92 Excel columns, travel expenses without paperwork, time recording, invoices. What the apps do and for whom.
+- [Andrea Kaden: talks on AI, leadership and work](https://work-with-ease.com/en/vortraege.html): Keynotes and talks by Andrea Kaden for leaders and teams in medium-sized businesses: people and AI, leadership, self-management, vibe coding, authenticity.
 
 ## Optional
 
