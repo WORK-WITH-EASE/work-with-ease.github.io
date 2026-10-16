@@ -853,5 +853,8 @@ a.booking-contact,a.mobile-contact,.hero-actions a.primary{text-decoration:none}
 .talks-list .benefit-sheet>p:not(.talk-subtitle){font-size:18px;line-height:1.6;margin:0 0 18px}
 .talks-list .benefit-sheet ul{margin-top:auto}
 @media(min-width:761px){.talks-list .benefit-sheet:last-child:nth-child(odd){grid-column:1/-1;justify-self:center;width:calc(50% - 23px)}}
+.fees-list .fee-price{font:600 clamp(42px,4.2vw,60px)/1 Caveat,cursive;margin:4px 0 22px}
+.fees-note{font-size:17px;line-height:1.6;color:#52685c;max-width:780px;margin:50px 0 0}
+.fees-special{width:fit-content;max-width:100%;margin:28px 0 0;padding:10px 20px 12px;font:600 clamp(26px,2.4vw,32px)/1.15 Caveat,cursive;background:var(--lime);transform:rotate(-1.5deg);clip-path:polygon(1% 4%,98% 0,100% 92%,2% 100%)}
 .talks-assistants{font-size:17px;line-height:1.6;color:#52685c;text-align:center;margin:55px auto 0;max-width:640px}
 @media(max-width:760px){.talks-form{margin-bottom:38px}.talks-form li{font-size:23px}.talks-list .talk-subtitle{font-size:18px}.talks-list .benefit-sheet>p:not(.talk-subtitle){font-size:17px}}
