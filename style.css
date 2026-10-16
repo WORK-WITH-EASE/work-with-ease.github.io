@@ -843,3 +843,15 @@ a.booking-contact,a.mobile-contact,.hero-actions a.primary{text-decoration:none}
 .header-inner>.lang-switch+.quick-contact{margin-left:0}
 @media(max-width:560px){.header-inner{flex-wrap:wrap;row-gap:0}.header-inner>.menu-toggle{margin-left:auto}.header-inner:after{content:"";order:2;flex-basis:100%;height:12px}.header-inner>.lang-switch{order:3;margin-left:-7px}.header-inner>.quick-contact{order:4;width:auto;margin-left:auto}}
 .not-found-en{margin:40px 0 0;font-size:17px;color:#52685c}.not-found-en a{color:var(--ink);font-weight:600;text-underline-offset:5px}
+/* Vortragsseite: Bühnenfoto in Farbe, Zettel für Dauer und Form, Vortragsblätter. */
+.talks{overflow-x:clip}.talks-print img{filter:saturate(.95) brightness(1.03)}
+.talks-stance{border-top:0;padding-top:10px}.talks-stance .journey-invitation{margin-top:0}.talks-stance h2{color:#fff;font-size:clamp(28px,3vw,42px);line-height:1.15}
+.talks-form{list-style:none;display:flex;flex-wrap:wrap;gap:12px 18px;margin:0 0 55px;padding:0}
+.talks-form li{font:600 27px/1 Caveat,cursive;padding:8px 18px 10px;background:var(--lime);transform:rotate(-1.5deg);clip-path:polygon(1% 4%,98% 0,100% 92%,2% 100%)}
+.talks-form li:nth-child(2){background:#ffcce6;transform:rotate(1deg)}
+.talks-list .talk-subtitle{font-size:19px;font-weight:600;line-height:1.45;margin:0 0 14px}
+.talks-list .benefit-sheet>p:not(.talk-subtitle){font-size:18px;line-height:1.6;margin:0 0 18px}
+.talks-list .benefit-sheet ul{margin-top:auto}
+@media(min-width:761px){.talks-list .benefit-sheet:last-child:nth-child(odd){grid-column:1/-1;justify-self:center;width:calc(50% - 23px)}}
+.talks-assistants{font-size:17px;line-height:1.6;color:#52685c;text-align:center;margin:55px auto 0;max-width:640px}
+@media(max-width:760px){.talks-form{margin-bottom:38px}.talks-form li{font-size:23px}.talks-list .talk-subtitle{font-size:18px}.talks-list .benefit-sheet>p:not(.talk-subtitle){font-size:17px}}

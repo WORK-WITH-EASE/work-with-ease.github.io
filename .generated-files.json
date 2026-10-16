@@ -8,6 +8,7 @@
   "angebote.js",
   "arbeitsweise.html",
   "assets/andrea-buehne.jpg",
+  "assets/andrea-kaden-portraet.jpg",
   "assets/andrea-ralf-buehne.jpg",
   "assets/apple-touch-icon.png",
   "assets/caveat.ttf",
@@ -158,6 +159,7 @@
   "en/praxis.html",
   "en/selbstorganisation-zusammenarbeit.html",
   "en/ueber-uns.html",
+  "en/vortraege.html",
   "impressum.html",
   "index.html",
   "ki-im-office.html",
@@ -172,5 +174,6 @@
   "sitemap.xml",
   "style.css",
   "ueber-uns.html",
+  "vortraege.html",
   "zettelwand.js"
 ]
