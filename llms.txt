@@ -29,6 +29,8 @@ WORK WITH EASE sind Andrea Kaden (CEO, Digitalberaterin und Speakerin) und Ralf 
 - [Dateien richtig benennen: Regeln und Vorlage fürs Team](https://work-with-ease.com/blog/dateien-richtig-benennen/): Einheitliche Dateinamen sparen Suchzeit und verhindern Versionschaos. Regeln zur Dateibenennung fürs Team, mit kostenloser Vorlage und Hilfe durch KI.
 - [Ordnerstruktur umstellen: So gelingt der Neustart](https://work-with-ease.com/blog/ordnerstruktur-umstellen/): Eine neue Ordnerstruktur einführen, ohne jede Datei umzusortieren. So stellen Sie Ihre Ablage Schritt für Schritt um, auf dem Laufwerk oder in SharePoint.
 - [Office-Worker sind arm an Werkzeugen](https://work-with-ease.com/blog/office-worker-arm-an-werkzeugen/): Im Büro werden immer vielfältigere Aufgaben mit denselben Standard-Tools erledigt. Mit KI als Werkzeugfabrik entstehen maßgeschneiderte Apps.
+- [User oder Maker/Builder? KI braucht ein Engineering-Mindset](https://work-with-ease.com/blog/user-oder-maker-builder/): KI ist kein Werkzeug mit festen Funktionen mehr, sondern ein Möglichkeitsraum. Wer ihn nutzen will, braucht ein Engineering-Mindset: Maker/Builder statt User.
+- [Die Vibe-Coding-Ampel: Wer kann selbst loslegen?](https://work-with-ease.com/blog/vibe-coding-ampel/): Ob Vibe Coding allein gelingt, hängt vor allem von Mindset und Programmiererfahrung ab. Die Vibe-Coding-Ampel zeigt, wer selbst startet und wer Anschub braucht.
 - [Eine Woche Walz bei der Tischlerei Berg](https://work-with-ease.com/blog/walz-tischlerei-berg/): Fünf Tage im Betrieb, abends Vibe Coding: Was wir auf der Walz bei der Tischlerei Berg gelernt haben – und warum Handwerk flexible Werkzeuge braucht.
 
 ## English

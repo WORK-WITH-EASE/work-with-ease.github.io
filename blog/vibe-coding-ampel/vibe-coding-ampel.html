@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vibe Coding Ampel</title>
+<style>
+/* Schrift der Website; einzeln geöffnet greift die Ersatzschrift. Immer hell wie die Website. */
+@font-face { font-family: Space; src: url('/assets/space-grotesk.ttf') format('truetype'); font-weight: 300 700; font-display: swap; }
+:root {
+  color-scheme: light;
+  --background: light-dark(rgb(255 255 255), rgb(24 24 24));
+  --foreground: light-dark(rgb(26 28 31), rgb(255 255 255));
+  --muted-foreground: light-dark(rgb(110 114 120), rgb(160 164 170));
+  --border: light-dark(rgb(220 222 226), rgb(60 62 66));
+  --green: light-dark(rgb(0 162 64), rgb(64 201 119));
+  --red: light-dark(rgb(224 46 42), rgb(255 103 100));
+  --yellow-light: light-dark(rgb(255 224 102), rgb(255 232 140));
+  --yellow-dark: light-dark(rgb(222 152 0), rgb(232 168 24));
+  /* Axis colors: cool hues, clearly apart from the red/yellow/green cube. */
+  --axis-expertise: light-dark(rgb(28 110 220), rgb(90 160 255));
+  --axis-mindset: light-dark(rgb(118 64 225), rgb(170 135 250));
+  --axis-vorerfahrung: light-dark(rgb(190 30 170), rgb(235 110 220));
+  --font-sans: Space, -apple-system, ui-sans-serif, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+html, body { margin: 0; }
+body {
+  box-sizing: border-box;
+  padding: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+}
+h2 { font-size: 21px; font-weight: 500; margin: 0; }
+.viz-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+
+#vibe-traffic { --viz-series-1: var(--red); --viz-series-2: var(--yellow-light); --viz-series-3: var(--yellow-dark); --viz-series-4: var(--green); }
+#vibe-traffic .traffic-legend { justify-content: flex-start; gap: 16px; margin: 12px 0; }
+#vibe-traffic .traffic-legend span { display: inline-flex; align-items: center; gap: 7px; }
+/* Text below the cube is no wider than the legend (--legend-w is measured in the script). */
+#vibe-traffic .dims, #vibe-traffic .hint { max-width: var(--legend-w, 100%); }
+#vibe-traffic .dims { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 8px 0 12px; font-size: 13px; line-height: 1.45; }
+#vibe-traffic .dims dt { display: flex; align-items: baseline; gap: 6px; font-weight: 600; }
+#vibe-traffic .dims dt i { display: inline-block; width: 12px; height: 3px; border-radius: 2px; transform: translateY(-3px); }
+#vibe-traffic .dims dd { margin: 0; }
+#vibe-traffic .hint { margin: 0 0 4px; font-size: 10.5px; line-height: 1.45; color: var(--muted-foreground); }
+#vibe-traffic .chip { display: inline-block; width: 13px; height: 13px; }
+#vibe-traffic .red { background: var(--viz-series-1); }
+#vibe-traffic .yellow-light { background: var(--viz-series-2); }
+#vibe-traffic .yellow-dark { background: var(--viz-series-3); }
+#vibe-traffic .green { background: var(--viz-series-4); }
+#vibe-traffic .space { width: 100%; height: 500px; overflow: visible; display: block; touch-action: none; user-select: none; -webkit-user-select: none; cursor: grab; }
+#vibe-traffic .space:active { cursor: grabbing; }
+#vibe-traffic .space text { fill: var(--foreground); font-size: 12px; pointer-events: none; }
+#vibe-traffic .space .axis-label { font-size: 13px; paint-order: stroke; stroke: var(--background); stroke-width: 4px; stroke-linejoin: round; }
+#vibe-traffic .stage { position: relative; }
+#vibe-traffic .card { position: absolute; width: 260px; box-sizing: border-box; padding: 12px 14px; background: var(--background); border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 6px 24px rgb(0 0 0 / .18); font-size: 13px; line-height: 1.45; }
+#vibe-traffic .card[hidden] { display: none; }
+#vibe-traffic .card.docked { position: relative; width: auto; max-width: 420px; margin: 8px 0; box-shadow: none; }
+#vibe-traffic .card h3 { margin: 0 0 8px; padding-right: 22px; font-size: 15px; font-weight: 600; }
+#vibe-traffic .card dl { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; margin: 0 0 10px; }
+#vibe-traffic .card dt { display: flex; align-items: center; gap: 6px; color: var(--muted-foreground); }
+#vibe-traffic .card dt i { display: inline-block; width: 12px; height: 3px; border-radius: 2px; }
+#vibe-traffic .card dd { margin: 0; font-weight: 500; }
+#vibe-traffic .card .verdict { padding: 7px 9px; border-left: 4px solid var(--verdict); border-radius: 4px; background: color-mix(in oklab, var(--verdict) 16%, var(--background)); }
+#vibe-traffic .card .verdict strong { display: block; }
+#vibe-traffic .card .group { margin: 8px 0 0; font-size: 12px; color: var(--muted-foreground); }
+#vibe-traffic .card .close { position: absolute; top: 6px; right: 8px; border: 0; background: none; color: var(--muted-foreground); font: inherit; font-size: 18px; line-height: 1; cursor: pointer; }
+</style>
+</head>
+<body>
+<div id="vibe-traffic">
+  <h2>Vibe Coding · Unterstützungsbedarf</h2>
+  <div class="viz-row traffic-legend">
+    <span><i class="chip red"></i>Hilfe nötig</span>
+    <span><i class="chip yellow-light"></i>Anschub durch einen Maker</span>
+    <span><i class="chip yellow-dark"></i>Anschub durch einen Profi</span>
+    <span><i class="chip green"></i>Selbst starten</span>
+  </div>
+  <div class="stage">
+    <svg class="space" role="img" aria-label="Drehbarer Würfel mit acht Teilräumen: User-Laien rot, User-Profis hellgelb, Maker-Laien dunkelgelb, Maker-Profis grün."></svg>
+    <div id="vt-card" class="card" hidden aria-live="polite"></div>
+  </div>
+  <dl class="dims">
+    <dt><i style="background: var(--axis-expertise)"></i>Expertise</dt>
+    <dd>Wie tief steckt jemand in einem Fachgebiet oder der Problemdomäne drin?</dd>
+    <dt><i style="background: var(--axis-mindset)"></i>Mindset</dt>
+    <dd>Wie flexibel und motiviert ist jemand, Lösungen selbst zu bauen?</dd>
+    <dt><i style="background: var(--axis-vorerfahrung)"></i>Vorerfahrung</dt>
+    <dd>Wie vertraut ist jemand mit der Programmierung?</dd>
+  </dl>
+  <p class="hint">Würfel mit gedrückter Maustaste (oder dem Finger) ziehen, um ihn zu drehen. Ein Klick auf einen Teilwürfel zeigt seine Einordnung: die Werte in den drei Dimensionen und das Urteil zum Vibe Coding. Schließen mit ×, Esc oder Klick daneben.</p>
+</div>
+<script>
+(() => {
+const root = document.getElementById('vibe-traffic'),
+  svg = root.querySelector('svg'),
+  card = root.querySelector('#vt-card'),
+  NS = 'http://www.w3.org/2000/svg';
+// H and CY (vertical center) are fitted to the drawing in its start position; when the
+// cube is tilted further, the drawing may reach beyond the box (overflow: visible).
+const PAD = 10;
+let H = 500, CY = 250;
+const A0 = -32, B0 = 22;
+let a = A0, b = B0, selected = null, drag = null, W = 600, S = 95;
+
+// x = Expertise, y = Mindset, z = Vorerfahrung
+const profiles = [];
+for (let x = 0; x < 2; x++) for (let y = 0; y < 2; y++) for (let z = 0; z < 2; z++) {
+  // Status depends on Mindset and Vorerfahrung only: 0 red, 1 light yellow, 2 dark yellow, 3 green.
+  const id = profiles.length, status = y ? (z ? 3 : 2) : (z ? 1 : 0);
+  profiles.push({ id, x, y, z, status, name: `${y ? 'Maker' : 'User'} · ${x ? 'Experte' : 'Neuling'} · ${z ? 'Profi' : 'Laie'}` });
+}
+const verdicts = [
+  { title: 'Hilfe nötig', text: 'Es fehlen Maker-Mindset und Programmiererfahrung. Vibe Coding gelingt nur mit dauerhafter Begleitung.' },
+  { title: 'Anschub durch einen Maker', text: 'Programmiererfahrung ist da, aber das Maker-Mindset fehlt. Ein Maker muss den Anstoß geben.' },
+  { title: 'Anschub durch einen Profi', text: 'Das Maker-Mindset ist da, aber Programmiererfahrung fehlt. Ein Profi hilft beim Start, danach geht es allein weiter.' },
+  { title: 'Sofort selbst starten', text: 'Maker-Mindset und Programmiererfahrung sind da – man kann direkt selbst loslegen.' }
+];
+
+function el(tag, attrs, parent = svg) {
+  const e = document.createElementNS(NS, tag);
+  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+  parent.append(e);
+  return e;
+}
+function rotate(p) {
+  const r = a * Math.PI / 180, t = b * Math.PI / 180,
+    x = p[0] * Math.cos(r) + p[2] * Math.sin(r),
+    z = -p[0] * Math.sin(r) + p[2] * Math.cos(r);
+  return [x, p[1] * Math.cos(t) - z * Math.sin(t), p[1] * Math.sin(t) + z * Math.cos(t)];
+}
+function project(p) {
+  const q = rotate(p);
+  return [W / 2 + q[0] * S, CY - q[1] * S, q[2]];
+}
+// A point outside the cube [-1,1]³ is hidden when the ray from it towards the viewer hits the cube.
+function hiddenByCube(p) {
+  const view = [rotate([1, 0, 0])[2], rotate([0, 1, 0])[2], rotate([0, 0, 1])[2]];
+  let tMin = 0, tMax = Infinity;
+  for (let i = 0; i < 3; i++) {
+    if (Math.abs(view[i]) < 1e-9) {
+      if (Math.abs(p[i]) > 1) return false;
+      continue;
+    }
+    let t1 = (-1 - p[i]) / view[i], t2 = (1 - p[i]) / view[i];
+    if (t1 > t2) [t1, t2] = [t2, t1];
+    tMin = Math.max(tMin, t1);
+    tMax = Math.min(tMax, t2);
+    if (tMin > tMax) return false;
+  }
+  return true;
+}
+
+function draw() {
+  W = svg.clientWidth || 600;
+  S = Math.min(100, (W - 64) / 4.4);
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.replaceChildren();
+
+  const faces = [];
+  for (const p of profiles) {
+    const lo = [p.x ? .035 : -1, p.y ? .035 : -1, p.z ? .035 : -1],
+      hi = [p.x ? 1 : -.035, p.y ? 1 : -.035, p.z ? 1 : -.035];
+    for (let d = 0; d < 3; d++) for (let side = 0; side < 2; side++) {
+      const normal = [0, 0, 0];
+      normal[d] = side ? 1 : -1;
+      if (rotate(normal)[2] <= 0) continue;
+      const dims = [0, 1, 2].filter(v => v !== d);
+      const pts = [[0, 0], [1, 0], [1, 1], [0, 1]].map(pair => {
+        const v = lo.slice();
+        v[d] = side ? hi[d] : lo[d];
+        dims.forEach((dim, j) => v[dim] = pair[j] ? hi[dim] : lo[dim]);
+        return project(v);
+      });
+      faces.push({ p, d, pts, depth: pts.reduce((sum, v) => sum + v[2], 0) / 4 });
+    }
+  }
+  // Axes sit along three outer cube edges; `out` points away from the cube (label offset).
+  const axes = [
+    { lo: [-1, -1.25, 1.22], hi: [1, -1.25, 1.22], out: [0, -1, 1], name: 'Expertise', labels: ['Neuling', 'Experte'], color: 'var(--axis-expertise)' },
+    { lo: [-1.25, -1, 1.22], hi: [-1.25, 1, 1.22], out: [-1, 0, 1], name: 'Mindset', labels: ['User', 'Maker'], color: 'var(--axis-mindset)' },
+    { lo: [1.25, -1.25, -1], hi: [1.25, -1.25, 1], out: [1, -1, 0], name: 'Vorerfahrung', labels: ['Laie', 'Profi'], color: 'var(--axis-vorerfahrung)' }
+  ];
+  const along = (axis, t, off = 0) => axis.lo.map((v, i) => v + (axis.hi[i] - v) * t + axis.out[i] * Math.SQRT1_2 * off);
+
+  // Axis parts the cube hides go into a layer behind the faces, the rest in front of them.
+  const back = el('g', { opacity: .3 });
+  faces.sort((u, v) => u.depth - v.depth);
+  for (const f of faces) {
+    const points = f.pts.map(p => p.slice(0, 2).join(',')).join(' ');
+    el('polygon', { points, fill: `var(--viz-series-${f.p.status + 1})`, stroke: 'var(--background)', 'stroke-width': '.7', 'data-cell': f.p.id });
+    if (f.d !== 1) el('polygon', { points, fill: 'var(--foreground)', 'fill-opacity': f.d === 0 ? '.07' : '.14', 'pointer-events': 'none' });
+    // A click selects every sub-cube with the same verdict; the others fade back.
+    if (selected === null) continue;
+    if (f.p.status === profiles[selected].status) el('polygon', { points, fill: 'none', stroke: 'var(--foreground)', 'stroke-width': 2, 'pointer-events': 'none' });
+    else el('polygon', { points, fill: 'var(--background)', 'fill-opacity': .6, 'pointer-events': 'none' });
+  }
+  const front = el('g', {});
+  const layer = pos => hiddenByCube(pos) ? back : front;
+
+  const SEGMENTS = 24;
+  for (const axis of axes) for (let k = 0; k < SEGMENTS; k++) {
+    const p = project(along(axis, k / SEGMENTS)), q = project(along(axis, (k + 1) / SEGMENTS));
+    el('line', { x1: p[0], y1: p[1], x2: q[0], y2: q[1], stroke: axis.color, 'stroke-width': 2, 'stroke-linecap': 'round', 'pointer-events': 'none' }, layer(along(axis, (k + .5) / SEGMENTS)));
+  }
+
+  // Labels rotate with their axis.
+  const label = (pos, str, attrs) => {
+    const q = project(pos), t = el('text', { x: Math.max(48, Math.min(W - 48, q[0])), y: q[1], 'text-anchor': 'middle', 'dominant-baseline': 'central', class: 'axis-label', ...attrs }, layer(pos));
+    t.textContent = str;
+  };
+  for (const axis of axes) {
+    for (let j = 0; j < 2; j++) {
+      const pos = along(axis, j ? .75 : .25), tick = project(pos);
+      el('circle', { cx: tick[0], cy: tick[1], r: 3.5, fill: axis.color, 'pointer-events': 'none' }, layer(pos));
+      label(along(axis, j ? .75 : .25, .3), axis.labels[j], {});
+    }
+    label(along(axis, .5, .8), axis.name, { 'font-weight': 600, style: `fill: ${axis.color}` });
+  }
+  placeCard();
+}
+
+function sync() {
+  card.hidden = selected === null;
+  if (selected === null) return;
+  const p = profiles[selected], v = verdicts[p.status];
+  const dims = [
+    ['Mindset', p.y ? 'Maker' : 'User', 'var(--axis-mindset)'],
+    ['Expertise', p.x ? 'Experte' : 'Neuling', 'var(--axis-expertise)'],
+    ['Vorerfahrung', p.z ? 'Profi' : 'Laie', 'var(--axis-vorerfahrung)']
+  ];
+  card.style.setProperty('--verdict', `var(--viz-series-${p.status + 1})`);
+  card.innerHTML = `
+    <button class="close" type="button" aria-label="Schließen">×</button>
+    <h3>${p.name}</h3>
+    <dl>${dims.map(([dim, value, color]) => `<dt><i style="background:${color}"></i>${dim}</dt><dd>${value}</dd>`).join('')}</dl>
+    <div class="verdict"><strong>${v.title}</strong>${v.text}</div>
+    <p class="group">Markiert sind alle Teilwürfel mit diesem Urteil – die Expertise ändert daran nichts.</p>`;
+  card.querySelector('.close').addEventListener('click', () => {
+    selected = null;
+    sync();
+    draw();
+  });
+}
+
+// The card sits beside the cube on the side of the selected sub-cube and follows it while
+// the cube rotates. Where there is no room beside the cube, it docks below the drawing.
+const CARD_W = 260;
+function placeCard() {
+  if (selected === null) return;
+  const p = profiles[selected], c = project([p.x ? .5 : -.5, p.y ? .5 : -.5, p.z ? .5 : -.5]);
+  const reach = 2.6 * S + 50, rightSide = W / 2 + reach, leftSide = W / 2 - reach - CARD_W;
+  const fitsRight = rightSide + CARD_W <= W - 8, fitsLeft = leftSide >= 8;
+  card.classList.toggle('docked', !fitsRight && !fitsLeft);
+  if (!fitsRight && !fitsLeft) {
+    card.style.left = card.style.top = '';
+    return;
+  }
+  const left = (c[0] >= W / 2 && fitsRight) || !fitsLeft ? rightSide : leftSide;
+  const ch = card.offsetHeight;
+  card.style.left = `${left}px`;
+  card.style.top = `${Math.max(8, Math.min(H - ch - 8, c[1] - ch / 2))}px`;
+}
+
+// The cube turns slowly by itself until someone touches it; not with reduced motion, and only while it is in view.
+let spinning = !matchMedia('(prefers-reduced-motion: reduce)').matches, inView = true, last = null;
+new IntersectionObserver(entries => { inView = entries[0].isIntersecting; }).observe(svg);
+function spin(time) {
+  if (!spinning) return;
+  if (last !== null && inView && !document.hidden) {
+    a = ((a + Math.min(time - last, 100) * .006 + 540) % 360) - 180;
+    draw();
+  }
+  last = time;
+  requestAnimationFrame(spin);
+}
+
+svg.addEventListener('pointerdown', e => {
+  e.preventDefault();
+  spinning = false;
+  drag = { x: e.clientX, y: e.clientY, a, b, cell: e.target.getAttribute('data-cell'), moved: false };
+  svg.setPointerCapture(e.pointerId);
+});
+svg.addEventListener('pointermove', e => {
+  if (!drag) return;
+  const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+  if (Math.abs(dx) + Math.abs(dy) > 4) drag.moved = true;
+  if (!drag.moved) return;
+  a = ((drag.a + dx * .5 + 540) % 360) - 180;
+  b = Math.max(-80, Math.min(80, drag.b + dy * .4));
+  draw();
+});
+svg.addEventListener('pointerup', () => {
+  if (!drag) return;
+  if (!drag.moved) selected = drag.cell === null ? null : +drag.cell;
+  drag = null;
+  sync();
+  draw();
+});
+svg.addEventListener('pointercancel', () => drag = null);
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape' || selected === null) return;
+  selected = null;
+  sync();
+  draw();
+});
+const legend = root.querySelector('.traffic-legend');
+new ResizeObserver(() => {
+  // Widest legend row, also when the legend wraps.
+  const w = Math.max(...[...legend.children].map(c => c.getBoundingClientRect().right)) - legend.getBoundingClientRect().left;
+  root.style.setProperty('--legend-w', `${Math.ceil(w)}px`);
+}).observe(legend);
+function fit() {
+  const [a1, b1] = [a, b];
+  [a, b] = [A0, B0];
+  draw();
+  const box = svg.getBBox();
+  [a, b] = [a1, b1];
+  CY += PAD - box.y;
+  H = Math.ceil(box.height + 2 * PAD);
+  svg.style.height = `${H}px`;
+  draw();
+}
+let fittedWidth = 0;
+new ResizeObserver(() => {
+  if (svg.clientWidth === fittedWidth) return;
+  fittedWidth = svg.clientWidth;
+  fit();
+}).observe(svg);
+sync();
+draw();
+requestAnimationFrame(spin);
+})();
+</script>
+</body>
+</html>
