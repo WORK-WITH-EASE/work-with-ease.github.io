@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Umsortieren oder neu anfangen?</title>
+<style>
+/* Schrift der Website; einzeln geöffnet greift die Ersatzschrift. Immer hell wie die Website. */
+@font-face { font-family: Space; src: url('/assets/space-grotesk.ttf') format('truetype'); font-weight: 300 700; font-display: swap; }
+:root {
+  color-scheme: light;
+  --ink: #092f26;
+  --lime: #c7ff23;
+  --pink: #ff1693;
+  --paper: #f5f7f2;
+  --border: #d4ded8;
+  --muted: #5b6b65;
+  --font-sans: Space, -apple-system, ui-sans-serif, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+html, body { margin: 0; }
+body { background: #fff; color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 1.5; }
+#entscheidung { padding: 20px; background: var(--paper); border-radius: 12px; }
+h2 { font-size: 22px; font-weight: 600; margin: 0 0 4px; }
+.intro { margin: 0 0 16px; color: var(--muted); font-size: 15px; }
+fieldset { border: 0; margin: 0 0 14px; padding: 0; }
+legend { font-weight: 600; margin-bottom: 6px; padding: 0; }
+.options { display: flex; flex-wrap: wrap; gap: 8px; }
+.options label { position: relative; }
+.options input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.options span { display: inline-block; padding: 8px 14px; border: 1.5px solid var(--ink); border-radius: 999px; background: #fff; font-size: 15px; cursor: pointer; }
+.options input:checked + span { background: var(--ink); color: #fff; }
+.options input:focus-visible + span { outline: 3px solid var(--pink); outline-offset: 2px; }
+.result { margin-top: 18px; padding: 16px 18px; border-radius: 10px; background: #fff; border-left: 6px solid var(--border); }
+.result.ready { border-left-color: var(--lime); }
+.result h3 { margin: 0 0 6px; font-size: 19px; font-weight: 600; }
+.result p { margin: 0 0 8px; }
+.result ol { margin: 0; padding-left: 22px; }
+.result li { margin: 3px 0; }
+.result a { color: var(--ink); }
+.placeholder { color: var(--muted); margin: 0; }
+.always { margin: 12px 0 0; font-size: 14px; color: var(--muted); }
+</style>
+</head>
+<body>
+<div id="entscheidung">
+  <h2>Umsortieren lassen oder neu anfangen?</h2>
+  <p class="intro">Drei Fragen zu Ihrer Ablage, dann sehen Sie, wie KI Ihnen am besten hilft.</p>
+
+  <fieldset>
+    <legend>Wer arbeitet mit der Ablage?</legend>
+    <div class="options">
+      <label><input type="radio" name="team" value="klein"><span>Ich allein oder ein kleines Team</span></label>
+      <label><input type="radio" name="team" value="gross"><span>Mehrere Teams oder Abteilungen</span></label>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Wie alt ist die Ablage?</legend>
+    <div class="options">
+      <label><input type="radio" name="alter" value="jung"><span>Erst wenige Jahre alt</span></label>
+      <label><input type="radio" name="alter" value="alt"><span>Über viele Jahre gewachsen</span></label>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Was liegt darin?</legend>
+    <div class="options">
+      <label><input type="radio" name="ballast" value="wenig"><span>Fast alles wird noch gebraucht</span></label>
+      <label><input type="radio" name="ballast" value="viel"><span>Vieles ist Ballast</span></label>
+    </div>
+  </fieldset>
+
+  <div class="result" id="result" aria-live="polite">
+    <p class="placeholder">Beantworten Sie die drei Fragen.</p>
+  </div>
+  <p class="always">Gilt immer: Arbeiten Sie mit einer Kopie, und geben Sie der KI nur die Ordner frei, um die es geht.</p>
+</div>
+<script>
+(() => {
+  const umstellen = '<a href="/blog/ordnerstruktur-umstellen/" target="_top">Ordnerstruktur umstellen</a>';
+  const results = {
+    umsortieren: {
+      titel: 'Lassen Sie die KI umsortieren.',
+      text: 'Ihre Ablage ist überschaubar und noch wertvoll. Hier spart die KI am meisten Zeit.',
+      schritte: [
+        'Beschreiben Sie der KI Ihren Betrieb und lassen Sie eine neue Struktur entwerfen.',
+        'Lassen Sie die Dateien einsortieren. Unklares landet im Posteingang, Doppeltes bei den Duplikaten.',
+        'Kümmern Sie sich nur noch um Posteingang und Duplikate, und prüfen Sie Stichproben.'
+      ]
+    },
+    neu: {
+      titel: 'Fangen Sie neu an und lassen Sie das Alte stehen.',
+      text: 'Beim Umsortieren würde der ganze Ballast mit in die neue Struktur wandern.',
+      schritte: [
+        'Beschreiben Sie der KI Ihren Betrieb und lassen Sie eine neue Struktur entwerfen, ohne Blick auf die alten Ordner.',
+        'Lassen Sie die KI die leere Struktur anlegen.',
+        'Die alte Ablage bleibt, wo sie ist, und wird nur noch gelesen. Einen kleinen Bereich, den Sie wirklich brauchen, kann die KI trotzdem einsortieren.'
+      ]
+    },
+    gemeinsamUmsortieren: {
+      titel: 'Erarbeiten Sie die Struktur gemeinsam, und lassen Sie bereichsweise umsortieren.',
+      text: 'Bei vielen Beteiligten ist die gemeinsame Arbeit an der Struktur wichtiger als ein schneller KI-Entwurf.',
+      schritte: [
+        'Entwerfen Sie die neue Struktur gemeinsam mit den Menschen, die damit arbeiten, wie in ' + umstellen + ' beschrieben.',
+        'Lassen Sie die KI die leere Struktur anlegen.',
+        'Lassen Sie die KI Bereich für Bereich einsortieren, jeweils erst mit Verbesserungsvorschlägen, dann mit dem Umsortieren.'
+      ]
+    },
+    gemeinsamNeu: {
+      titel: 'Erarbeiten Sie die Struktur gemeinsam, und fangen Sie neu an.',
+      text: 'Eine lange gewachsene Ablage mit vielen Beteiligten sollte die KI nicht komplett umsortieren.',
+      schritte: [
+        'Entwerfen Sie die neue Struktur gemeinsam mit den Menschen, die damit arbeiten, wie in ' + umstellen + ' beschrieben.',
+        'Lassen Sie die KI die leere Struktur anlegen.',
+        'Ab einem Stichtag arbeiten alle in der neuen Struktur. Die alte Ablage wird nur noch gelesen und später archiviert.'
+      ]
+    }
+  };
+  const root = document.getElementById('entscheidung');
+  const out = document.getElementById('result');
+  const value = name => root.querySelector(`input[name="${name}"]:checked`)?.value;
+  root.addEventListener('change', () => {
+    const team = value('team'), alter = value('alter'), ballast = value('ballast');
+    if (!team || !alter || !ballast) return;
+    const sauber = alter === 'jung' && ballast === 'wenig';
+    const r = team === 'klein'
+      ? (sauber ? results.umsortieren : results.neu)
+      : (sauber ? results.gemeinsamUmsortieren : results.gemeinsamNeu);
+    out.className = 'result ready';
+    out.innerHTML = `<h3>${r.titel}</h3><p>${r.text}</p><ol>${r.schritte.map(s => `<li>${s}</li>`).join('')}</ol>`;
+  });
+})();
+</script>
+</body>
+</html>

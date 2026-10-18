@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Die KI sortiert eine Ablage</title>
+<style>
+/* Schrift der Website; einzeln geöffnet greift die Ersatzschrift. Immer hell wie die Website. */
+@font-face { font-family: Space; src: url('/assets/space-grotesk.ttf') format('truetype'); font-weight: 300 700; font-display: swap; }
+:root {
+  color-scheme: light;
+  --ink: #092f26;
+  --lime: #c7ff23;
+  --pink: #ff1693;
+  --paper: #f5f7f2;
+  --border: #d4ded8;
+  --muted: #5b6b65;
+  --font-sans: Space, -apple-system, ui-sans-serif, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+html, body { margin: 0; }
+body { background: #fff; color: var(--ink); font-family: var(--font-sans); font-size: 15px; line-height: 1.45; }
+#ablage { padding: 20px; background: var(--paper); border-radius: 12px; }
+.head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 14px; }
+h2 { font-size: 22px; font-weight: 600; margin: 0; }
+button { font: inherit; font-weight: 600; padding: 9px 18px; border: 0; border-radius: 999px; background: var(--ink); color: #fff; cursor: pointer; }
+button:focus-visible { outline: 3px solid var(--pink); outline-offset: 2px; }
+.pile { display: flex; flex-wrap: wrap; gap: 8px; min-height: 40px; padding: 14px; border: 1.5px dashed var(--border); border-radius: 10px; background: #fff; }
+.pile-label, .folder h3 { margin: 0 0 8px; font-size: 13px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; color: var(--muted); }
+.sorted .pile-wrap { display: none; }
+.folders { display: grid; grid-template-columns: repeat(auto-fill, minmax(135px, 1fr)); gap: 10px; margin-top: 14px; }
+.folder { padding: 10px 12px 12px; border-radius: 10px; background: #fff; border-top: 5px solid var(--lime); min-height: 54px; transition: opacity .3s; }
+.folder.extra { border-top-color: var(--pink); }
+.folder .files { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.unsorted .folder { opacity: .5; }
+.folder .file { white-space: normal; overflow-wrap: break-word; hyphens: auto; }
+@media (max-width: 420px) { #ablage { padding: 14px; } .file { font-size: 12.5px; padding: 3px 8px; } .folder { padding: 8px 9px 10px; } }
+.file { display: inline-block; padding: 4px 10px; border-radius: 6px; background: var(--paper); border: 1px solid var(--border); font-size: 14px; white-space: nowrap; }
+.pile .file { transform: rotate(var(--tilt, 0deg)); }
+.note { margin: 12px 0 0; font-size: 13px; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { .file { transition: none !important; } }
+</style>
+</head>
+<body>
+<div id="ablage" class="unsorted">
+  <div class="head">
+    <h2>Vorher und nachher</h2>
+    <button type="button" id="toggle" aria-pressed="false">KI sortieren lassen</button>
+  </div>
+  <div class="pile-wrap">
+    <p class="pile-label">Alte Ablage</p>
+    <div class="pile" id="pile"></div>
+  </div>
+  <div class="folders" id="folders"></div>
+  <p class="note">Vereinfachte Darstellung. Was die KI nicht zuordnen kann, legt sie in den Posteingang, exakte Doppelungen zu den Duplikaten.</p>
+</div>
+<script>
+(() => {
+  const folders = [
+    ['gruendung', 'Gründung'], ['finanzen', 'Finanzen'], ['marketing', 'Marketing'],
+    ['fotos', 'Fotos'], ['posteingang', 'Posteingang', true], ['duplikate', 'Duplikate', true]
+  ];
+  const files = [
+    ['Rechnung März.pdf', 'finanzen'], ['IMG_2041.jpg', 'fotos'], ['Gesellschaftsvertrag.pdf', 'gruendung'],
+    ['Dokument1.docx', 'posteingang'], ['Marketingkonzept v3.docx', 'marketing'], ['Rechnung März (1).pdf', 'duplikate'],
+    ['Kontoauszug Q1.pdf', 'finanzen'], ['Produktfoto Schale.jpg', 'fotos'], ['Notiz.txt', 'posteingang'],
+    ['Gewerbeanmeldung.pdf', 'gruendung'], ['Flyer Markt.pdf', 'marketing'], ['Produktfoto Schale Kopie.jpg', 'duplikate']
+  ];
+  const root = document.getElementById('ablage');
+  const pile = document.getElementById('pile');
+  const box = document.getElementById('folders');
+  const button = document.getElementById('toggle');
+  const targets = {};
+  for (const [id, name, extra] of folders) {
+    const f = document.createElement('div');
+    f.className = 'folder' + (extra ? ' extra' : '');
+    f.innerHTML = `<h3>${name}</h3><div class="files"></div>`;
+    box.append(f);
+    targets[id] = f.querySelector('.files');
+  }
+  const chips = files.map(([name, target], i) => {
+    const c = document.createElement('span');
+    c.className = 'file';
+    c.textContent = name;
+    c.dataset.target = target;
+    c.style.setProperty('--tilt', `${[-3, 2, -1, 3, -2, 1][i % 6]}deg`);
+    pile.append(c);
+    return c;
+  });
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // FLIP: remember where each file was, move it, then animate from the old place to the new one.
+  const move = sorted => {
+    const before = new Map(chips.map(c => [c, c.getBoundingClientRect()]));
+    root.classList.toggle('sorted', sorted);
+    root.classList.toggle('unsorted', !sorted);
+    for (const c of chips) (sorted ? targets[c.dataset.target] : pile).append(c);
+    button.textContent = sorted ? 'Zurück zum Durcheinander' : 'KI sortieren lassen';
+    button.setAttribute('aria-pressed', String(sorted));
+    if (reduced) return;
+    chips.forEach((c, i) => {
+      const a = before.get(c), b = c.getBoundingClientRect();
+      c.animate([
+        { transform: `translate(${a.left - b.left}px, ${a.top - b.top}px)` },
+        { transform: getComputedStyle(c).transform === 'none' ? 'none' : getComputedStyle(c).transform }
+      ], { duration: 700, delay: i * 60, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'backwards' });
+    });
+  };
+  button.addEventListener('click', () => move(!root.classList.contains('sorted')));
+})();
+</script>
+</body>
+</html>
