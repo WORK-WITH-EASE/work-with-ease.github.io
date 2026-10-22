@@ -11,7 +11,7 @@ document.querySelectorAll('[data-preview]').forEach(button => button.addEventLis
   else location.href = '/#kontakt';
 }));
 document.addEventListener('keydown', event => { if (event.key === 'Escape' && !mobile.hidden) { closeMenu(); toggle.focus(); } });
-matchMedia('(min-width:1281px)').addEventListener('change', event => { if(event.matches) closeMenu(); });
+matchMedia('(min-width:1401px)').addEventListener('change', event => { if(event.matches) closeMenu(); });
 document.querySelectorAll('[data-scroll]').forEach(button => button.addEventListener('click', () => document.getElementById(button.dataset.scroll)?.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'})));
 // Offer tabs: keep the current tab in view and fade the edge where more tabs are hidden.
 const offerTabs = document.querySelector('.offer-tabs-row');
