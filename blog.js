@@ -25,6 +25,10 @@
 
   const el = (tag, props = {}, ...children) => { const node = Object.assign(document.createElement(tag), props); node.append(...children.filter(c => c != null && c !== '')); return node; };
   const tagList = list => el('ul', { className: 'blog-tags' }, ...list.map(t => el('li', {}, el('a', { href: '/blog/#tag=' + encodeURIComponent(t), textContent: t }))));
+  const cardImage = a => a.bild ? el('img', {
+    className: 'blog-card-image', src: a.bildAnzeige?.src || a.bild, alt: '', loading: 'lazy', decoding: 'async',
+    ...(a.bildAnzeige?.srcset ? { srcset: a.bildAnzeige.srcset, sizes: a.bildAnzeige.sizes, width: a.bildAnzeige.width, height: a.bildAnzeige.height } : {}),
+  }) : null;
 
   function card(a) {
     const meta = el('p', { className: 'blog-meta' });
@@ -34,13 +38,13 @@
     // LinkedIn posts: a small note card with the opening lines, its image (if any) beside the text.
     if (a.linkedin) return el('article', { className: 'blog-card blog-card-post' + (a.bild ? ' blog-card-post-bild' : '') },
       el('div', { className: 'blog-post-inner' },
-        a.bild ? el('img', { className: 'blog-card-image', src: a.bild, alt: '', loading: 'lazy', decoding: 'async' }) : null,
+        cardImage(a),
         el('div', { className: 'blog-card-body' }, meta,
           el('h2', {}, el('a', { href: a.url, textContent: a.titel })),
           a.anriss ? el('p', { className: 'blog-card-excerpt', textContent: a.anriss }) : null,
           a.tags.length ? tagList(a.tags) : null)));
     return el('article', { className: 'blog-card' },
-      a.bild ? el('img', { className: 'blog-card-image', src: a.bild, alt: '', loading: 'lazy', decoding: 'async' }) : null,
+      cardImage(a),
       el('div', { className: 'blog-card-body' }, meta,
         el('h2', {}, el('a', { href: a.url, textContent: a.titel })),
         a.untertitel ? el('p', { className: 'blog-card-subtitle', textContent: a.untertitel }) : null,

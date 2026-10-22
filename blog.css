@@ -30,7 +30,7 @@
 .blog-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
 .blog-card{position:relative;display:flex;flex-direction:column;border:1px solid #d3dcd7;border-radius:10px;background:#fff;overflow:hidden;transition:border-color .2s,box-shadow .2s}
 .blog-card:hover{border-color:var(--pink);box-shadow:0 8px 24px #092f2614}
-.blog-card-image{display:block;width:100%;aspect-ratio:2/1;object-fit:cover;background:#eef2f0}
+.blog-card-image{display:block;width:100%;height:auto;aspect-ratio:2/1;object-fit:cover;background:#eef2f0}
 .blog-card-body{display:flex;flex-direction:column;flex:1;padding:18px 20px 20px}
 .blog-card h2{font:700 clamp(21px,1.7vw,25px)/1.2 Georgia,serif;letter-spacing:-.3px;color:#111;margin:0 0 8px}
 .blog-card h2 a{text-decoration:none}
@@ -50,10 +50,16 @@
 .blog-article{max-width:calc(860px + 8%)}
 .blog-back{margin:0 0 34px;font-size:16px;font-weight:600}
 .blog-back a,.blog-article-foot a{text-decoration-color:var(--pink);text-underline-offset:6px}
+.blog-breadcrumbs{margin:0 0 34px;font-size:15px;line-height:1.5}
+.blog-breadcrumbs ol{display:flex;flex-wrap:wrap;gap:5px 9px;list-style:none;margin:0;padding:0}
+.blog-breadcrumbs li{min-width:0;overflow-wrap:anywhere}
+.blog-breadcrumbs li+li:before{content:'›';margin-right:9px;color:var(--pink)}
+.blog-breadcrumbs a{text-underline-offset:4px}
 .blog-article-head{margin-bottom:36px}
 .blog-article-head h1{font:700 clamp(38px,5vw,64px)/1.08 Georgia,serif;letter-spacing:-.03em;color:#111;margin:0 0 18px;overflow-wrap:break-word}
 .blog-subtitle{margin:0 0 22px;font-size:clamp(20px,2vw,24px);line-height:1.45;font-weight:500}
-.blog-prose{font-size:19px;line-height:1.7}
+.blog-prose{font-size:19px;line-height:1.7;hyphens:auto;-webkit-hyphens:auto;overflow-wrap:anywhere}
+.blog-article-head :is(h1,.blog-subtitle){hyphens:auto;-webkit-hyphens:auto;overflow-wrap:anywhere}
 .blog-prose>:first-child{margin-top:0}
 .blog-prose p,.blog-prose ul,.blog-prose ol{margin:0 0 22px}
 .blog-prose li{margin:6px 0}
@@ -66,7 +72,7 @@
 .blog-prose blockquote p:last-child{margin-bottom:0}
 .blog-prose code{padding:2px 6px;border-radius:4px;background:#eef2f0;font-family:Menlo,Consolas,monospace;font-size:.85em}
 .blog-prose pre{overflow-x:auto;padding:18px 20px;border-radius:8px;background:#eef2f0;font-size:15px;line-height:1.5;margin:0 0 22px}
-.blog-prose pre code{padding:0;background:none;font-size:inherit}
+.blog-prose pre code{padding:0;background:none;font-size:inherit;hyphens:none;-webkit-hyphens:none;overflow-wrap:normal}
 .blog-prose table{width:100%;border-collapse:collapse;margin:0 0 26px;font-size:17px;display:block;overflow-x:auto}
 .blog-prose th,.blog-prose td{padding:10px 12px;border-bottom:1px solid #d3dcd7;text-align:left;vertical-align:top}
 .blog-prose th{border-bottom:2px solid var(--ink)}

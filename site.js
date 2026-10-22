@@ -36,3 +36,19 @@ new ResizeObserver(() => document.documentElement.style.setProperty('--header-h'
 document.querySelectorAll('.lang-switch a').forEach(link => link.addEventListener('click', () => {
   try { localStorage.setItem('wwe-sprache', link.hreflang); } catch (e) {}
 }));
+// Moving logo strips can also be paused with a keyboard or touch, independently of hover.
+for (const button of document.querySelectorAll('[data-motion-toggle]')) {
+  const strip = document.getElementById(button.getAttribute('aria-controls'));
+  if (!strip) continue;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  let paused = false;
+  const update = () => {
+    strip.classList.toggle('is-paused', paused || reduced.matches);
+    button.hidden = reduced.matches;
+    button.setAttribute('aria-pressed', String(paused));
+    button.textContent = paused ? button.dataset.resume : button.dataset.pause;
+  };
+  button.addEventListener('click', () => { paused = !paused; update(); });
+  reduced.addEventListener('change', update);
+  update();
+}
