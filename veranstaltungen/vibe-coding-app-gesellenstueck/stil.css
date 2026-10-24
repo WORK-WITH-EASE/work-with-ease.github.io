@@ -1,0 +1,117 @@
+/* Vibe Coding – Grundlagen bis zum App-Gesellenstück: Gestaltung aus /werkstatt.css (gemeinsam mit den anderen Veranstaltungen
+   für Tischlereien), hier die Holzplatten dieser Seite (holz/, mit Codex erzeugt; jede Holzart nur einmal auf der Seite) und die Treppe. */
+@import url(/werkstatt.css);
+.tw-holz-kiefer{background-image:url(holz/holz-kiefer.webp)}
+.tw-holz-teak{background-image:url(holz/holz-teak.webp)}
+.tw-holz-linde{background-image:url(holz/holz-linde.webp)}
+.tw-holz-robinie{background-image:url(holz/holz-robinie.webp)}
+.tw-holz-mooreiche{background-image:url(holz/holz-mooreiche.webp)}
+.tw-holz-eibe{background-image:url(holz/holz-eibe.webp)}
+.tw-holz-esche{background-image:url(holz/holz-esche.webp)}
+
+/* Programm-Karte auf Kiefer: hell, dunkle Schrift. */
+.tw-card-oak.tw-holz-kiefer:before{background:linear-gradient(160deg,rgba(255,250,240,.55),rgba(255,250,240,.28))}
+/* Zitat auf Teak. */
+.tw-zitat.tw-holz-teak:before{background:linear-gradient(160deg,rgba(28,15,8,.5),rgba(28,15,8,.7))}
+
+/* Treppe: drei Stufen aus verschiedenen Hölzern, jede ein Stück weiter rechts, wie Trittstufen einer Wangentreppe. */
+.tw .tw-treppe{list-style:none;display:grid;gap:26px;counter-reset:stufe}
+.tw .tw-stufe{position:relative;width:84%;padding:36px 40px 34px;border-radius:3px;color:var(--nuss);box-shadow:0 3px 0 rgba(0,0,0,.45),0 30px 46px -22px rgba(0,0,0,.85),inset 0 1px 0 rgba(255,255,255,.25)}
+.tw .tw-stufe:nth-child(1){margin-left:0;transform:rotate(-.6deg)}
+.tw .tw-stufe:nth-child(2){margin-left:8%;transform:rotate(.5deg)}
+.tw .tw-stufe:nth-child(3){margin-left:16%;transform:rotate(-.4deg)}
+/* Die Trittkante: eine helle Kante oben, darunter ein Schatten, als würde die Stufe vorstehen. */
+.tw .tw-stufe:after{content:"";position:absolute;left:0;right:0;top:0;height:8px;border-radius:3px 3px 0 0;background:linear-gradient(180deg,rgba(255,255,255,.35),rgba(255,255,255,0));pointer-events:none}
+.tw-stufe.tw-holz-linde:before{background:linear-gradient(160deg,rgba(255,252,244,.45),rgba(255,252,244,.2))}
+.tw-stufe.tw-holz-robinie:before{background:linear-gradient(160deg,rgba(255,248,230,.55),rgba(255,248,230,.3))}
+.tw-stufe.tw-holz-mooreiche:before{background:linear-gradient(160deg,rgba(14,9,6,.25),rgba(14,9,6,.5))}
+.tw .tw-stufe.tw-holz-mooreiche{color:var(--papier)}
+.tw .tw-stufe h3{font-family:var(--display);font-weight:900;font-stretch:condensed;font-size:clamp(1.8rem,3vw,2.4rem);line-height:1;text-transform:uppercase;color:inherit;margin:4px 0 14px}
+.tw .tw-stufe p{color:inherit!important;max-width:58ch}
+.tw-stufe-kopf{display:flex;align-items:baseline;gap:16px}
+.tw-stufe-no{font-family:var(--display);font-weight:900;font-size:3rem;line-height:1;color:var(--eiche-2)}
+.tw-holz-mooreiche .tw-stufe-no{color:var(--gelb)}
+.tw-stufe-label{font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;opacity:.8}
+.tw .tw-stufe-lern{margin-top:22px!important;padding-top:16px;border-top:1px dashed currentColor;font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+.tw .tw-check{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 26px;margin-top:10px}
+.tw-check li{position:relative;padding-left:28px;font-weight:600;line-height:1.4}
+.tw-check li:before{content:"";position:absolute;left:0;top:.2em;width:16px;height:16px;border-radius:3px;background:var(--gelb);box-shadow:inset 0 0 0 2px var(--nuss)}
+.tw-check li:after{content:"";position:absolute;left:5px;top:calc(.2em + 3px);width:5px;height:8px;border:solid var(--nuss);border-width:0 2.5px 2.5px 0;transform:rotate(40deg)}
+
+/* Aushangbrett „Wanted“: sechs rohe Fichtenbretter ohne Rahmen, leicht gegeneinander versetzt (holz/holz-fichte-brett-1…6, aus
+   einem Codex-Bild geschnitten), darauf ein Steckbrief-Plakat und zehn angepinnte Zettel. */
+.tw .tw-wanted-sec .tw-kicker{margin-bottom:36px}
+.tw .tw-aushang{position:relative;isolation:isolate;padding:70px 52px 66px}
+.tw-bretter{position:absolute;inset:0;z-index:-1;display:flex;gap:3px}
+.tw-bretter i{position:relative;flex:1;box-shadow:0 3px 0 rgba(36,25,18,.3),0 26px 40px -24px rgba(36,25,18,.8),inset 1px 0 0 rgba(255,255,255,.12),inset -1px 0 0 rgba(0,0,0,.18)}
+.tw-bretter i:before{background:linear-gradient(180deg,rgba(30,18,8,.04),rgba(30,18,8,.12))}
+.tw-bretter i:nth-child(1){margin:14px 0 -6px}.tw-bretter i:nth-child(2){margin:-10px 0 10px}.tw-bretter i:nth-child(3){margin:4px 0 -18px}
+.tw-bretter i:nth-child(4){margin:-16px 0 4px}.tw-bretter i:nth-child(5){margin:8px 0 -10px}.tw-bretter i:nth-child(6){margin:-4px 0 14px}
+.tw-holz-fichte-brett-1{background-image:url(holz/holz-fichte-brett-1.webp)}
+.tw-holz-fichte-brett-2{background-image:url(holz/holz-fichte-brett-2.webp)}
+.tw-holz-fichte-brett-3{background-image:url(holz/holz-fichte-brett-3.webp)}
+.tw-holz-fichte-brett-4{background-image:url(holz/holz-fichte-brett-4.webp)}
+.tw-holz-fichte-brett-5{background-image:url(holz/holz-fichte-brett-5.webp)}
+.tw-holz-fichte-brett-6{background-image:url(holz/holz-fichte-brett-6.webp)}
+.tw .tw-wanted{position:relative;display:table;margin:0 auto 46px;padding:20px 46px 16px;text-align:center;background:#efe0bd;background-image:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.5),transparent 60%),radial-gradient(ellipse at 80% 90%,rgba(120,80,30,.22),transparent 55%);box-shadow:0 14px 22px -10px rgba(0,0,0,.6);transform:rotate(-1.6deg)}
+.tw-wanted span{display:block;font-family:var(--western);font-weight:400;font-size:clamp(3.4rem,8.5vw,6.6rem);line-height:1;letter-spacing:.06em;color:#3b2414;text-transform:uppercase}
+.tw-wanted small{display:block;margin-top:8px;padding-top:10px;border-top:2px solid #3b2414;font-family:var(--mono);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#5a3d22}
+.tw-wanted:before,.tw-wanted:after{content:"";position:absolute;top:10px;width:16px;height:16px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f1ede6,#9b9388 55%,#5b544b);box-shadow:0 2px 2px rgba(0,0,0,.5)}
+.tw-wanted:before{left:12px}
+.tw-wanted:after{right:12px}
+.tw .tw-zettel{list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:30px 24px}
+.tw-zettel li{position:relative;display:flex;flex-direction:column;gap:8px;min-height:128px;padding:32px 16px 14px;background:#f7efdc;background-image:linear-gradient(170deg,rgba(255,255,255,.6),rgba(255,255,255,0) 40%),radial-gradient(ellipse at 90% 100%,rgba(140,100,50,.18),transparent 60%);box-shadow:0 12px 18px -10px rgba(0,0,0,.6),0 1px 1px rgba(0,0,0,.2);transform:rotate(var(--dreh,0deg))}
+.tw-zettel li:nth-child(1){--dreh:-2.5deg}.tw-zettel li:nth-child(2){--dreh:1.8deg}.tw-zettel li:nth-child(3){--dreh:-1deg}.tw-zettel li:nth-child(4){--dreh:2.6deg}.tw-zettel li:nth-child(5){--dreh:-1.8deg}
+.tw-zettel li:nth-child(6){--dreh:1.4deg}.tw-zettel li:nth-child(7){--dreh:-2.2deg}.tw-zettel li:nth-child(8){--dreh:1deg}.tw-zettel li:nth-child(9){--dreh:-1.4deg}.tw-zettel li:nth-child(10){--dreh:2.2deg}
+/* Pinnnadeln: rot und gelb im Wechsel. */
+.tw-zettel li:before{content:"";position:absolute;top:9px;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ff9b8a,var(--rot) 55%,#7a1d10);box-shadow:1px 3px 3px rgba(0,0,0,.45)}
+.tw-zettel li:nth-child(even):before{background:radial-gradient(circle at 35% 30%,#ffe9a3,var(--gelb) 55%,#8a6a0a)}
+.tw-zettel b{font-family:var(--sans);font-size:1.05rem;line-height:1.3;font-weight:700;color:var(--tinte);hyphens:manual;-webkit-hyphens:manual}
+.tw-zettel-nr{margin-top:auto;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;color:var(--grau)}
+/* Schlusssatz auf einer eigenen Eschendiele unter dem Brett. */
+.tw .tw-aushang+.tw-plank{display:table;margin:64px auto 0;transform:rotate(1.2deg)}
+
+/* Voraussetzungen unter dem Auftragszettel: deutlich wie ein Hinweisschild in der Werkstatt, mit gelb-schwarzem Warnstreifen,
+   leicht versetzt über den unteren Rand des Zettels geschoben. */
+.tw-final-rechts{display:grid}
+.tw-final-rechts .tw-ticket{padding-bottom:64px}
+.tw .tw-voraus{position:relative;z-index:1;margin:-44px -14px 0 34px;padding:44px 30px 26px;background:#fff3c4;border:2px solid var(--tinte);border-radius:4px;box-shadow:10px 10px 0 var(--nuss);transform:rotate(1.4deg);overflow:hidden}
+.tw-voraus:before{content:"";position:absolute;left:0;right:0;top:0;height:18px;border-bottom:2px solid var(--tinte);background:repeating-linear-gradient(-45deg,var(--gelb) 0 14px,var(--tinte) 14px 28px)}
+.tw .tw-voraus h2{font-family:var(--display);font-weight:900;font-stretch:condensed;font-size:2rem;line-height:1;text-transform:uppercase;color:var(--tinte);margin-bottom:8px}
+.tw .tw-voraus-lead{font-weight:600;margin-bottom:16px}
+.tw-voraus-lead mark{padding:0 .25em;background:var(--gelb);color:var(--tinte);font-weight:800;box-shadow:inset 0 -2px 0 var(--tinte);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.tw .tw-voraus ol{list-style:none;display:grid;gap:12px;counter-reset:voraus}
+.tw-voraus li{position:relative;padding-left:44px;line-height:1.4;counter-increment:voraus}
+.tw-voraus li:before{content:counter(voraus);position:absolute;left:0;top:0;width:30px;height:30px;display:grid;place-items:center;border-radius:50%;background:var(--tinte);color:var(--gelb);font-family:var(--display);font-weight:900;font-size:1.1rem}
+.tw-voraus li b{display:block;font-weight:700}
+.tw-voraus li a{color:var(--tinte);font-weight:600;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
+.tw-voraus li a:hover{background:var(--gelb)}
+.tw-voraus-tipp{display:block;margin-top:4px;font-size:.85rem;font-weight:700;color:var(--rot)}
+.tw .tw-voraus-fuss{margin-top:20px;padding-top:14px;border-top:2px dashed var(--tinte);font-weight:700}
+.tw-agenda li small{display:block;font-family:var(--mono);font-size:.75rem;font-weight:400;letter-spacing:.06em;color:var(--grau)}
+.tw-ticket dd small{display:block;font-size:.85rem;font-weight:400;color:var(--grau)}
+.tw .tw-ticket-hinweis{margin-top:14px;font-size:.9rem;line-height:1.4;color:var(--grau)}
+.tw .tw-hero-hinweis{margin-top:18px;max-width:46ch;font-size:.9rem;line-height:1.45;opacity:.85}
+.tw-hero-hinweis a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+
+@media(max-width:1100px){.tw .tw-zettel{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:980px){
+  .tw .tw-stufe,.tw .tw-stufe:nth-child(n){width:auto;margin-left:0}
+  .tw .tw-stufe:nth-child(2){margin-left:4%}
+  .tw .tw-stufe:nth-child(3){margin-left:8%}
+}
+@media(max-width:700px){
+  .tw .tw-aushang{padding:44px 20px 36px}
+  .tw .tw-wanted{padding:16px 20px 12px}
+  .tw-wanted span{font-size:2.7rem}
+  .tw-wanted small{font-size:.7rem}
+  .tw .tw-zettel{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 14px}
+  .tw-zettel li{min-height:116px;padding:30px 12px 12px}
+  .tw-zettel b{font-size:.98rem}
+  .tw .tw-aushang+.tw-plank br{display:none}
+  .tw .tw-stufe{padding:28px 22px 26px}
+  .tw-final-rechts .tw-ticket{padding-bottom:52px}
+  .tw .tw-voraus{margin:-32px 0 0 12px;transform:rotate(1deg);box-shadow:6px 6px 0 var(--nuss);padding:40px 20px 22px}
+  .tw .tw-stufe:nth-child(n){margin-left:0}
+  .tw .tw-check{grid-template-columns:minmax(0,1fr)}
+}
