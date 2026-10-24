@@ -195,6 +195,7 @@
 .tw-holz-riegelahorn{background-image:url(holz/holz-riegelahorn.webp)}
 .tw-holz-laerche{background-image:url(holz/holz-laerche.webp)}
 .tw-holz-altholz{background-image:url(holz/holz-altholz.webp)}
+.tw-holz-douglasie{background-image:url(holz/holz-douglasie.webp)}
 .tw-holz-birke{background-image:url(holz/holz-birke.webp)}
 .tw-holz-buche{background-image:url(holz/holz-buche.webp)}
 .tw-holz-zirbe{background-image:url(holz/holz-zirbe.webp)}
@@ -237,6 +238,22 @@
 .tw-polaroid figcaption{margin-top:6px;font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-align:center;color:var(--grau)}
 .tw .tw-fotobrett-text{font-family:var(--display);font-weight:800;font-stretch:condensed;font-size:1.6rem;line-height:1.05;text-transform:uppercase;color:var(--papier)}
 .tw-fotobrett-text a{text-decoration-color:var(--gelb);text-decoration-thickness:3px;text-underline-offset:5px}
+
+/* Stimme aus der Praxis: Zitat auf einer aufgenagelten Douglasienplatte, Foto als Polaroid wie bei Andrea und Ralf. */
+.tw .tw-zitat{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr);gap:48px;align-items:center;max-width:1000px;margin:26px 0 0;padding:52px 56px 48px;border-radius:3px;transform:rotate(-.8deg);box-shadow:0 2px 0 rgba(36,25,18,.35),0 30px 50px -24px rgba(36,25,18,.75),inset 0 1px 0 rgba(255,255,255,.2)}
+.tw-zitat:before{background:linear-gradient(160deg,rgba(28,15,8,.48),rgba(28,15,8,.68))}
+.tw .tw-zitat .tw-nail{top:18px;left:18px;margin:0}
+.tw .tw-zitat .tw-nail-tr{left:auto;right:18px}
+.tw .tw-zitat .tw-nail-bl{top:auto;bottom:18px}
+.tw .tw-zitat .tw-nail-br{top:auto;bottom:18px;left:auto;right:18px}
+.tw .tw-polaroid-gross{width:200px;transform:rotate(3.5deg)}
+.tw-polaroid-gross img{height:236px;object-position:50% 22%}
+.tw-zitat-text{position:relative;padding-top:34px}
+.tw-zitat-text:before{content:"„";position:absolute;left:-4px;top:-78px;font-family:var(--display);font-weight:900;font-size:7rem;line-height:1;color:var(--gelb)}
+.tw .tw-zitat blockquote p{font-size:clamp(1.3rem,2.2vw,1.75rem);line-height:1.4;font-weight:500;color:var(--papier)}
+.tw-zitat-wer{display:grid;gap:4px;margin-top:24px;padding-top:18px;border-top:2px solid var(--gelb);max-width:24em}
+.tw-zitat-wer b{font-family:var(--display);font-weight:800;font-stretch:condensed;font-size:1.5rem;line-height:1;text-transform:uppercase;letter-spacing:.02em;color:var(--papier)}
+.tw-zitat-wer span{font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;color:#e8d6bd}
 
 /* Ablauf des Webinars wie ein Arbeitsplan: nummerierte Arbeitsschritte mit Strichlinie. */
 .tw .tw-agenda{margin-top:34px;max-width:36em}
@@ -288,6 +305,10 @@
   .tw-note{right:-4px;bottom:-44px}
   .tw .event-register,.tw-btn-ghost{width:100%}
   .tw-ticket{transform:none;box-shadow:6px 6px 0 var(--nuss)}
+  .tw .tw-zitat{grid-template-columns:minmax(0,1fr);justify-items:center;gap:30px;padding:40px 24px 34px}
+  .tw .tw-polaroid-gross{width:170px}
+  .tw-polaroid-gross img{height:200px}
+  .tw-zitat-text{justify-self:stretch}
   .tw .tw-fotobrett{gap:18px;padding:20px 18px}
   .tw .tw-polaroid{width:118px}
   .tw-polaroid img{height:128px}
