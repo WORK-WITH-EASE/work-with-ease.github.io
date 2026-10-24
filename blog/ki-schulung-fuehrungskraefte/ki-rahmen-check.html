@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta name="robots" content="noindex,follow">
+<meta name="googlebot" content="noindex,indexifembedded">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KI-Rahmen-Check für Führungskräfte</title>
+<style>
+/* Schrift der Website; einzeln geöffnet greift die Ersatzschrift. Immer hell wie die Website. */
+@font-face { font-family: Space; src: url('/assets/space-grotesk.ttf') format('truetype'); font-weight: 300 700; font-display: swap; }
+:root {
+  color-scheme: light;
+  --ink: #092f26;
+  --lime: #c7ff23;
+  --pink: #ff1693;
+  --paper: #f5f7f2;
+  --border: #d4ded8;
+  --muted: #5b6b65;
+  --font-sans: Space, -apple-system, ui-sans-serif, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+html, body { margin: 0; }
+body { background: #fff; color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 1.5; }
+#check { padding: 20px; background: var(--paper); border-radius: 12px; }
+h2 { font-size: 22px; font-weight: 600; margin: 0 0 4px; }
+.intro { margin: 0 0 16px; color: var(--muted); font-size: 15px; }
+fieldset { border: 0; margin: 0 0 14px; padding: 0; }
+legend { font-weight: 600; margin-bottom: 6px; padding: 0; }
+.options { display: flex; flex-wrap: wrap; gap: 8px; }
+.options label { position: relative; }
+.options input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.options span { display: inline-block; padding: 8px 14px; border: 1.5px solid var(--ink); border-radius: 999px; background: #fff; font-size: 15px; cursor: pointer; }
+.options input:checked + span { background: var(--ink); color: #fff; }
+.options input:focus-visible + span { outline: 3px solid var(--pink); outline-offset: 2px; }
+.result { margin-top: 18px; padding: 16px 18px; border-radius: 10px; background: #fff; border-left: 6px solid var(--border); }
+.result.ready { border-left-color: var(--lime); }
+.result.open { border-left-color: var(--pink); }
+.result h3 { margin: 0 0 6px; font-size: 19px; font-weight: 600; }
+.result p { margin: 0 0 8px; }
+.result ol { margin: 0; padding-left: 22px; }
+.result li { margin: 3px 0; }
+.result a { color: var(--ink); }
+.placeholder { color: var(--muted); margin: 0; }
+</style>
+</head>
+<body>
+<div id="check">
+  <h2>Bleibt KI in Ihrem Team?</h2>
+  <p class="intro">Sechs Fragen an Sie als Führungskraft. Danach sehen Sie, wo Sie ansetzen können.</p>
+  <div id="fragen"></div>
+  <div class="result" id="result" aria-live="polite">
+    <p class="placeholder">Beantworten Sie alle sechs Fragen.</p>
+  </div>
+</div>
+<script>
+(() => {
+  const fragen = [
+    { id: 'selbst', frage: 'Nutzen Sie KI selbst regelmäßig für echte Aufgaben?',
+      schritt: 'Nehmen Sie sich diese Woche eine eigene Aufgabe vor und erledigen Sie sie mit KI, zum Beispiel eine Besprechung vorbereiten oder einen Text entwerfen.' },
+    { id: 'erlaubnis', frage: 'Weiß Ihr Team, was es mit KI tun darf, mit welchen Werkzeugen und welchen Daten?',
+      schritt: 'Halten Sie auf einer Seite fest, welche Werkzeuge erlaubt sind und welche Daten nicht hineingehören.' },
+    { id: 'pruefung', frage: 'Ist geklärt, wer KI-Ergebnisse prüft?',
+      schritt: 'Legen Sie fest, wer welche Ergebnisse prüft, bevor sie das Team verlassen.' },
+    { id: 'zeit', frage: 'Gibt es feste Zeit zum Ausprobieren und einen Austausch darüber?',
+      schritt: 'Reservieren Sie zum Beispiel eine Stunde pro Woche zum Ausprobieren und einen kurzen Austausch darüber, was jeder herausgefunden hat.' },
+    { id: 'offen', frage: 'Wird im Team offen gesagt, wofür jemand KI nutzt?',
+      schritt: 'Erzählen Sie zuerst selbst, wofür Sie KI nutzen. Und fragen Sie, wenn etwas schneller ging: Was machen wir mit der gewonnenen Zeit?' },
+    { id: 'dran', frage: 'Gibt es nach der ersten Schulung weitere Termine oder Aufgaben?',
+      schritt: 'Planen Sie Folgetermine im Abstand von einigen Wochen, mit kleinen Aufgaben dazwischen.' }
+  ];
+  const antworten = [['ja', 'Ja'], ['teils', 'Teilweise'], ['nein', 'Nein']];
+  const root = document.getElementById('check');
+  const out = document.getElementById('result');
+  document.getElementById('fragen').innerHTML = fragen.map(f =>
+    `<fieldset><legend>${f.frage}</legend><div class="options">${antworten.map(([v, t]) =>
+      `<label><input type="radio" name="${f.id}" value="${v}"><span>${t}</span></label>`).join('')}</div></fieldset>`
+  ).join('');
+  const value = name => root.querySelector(`input[name="${name}"]:checked`)?.value;
+  root.addEventListener('change', () => {
+    const werte = fragen.map(f => value(f.id));
+    if (werte.some(w => !w)) return;
+    const offen = fragen.filter((f, i) => werte[i] !== 'ja');
+    const begleitung = '<a href="/angebote.html#format-begleitung" target="_top">Begleitung</a>';
+    if (!offen.length) {
+      out.className = 'result ready';
+      out.innerHTML = '<h3>Gute Voraussetzungen.</h3><p>Sie haben den Rahmen gesetzt, in dem KI im Team bleiben kann. Bleiben Sie dran, und fragen Sie regelmäßig nach, was sich bewährt hat.</p>';
+      return;
+    }
+    const titel = offen.length <= 2 ? 'Fast geschafft.' : 'Hier droht KI nach der Schulung einzuschlafen.';
+    out.className = 'result open';
+    out.innerHTML = `<h3>${titel}</h3><p>Fangen Sie mit dem ersten Punkt an:</p><ol>${offen.map(f => `<li>${f.schritt}</li>`).join('')}</ol>` +
+      `<p style="margin:10px 0 0">Wenn Sie dabei Unterstützung möchten, bleiben wir in einer ${begleitung} mit Ihnen dran.</p>`;
+  });
+})();
+</script>
+</body>
+</html>

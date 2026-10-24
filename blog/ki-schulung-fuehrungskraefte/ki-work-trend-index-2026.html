@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta name="robots" content="noindex,follow">
+<meta name="googlebot" content="noindex,indexifembedded">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KI im Team: Zahlen aus dem Work Trend Index 2026</title>
+<style>
+/* Schrift der Website; einzeln geöffnet greift die Ersatzschrift. Immer hell wie die Website. */
+@font-face { font-family: Space; src: url('/assets/space-grotesk.ttf') format('truetype'); font-weight: 300 700; font-display: swap; }
+:root {
+  color-scheme: light;
+  --ink: #092f26;
+  --paper: #f5f7f2;
+  --border: #d4ded8;
+  --muted: #5b6b65;
+  --bar: #008a5e;     /* Datenfarbe, geprüft mit dem Palette-Validator (hell) */
+  --gap: #ff1693;     /* Lücke zwischen zwei Werten */
+  --track: #e6ece8;
+  --font-sans: Space, -apple-system, ui-sans-serif, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+html, body { margin: 0; }
+body { background: #fff; color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 1.5; }
+#zahlen { padding: 20px; background: var(--paper); border-radius: 12px; }
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; }
+.tabs button { font: inherit; font-size: 15px; padding: 8px 14px; border: 1.5px solid var(--ink); border-radius: 999px; background: #fff; color: var(--ink); cursor: pointer; }
+.tabs button[aria-selected="true"] { background: var(--ink); color: #fff; }
+.tabs button:focus-visible { outline: 3px solid var(--gap); outline-offset: 2px; }
+h2 { font-size: 20px; font-weight: 600; margin: 0 0 4px; }
+.frage { margin: 0 0 14px; color: var(--muted); font-size: 15px; }
+.row { margin: 0 0 12px; position: relative; }
+.label { display: flex; justify-content: space-between; gap: 12px; font-size: 15px; margin-bottom: 4px; }
+.label strong { font-weight: 600; font-variant-numeric: tabular-nums; }
+.track { position: relative; height: 18px; background: var(--track); border-radius: 4px; }
+.fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--bar); border-radius: 0 4px 4px 0; }
+.lueckenbalken { position: absolute; top: 0; bottom: 0; border-radius: 0 4px 4px 0;
+  background: repeating-linear-gradient(45deg, var(--gap) 0 3px, transparent 3px 7px); border: 2px solid var(--gap); box-sizing: border-box; }
+.row:focus-visible { outline: 3px solid var(--gap); outline-offset: 4px; border-radius: 4px; }
+.fazit { margin: 14px 0 0; padding: 12px 14px; background: #fff; border-radius: 10px; }
+.legende { display: flex; align-items: center; gap: 8px; margin: 10px 0 0; font-size: 14px; color: var(--muted); }
+.legende i { display: inline-block; width: 22px; height: 12px; border: 2px solid var(--gap); box-sizing: border-box;
+  background: repeating-linear-gradient(45deg, var(--gap) 0 3px, transparent 3px 7px); border-radius: 2px; }
+.quelle { margin: 12px 0 0; font-size: 13px; color: var(--muted); }
+.quelle a { color: var(--muted); }
+#tip { position: fixed; pointer-events: none; max-width: 260px; padding: 8px 10px; background: var(--ink); color: #fff;
+  font-size: 13px; line-height: 1.4; border-radius: 6px; opacity: 0; transition: opacity .1s; z-index: 2; }
+#tip.on { opacity: 1; }
+details { margin: 10px 0 0; font-size: 14px; }
+summary { cursor: pointer; color: var(--muted); }
+table { border-collapse: collapse; margin-top: 6px; }
+td, th { text-align: left; padding: 3px 10px 3px 0; font-weight: 400; }
+td:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+<div id="zahlen">
+  <div class="tabs" role="tablist" aria-label="Zahlen auswählen"></div>
+  <div id="panel" role="tabpanel"></div>
+  <p class="quelle">Quelle: Microsoft, <a href="https://news.microsoft.com/annual-work-trend-index-2026/" target="_blank" rel="noopener">Work Trend Index 2026</a>, weltweite Befragung.</p>
+</div>
+<div id="tip" role="tooltip"></div>
+<script>
+(() => {
+  const ansichten = [
+    { tab: 'Woran KI hängt',
+      titel: 'Woran die Wirkung von KI hängt',
+      frage: 'Anteil an der Wirkung von KI in der Arbeit',
+      reihen: [
+        { name: 'Organisation: Kultur, Vorgesetzte, Personalentwicklung', wert: 67 },
+        { name: 'Einzelne: Einstellung und Verhalten', wert: 32 }
+      ],
+      fazit: 'Die Organisation wirkt etwa doppelt so stark wie die Einzelnen. Wer nur Mitarbeitende schult, setzt am kleineren Hebel an.' },
+    { tab: 'Raum zum Ausprobieren',
+      titel: 'Wer den Raum zum Ausprobieren sieht',
+      frage: '„Meine Vorgesetzten schaffen Raum, KI auszuprobieren.“',
+      reihen: [
+        { name: 'Führungskräfte', wert: 78 },
+        { name: 'Mitarbeitende', wert: 59, luecke: 78 }
+      ],
+      fazit: 'Was Führungskräfte für Freiraum halten, kommt im Team nicht unbedingt an.' },
+    { tab: 'Druck und Belohnung',
+      titel: 'Zwischen Druck und Belohnung',
+      frage: 'Aussagen von KI-Nutzenden',
+      reihen: [
+        { name: 'fürchten zurückzufallen, wenn sie sich nicht schnell mit KI anpassen', wert: 65 },
+        { name: 'finden es sicherer, bei den bisherigen Zielen zu bleiben, als die Arbeit mit KI neu zu gestalten', wert: 45 },
+        { name: 'fühlen sich belohnt, wenn sie ihre Arbeit mit KI neu gestalten', wert: 13 }
+      ],
+      fazit: 'Der Druck ist da, die Erlaubnis fehlt. Zeit zum Ausprobieren muss ausdrücklich gewollt sein.' }
+  ];
+  const tabs = document.querySelector('.tabs');
+  const panel = document.getElementById('panel');
+  const tip = document.getElementById('tip');
+
+  function zeige(i) {
+    const a = ansichten[i];
+    [...tabs.children].forEach((b, j) => b.setAttribute('aria-selected', String(i === j)));
+    const hatLuecke = a.reihen.some(r => r.luecke);
+    panel.innerHTML = `<h2>${a.titel}</h2><p class="frage">${a.frage}</p>` +
+      a.reihen.map(r => {
+        const tipText = `${r.name}: ${r.wert} %` + (r.luecke ? ` (${r.luecke - r.wert} Prozentpunkte weniger als bei den Führungskräften)` : '');
+        return `<div class="row" tabindex="0" data-tip="${tipText}" aria-label="${tipText}">
+          <div class="label"><span>${r.name}</span><strong>${r.wert} %</strong></div>
+          <div class="track"><div class="fill" style="width:calc(${r.wert}% - 1px)"></div>` +
+          (r.luecke ? `<div class="lueckenbalken" style="left:calc(${r.wert}% + 1px);width:calc(${r.luecke - r.wert}% - 1px)"></div>` : '') +
+          `</div></div>`;
+      }).join('') +
+      (hatLuecke ? '<p class="legende"><i></i> Lücke zu den Führungskräften: 19 Prozentpunkte</p>' : '') +
+      `<p class="fazit">${a.fazit}</p>` +
+      `<details><summary>Als Tabelle anzeigen</summary><table>${a.reihen.map(r => `<tr><td>${r.name}</td><td>${r.wert} %</td></tr>`).join('')}</table></details>`;
+  }
+
+  ansichten.forEach((a, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.role = 'tab';
+    b.textContent = a.tab;
+    b.addEventListener('click', () => zeige(i));
+    tabs.appendChild(b);
+  });
+
+  const zeigeTip = (el, x, y) => {
+    tip.textContent = el.dataset.tip;
+    tip.classList.add('on');
+    const w = tip.offsetWidth;
+    tip.style.left = Math.max(8, Math.min(x + 12, window.innerWidth - w - 8)) + 'px';
+    tip.style.top = (y + 14) + 'px';
+  };
+  panel.addEventListener('mousemove', e => {
+    const row = e.target.closest('.row');
+    row ? zeigeTip(row, e.clientX, e.clientY) : tip.classList.remove('on');
+  });
+  panel.addEventListener('mouseleave', () => tip.classList.remove('on'));
+  panel.addEventListener('focusin', e => {
+    const row = e.target.closest('.row');
+    if (row) { const r = row.getBoundingClientRect(); zeigeTip(row, r.left, r.top + 20); }
+  });
+  panel.addEventListener('focusout', () => tip.classList.remove('on'));
+
+  zeige(0);
+})();
+</script>
+</body>
+</html>
