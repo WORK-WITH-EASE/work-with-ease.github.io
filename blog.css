@@ -65,6 +65,15 @@
 .blog-prose li{margin:6px 0}
 .blog-prose h2{font:700 clamp(28px,3vw,36px)/1.2 Georgia,serif;letter-spacing:-.5px;color:#111;margin:50px 0 16px}
 .blog-prose h3{font-size:23px;line-height:1.35;margin:38px 0 12px}
+.blog-faq{border-bottom:1px solid #d3dcd7}
+.blog-faq:first-of-type{border-top:1px solid #d3dcd7}
+.blog-faq summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;cursor:pointer;list-style:none}
+.blog-faq summary::-webkit-details-marker{display:none}
+.blog-faq summary:after{content:'+';flex:0 0 auto;font-size:28px;line-height:1;color:var(--pink)}
+.blog-faq[open] summary:after{content:'–'}
+.blog-faq summary:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
+.blog-prose .blog-faq h3{margin:0;font-size:20px}
+.blog-faq-antwort{padding:0 0 10px}
 .blog-prose h4,.blog-prose h5,.blog-prose h6{font-size:19px;margin:30px 0 10px}
 .blog-prose a{text-decoration-color:var(--pink);text-underline-offset:4px}
 .blog-prose img{display:block;max-width:100%;height:auto;margin:30px auto;border-radius:8px}
