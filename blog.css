@@ -139,6 +139,7 @@
 .bildvorschau-zu:hover{background:var(--pink)}
 .bildvorschau-zu:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
 /* Table of contents of long articles (blogToc in scripts/blog.mjs). */
+.blog-einstieg{margin-bottom:30px}.blog-einstieg>:last-child{margin-bottom:0}
 .blog-toc{margin:0 0 44px;padding:22px 26px 20px;border-left:4px solid var(--lime);background:#f6f8f7;border-radius:0 8px 8px 0}
 .blog-toc-title{margin:0 0 10px;font-size:14px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase}
 .blog-toc ol{margin:0;padding-left:22px;font-size:17px;line-height:1.5}
