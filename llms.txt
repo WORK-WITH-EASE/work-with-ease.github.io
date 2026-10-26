@@ -6,18 +6,18 @@ WORK WITH EASE sind Andrea Kaden (CEO, Digitalberaterin und Speakerin) und Ralf 
 
 ## Seiten
 
-- [Selbstorganisation und Zusammenarbeit](https://work-with-ease.com/selbstorganisation-zusammenarbeit.html): Zusagen halten nicht, ständig Unterbrechungen, zu viele Meetings? Wir bringen einfache Techniken für Selbstorganisation und Zusammenarbeit im Team.
 - [Angebote: Training, Workshop, Beratung](https://work-with-ease.com/angebote.html): Vom Vortrag bis zur Begleitung: Wir helfen Führungskräften und Teams im Mittelstand – mit klaren Arbeitsweisen, digitalen Werkzeugen und KI.
-- [Maßgeschneiderte Apps für Büro und Betrieb](https://work-with-ease.com/apps.html): Beispiele aus der Praxis: Türen aufmessen statt 92 Excel-Spalten, Reisekosten ohne Papierkram, Zeiterfassung, Rechnungen. Was die Apps machen und für wen.
-- [Andrea Kaden: Vorträge zu KI, Führung und Arbeit](https://work-with-ease.com/vortraege.html): Keynotes und Impulsvorträge von Andrea Kaden für Führungskräfte und Teams im Mittelstand: Mensch und KI, Führung, Selbstmanagement, Vibe Coding, Authentizität.
-- [Veranstaltungen und offene Termine](https://work-with-ease.com/veranstaltungen.html): Webinare und Veranstaltungen von Andrea Kaden und Ralf Westphal zu einfacheren Prozessen, digitalen Werkzeugen und KI im Office. Mit Termin, Preis und Anmeldung.
 - [Unsere Arbeitsweise: Digitalisierung im Büro](https://work-with-ease.com/arbeitsweise.html): Jede Arbeit, jederzeit, überall: So bringen wir die Arbeit im Büro Schritt für Schritt ins Digitale – von der Analyse bis zur Begleitung.
-- [Blog](https://work-with-ease.com/blog/): Artikel von Andrea Kaden und Ralf Westphal über einfachere Prozesse, digitale Werkzeuge und KI im Office.
 - [Digitale Werkzeuge auswählen und einführen](https://work-with-ease.com/digitale-werkzeuge.html): Aufgaben, Dokumente, Microsoft 365, Automatisierung: Wir helfen Ihnen, passende digitale Werkzeuge auszuwählen, einzuführen und gut zu nutzen.
 - [Büroorganisation, Digitalisierung und KI](https://work-with-ease.com/): Wir vereinfachen Abläufe im Büro, digitalisieren sie und setzen KI ein, wo sie Arbeit abnimmt – für Führungskräfte und Teams im Mittelstand.
 - [KI im Büro: Assistenz statt besseres Google](https://work-with-ease.com/ki-im-office.html): KI als echte Assistenz: Texte, Recherchen, eigene Werkzeuge. Mit Augenmaß beim Datenschutz – für Führungskräfte und Teams im Mittelstand.
 - [Show Cases: Digitalisierung aus der Praxis](https://work-with-ease.com/praxis.html): Zehn echte Fälle: papierlose Lohnbuchhaltung, ERP im Metallbau, eine App statt 92 Excel-Spalten, SharePoint im ganzen Unternehmen und mehr.
+- [Selbstorganisation und Zusammenarbeit](https://work-with-ease.com/selbstorganisation-zusammenarbeit.html): Zusagen halten nicht, ständig Unterbrechungen, zu viele Meetings? Wir bringen einfache Techniken für Selbstorganisation und Zusammenarbeit im Team.
 - [Über uns – Andrea Kaden und Ralf Westphal](https://work-with-ease.com/ueber-uns.html): Andrea Kaden und Ralf Westphal: Büroorganisation trifft Softwareentwicklung. Wir arbeiten mit Unternehmen in Deutschland, Österreich und der Schweiz.
+- [Blog](https://work-with-ease.com/blog/): Artikel von Andrea Kaden und Ralf Westphal über einfachere Prozesse, digitale Werkzeuge und KI im Office.
+- [Maßgeschneiderte Apps für Büro und Betrieb](https://work-with-ease.com/apps.html): Beispiele aus der Praxis: Türen aufmessen statt 92 Excel-Spalten, Reisekosten ohne Papierkram, Zeiterfassung, Rechnungen. Was die Apps machen und für wen.
+- [Andrea Kaden: Vorträge zu KI, Führung und Arbeit](https://work-with-ease.com/vortraege.html): Keynotes und Impulsvorträge von Andrea Kaden für Führungskräfte und Teams im Mittelstand: Mensch und KI, Führung, Selbstmanagement, Vibe Coding, Authentizität.
+- [Veranstaltungen und offene Termine](https://work-with-ease.com/veranstaltungen.html): Webinare und Veranstaltungen von Andrea Kaden und Ralf Westphal zu einfacheren Prozessen, digitalen Werkzeugen und KI im Office. Mit Termin, Preis und Anmeldung.
 
 ## Blog
 
@@ -45,17 +45,17 @@ WORK WITH EASE sind Andrea Kaden (CEO, Digitalberaterin und Speakerin) und Ralf 
 
 ## English
 
-- [Self-organisation and collaboration](https://work-with-ease.com/en/selbstorganisation-zusammenarbeit.html): Promises that don’t hold, constant interruptions, too many meetings? We bring simple techniques for self-organisation and collaboration in teams.
 - [Services: training, workshops, consulting](https://work-with-ease.com/en/angebote.html): From talks to ongoing support: we help leaders and teams in medium-sized businesses – with clear ways of working, digital tools and AI.
-- [Tailor-made apps for office and business](https://work-with-ease.com/en/apps.html): Examples from practice: measuring doors instead of 92 Excel columns, travel expenses without paperwork, time recording, invoices. What the apps do and for whom.
-- [Andrea Kaden: talks on AI, leadership and work](https://work-with-ease.com/en/vortraege.html): Keynotes and talks by Andrea Kaden for leaders and teams in medium-sized businesses: people and AI, leadership, self-management, vibe coding, authenticity.
-- [Vibe coding is a spectrum](https://work-with-ease.com/en/blog/vibe-coding-spektrum/): With AI assistants, non-programmers now build their own software. But vibe coding needs a sense of proportion – there is a whole spectrum between pro and user.
 - [How we work: going digital in the office](https://work-with-ease.com/en/arbeitsweise.html): Any work, any time, anywhere: this is how we bring office work into the digital world step by step – from analysis to ongoing support.
 - [Choosing and introducing digital tools](https://work-with-ease.com/en/digitale-werkzeuge.html): Tasks, documents, Microsoft 365, automation: we help you choose the right digital tools, introduce them and use them well.
 - [Office organisation, digitalisation and AI](https://work-with-ease.com/en/): We simplify office processes, digitalise them and use AI where it takes work off your hands – for leaders and teams in medium-sized businesses.
 - [AI at work: an assistant, not a better Google](https://work-with-ease.com/en/ki-im-office.html): AI as a real assistant: texts, research, tools of your own. Sensible about data protection – for leaders and teams in medium-sized businesses.
 - [Case studies: going digital in practice](https://work-with-ease.com/en/praxis.html): Ten real cases: paperless payroll, ERP in metalworking, an app instead of 92 Excel columns, SharePoint across a whole company and more.
+- [Self-organisation and collaboration](https://work-with-ease.com/en/selbstorganisation-zusammenarbeit.html): Promises that don’t hold, constant interruptions, too many meetings? We bring simple techniques for self-organisation and collaboration in teams.
 - [About us – Andrea Kaden and Ralf Westphal](https://work-with-ease.com/en/ueber-uns.html): Andrea Kaden and Ralf Westphal: office organisation meets software development. We work with companies in Germany, Austria and Switzerland.
+- [Tailor-made apps for office and business](https://work-with-ease.com/en/apps.html): Examples from practice: measuring doors instead of 92 Excel columns, travel expenses without paperwork, time recording, invoices. What the apps do and for whom.
+- [Andrea Kaden: talks on AI, leadership and work](https://work-with-ease.com/en/vortraege.html): Keynotes and talks by Andrea Kaden for leaders and teams in medium-sized businesses: people and AI, leadership, self-management, vibe coding, authenticity.
+- [Vibe coding is a spectrum](https://work-with-ease.com/en/blog/vibe-coding-spektrum/): With AI assistants, non-programmers now build their own software. But vibe coding needs a sense of proportion – there is a whole spectrum between pro and user.
 
 ## Optional
 
