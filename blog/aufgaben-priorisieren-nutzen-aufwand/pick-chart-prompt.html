@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta name="robots" content="noindex,follow">
+<meta name="googlebot" content="noindex,indexifembedded">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prompt: PICK-Chart selbst bauen</title>
+<style>
+/* Schrift der Website; einzeln geöffnet greift die Ersatzschrift. Immer hell wie die Website. */
+@font-face { font-family: Space; src: url('/assets/space-grotesk.ttf') format('truetype'); font-weight: 300 700; font-display: swap; }
+:root { color-scheme: light; --ink: #092f26; --muted: #52685c; --line: #d6ddd1; --soft: #f5f7f2; --pink: #ff1693; }
+html, body { margin: 0; }
+body { background: #fff; color: var(--ink); font-family: Space, -apple-system, ui-sans-serif, system-ui, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 15px; line-height: 1.45; }
+.kasten { border: 1px solid var(--line); border-radius: 10px; background: var(--soft); overflow: hidden; }
+.leiste { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; padding: 12px 14px; }
+/* The prompt is long: closed by default, so it does not stretch the article. */
+details { border-top: 1px solid var(--line); }
+summary { cursor: pointer; padding: 10px 14px; font-size: 14px; color: var(--muted); }
+summary:hover { color: var(--ink); }
+button { font: inherit; cursor: pointer; border: 1px solid var(--ink); border-radius: 6px; background: var(--ink); color: #fff; padding: 6px 14px; }
+a { color: var(--ink); text-decoration-color: var(--pink); text-underline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--pink); outline-offset: 2px; }
+#meldung { font-size: 13px; color: var(--muted); }
+pre { margin: 0; max-height: 360px; overflow: auto; padding: 12px 14px; border-top: 1px solid var(--line); background: #fff; font: 12.5px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre-wrap; overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+<div class="kasten">
+  <div class="leiste">
+    <button type="button" id="kopieren" disabled>Prompt kopieren</button>
+    <a href="pick-chart-prompt.txt" download="pick-chart-prompt.txt">Als Textdatei herunterladen</a>
+    <span id="meldung" role="status"></span>
+  </div>
+  <details>
+    <summary>Prompt ansehen</summary>
+    <pre id="prompt" tabindex="0" aria-label="Der Prompt">Der Prompt wird geladen …</pre>
+  </details>
+</div>
+<script>
+// The prompt lives in pick-chart-prompt.txt next to the article; this box shows it and copies it with one click.
+(async () => {
+  const pre = document.getElementById('prompt'), knopf = document.getElementById('kopieren'), meldung = document.getElementById('meldung');
+  try {
+    const antwort = await fetch('pick-chart-prompt.txt');
+    if (!antwort.ok) throw new Error(antwort.status);
+    pre.textContent = (await antwort.text()).trim();
+    knopf.disabled = false;
+  } catch {
+    pre.textContent = 'Der Prompt ließ sich nicht laden. Bitte über „Als Textdatei herunterladen“ öffnen.';
+    return;
+  }
+  knopf.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(pre.textContent); }
+    catch {
+      const t = Object.assign(document.createElement('textarea'), { value: pre.textContent });
+      document.body.append(t); t.select(); document.execCommand('copy'); t.remove();
+    }
+    meldung.textContent = 'Kopiert. Jetzt in den KI-Assistenten einfügen.';
+  });
+})();
+</script>
+</body>
+</html>

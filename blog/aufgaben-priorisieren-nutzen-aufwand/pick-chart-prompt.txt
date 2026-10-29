@@ -1,0 +1,97 @@
+Baue eine eigenständige Web-App „PICK-Chart“ als eine einzige HTML-Datei: HTML, CSS und JavaScript inline, ohne Frameworks, ohne Build-Schritt, ohne externe Skripte. Einzige externe Quelle: die Schrift „Space Grotesk“ von Google Fonts (Gewichte 400–700), mit Systemschrift als Ersatz. Die App läuft ohne Server direkt aus der Datei. Oberfläche auf Deutsch, Anrede „Sie“. Immer helles Design, auch im Dark Mode des Systems.
+
+## Zweck
+Aufgaben oder Projekte nach Nutzen und Aufwand priorisieren. Man schätzt beides je Aufgabe mit Reglern ein; die App ordnet jede Aufgabe einem von vier Feldern zu (PICK-Chart) und berechnet eine Reihenfolge, die man von Hand nachjustieren kann.
+
+## Seitenaufbau (von oben nach unten, Inhalt max. 900 px breit, zentriert, 16 px Rand)
+1. Kopf: Titel „PICK-Chart“, Untertitel „Aufgaben nach Nutzen und Aufwand priorisieren“, darunter ein Satz: „Schätzen Sie für jede Aufgabe Nutzen und Aufwand. Die Matrix zeigt, wo sie landet, und die Liste, womit Sie anfangen.“ Daneben bzw. darunter ein Link „Wie die Methode funktioniert: Besser als Eisenhower – Prioritäten nach Nutzen und Aufwand“ auf https://work-with-ease.com/blog/aufgaben-priorisieren-nutzen-aufwand/ (neuer Tab, rel="noopener").
+2. Aufgabenliste mit Reglern.
+3. Ergebnisbereich: entweder der Knopf „Matrix anzeigen“ oder die Matrix mit der Gewichtung darunter.
+4. Aktionen: Kopieren, CSV herunterladen, CSV laden.
+5. Statuszeile (role="status") für kurze Meldungen.
+6. Fuß: „WORK WITH EASE · work-with-ease.com“ (Link), klein, gedämpft.
+
+## Daten und Bewertung
+- Aufgabe: { id, name (max. 120 Zeichen, darf leer sein → Anzeige „Neue Aufgabe“), nutzen 1–100, aufwand 1–100 }.
+- Feld: Nutzen ≥ 50 ist hoch, Aufwand ≥ 50 ist hoch.
+  - Possible (links unten): Nutzen gering, Aufwand gering. Kleiner Zusatz „Lückenfüller“.
+  - Implement (links oben): Nutzen hoch, Aufwand gering. Zusatz „Quick Win“.
+  - Challenge (rechts oben): Nutzen hoch, Aufwand hoch. Zusatz „Großes Projekt“.
+  - Kill (rechts unten): Nutzen gering, Aufwand hoch. Zusatz „Streichen“.
+  Reihenfolge überall P, I, C, K (links unten beginnend im Uhrzeigersinn).
+- Wert von 1 bis 10 auf logarithmischer Skala, mit Exponenten n (Nutzen) und a (Aufwand):
+  wert = 1 + 9 · (n·ln(nutzen) − a·ln(aufwand) + a·ln(100)) / ((n + a)·ln(100))
+  Anzeige mit einer Nachkommastelle, deutsches Zahlenformat („Wert 7,0“). Tooltip am Wert: „von 1 (wenig Nutzen, viel Aufwand) bis 10 (viel Nutzen, wenig Aufwand)“.
+- Gewichtung „Bei gleichem Verhältnis zählt mehr …“ mit drei Optionen:
+  - „beides gleich“: n=1, a=1. Erklärung: „Reihenfolge nach Nutzen geteilt durch Aufwand. Ist das Verhältnis gleich, kommt der größere Nutzen zuerst.“
+  - „der Nutzen“: n=1,5, a=1. Erklärung: „Der Nutzen zählt stärker: Bei gleichem Verhältnis steht die Aufgabe mit mehr Nutzen deutlich vorn, auch wenn sie mehr Mühe macht.“
+  - „der geringe Aufwand“: n=1, a=1,5. Erklärung: „Der Aufwand zählt stärker: Bei gleichem Verhältnis steht die Aufgabe vorn, die weniger Mühe macht.“
+- Automatische Reihenfolge: Wert absteigend. Bei Gleichstand (Differenz < 1e-9) nach größerem Nutzen, dann kleinerem Aufwand, dann Name (localeCompare 'de').
+- Stufen für Texte und aria-valuetext: < 20 „sehr gering“, < 40 „gering“, < 60 „mittel“, < 80 „hoch“, sonst „sehr hoch“.
+
+## Zwei Zustände: Einschätzen und Ergebnis
+Das ist der Kern der App: Wer die Matrix beim Schätzen sieht, schiebt Aufgaben dorthin, wo er sie gern hätte. Deshalb:
+- Sobald ein Regler bewegt wird, wechselt die App in „Einschätzen“: Die Matrix verschwindet, ebenso Platznummern-Griffe, Feld-Chips, Werte, Filter und Sortierwahl. Die Liste behält während des Schätzens ihre Reihenfolge und sortiert nichts um. Der Wechsel geschieht nur per CSS-Klasse am Wurzelelement, ohne die Liste neu aufzubauen, damit der Regler beim Ziehen nicht den Fokus verliert.
+- An Stelle der Matrix steht dann ein gestrichelter Kasten: „Die Matrix ist ausgeblendet, damit Sie jede Aufgabe für sich einschätzen. Stehen alle Regler, lassen Sie sich vom Ergebnis überraschen.“ mit dem Hauptknopf „Matrix anzeigen“.
+- „Matrix anzeigen“ wechselt in „Ergebnis“, sortiert die Liste neu (automatisch oder nach der gespeicherten manuellen Reihenfolge) und zeigt Matrix, Chips, Werte, Filter und Sortierwahl. Meldung: „Die Liste ist neu sortiert.“ bzw. „Die Liste behält Ihre manuelle Reihenfolge.“
+- „+ Aufgabe“ wechselt ebenfalls in „Einschätzen“.
+- Beim ersten Öffnen: Beispielaufgaben, automatisch sortiert, im Zustand „Ergebnis“ (damit man sofort sieht, worauf es hinausläuft).
+- Überschrift der Liste: im Zustand Einschätzen „Aufgaben einschätzen“, im Zustand Ergebnis „Prioritätenliste“.
+
+## Aufgabenliste
+- Kopfzeile über der Liste: eine Spaltenüberschrift „Aufgabe oder Projekt“ über den Titeln und „gering … hoch“ über den Reglern (links „gering“, rechts „hoch“). Auf schmalen Bildschirmen statt dessen ein Satz: „Regler: links gering, rechts hoch.“
+- Jede Zeile (Raster): [Griff + Platznummer] [Titel, darunter Feld-Chip und Wert] [zwei Regler übereinander] [× löschen].
+  - Titel: textarea, eine Zeile hoch, wächst mit langen Titeln (field-sizing: content, sonst per JavaScript scrollHeight). Zeilenumbrüche werden durch Leerzeichen ersetzt. Enter legt eine neue Aufgabe an. Rahmenlos, Rahmen nur bei Hover/Fokus. Placeholder „Neue Aufgabe“.
+  - Regler: zwei range-Inputs 1–100 mit kleinem Label „Nutzen“ bzw. „Aufwand“ davor; aria-label „Nutzen von „…““, aria-valuetext = Stufe.
+  - × löscht ohne Rückfrage, Meldung „„Name“ gelöscht.“
+  - Feld-Chip in der Feldfarbe (siehe Gestaltung) mit dem Feldnamen, daneben „Wert x,x“.
+- Unter der Liste: „+ Aufgabe“ (fügt am Ende eine leere Aufgabe mit 50/50 ein und setzt den Fokus in den Titel), „Liste leeren“ (Rückfrage „Alle Aufgaben löschen?“), „Beispiele“ (Rückfrage „Die Beispiele laden und die jetzige Liste ersetzen?“, setzt Sortierung auf automatisch und zeigt das Ergebnis).
+- Leere Liste: „Noch keine Aufgaben. Mit „+ Aufgabe“ eine eintragen oder „Beispiele“ laden.“ Sind im Ergebnis alle ausgefiltert: „Alle N Aufgaben sind ausgeblendet.“
+
+## Sortierung und manuelle Reihenfolge
+- Wahl „automatisch“ / „manuell“ als Pillen neben der Listenüberschrift (nur im Ergebnis).
+- Die manuelle Reihenfolge wird getrennt gespeichert. Wechsel auf „automatisch“ und zurück auf „manuell“ stellt sie exakt wieder her. Gelöschte Aufgaben fallen heraus, neue hängen am Ende an. Beim ersten Wechsel auf „manuell“ startet sie mit der gerade angezeigten Reihenfolge.
+- Wer im automatischen Modus eine Aufgabe verschiebt, schaltet damit auf „manuell“. Meldung: „Sortierung ist jetzt manuell. „Automatisch“ stellt die berechnete Reihenfolge wieder her.“
+- Gewichtung ändern sortiert nur im automatischen Modus neu.
+
+## Drag and Drop (nur im Ergebnis)
+- Vorn in jeder Zeile ein Griff aus sechs Punkten (2×3, als kleines SVG), daneben die Platznummer („1.“). Gezogen wird nur am Griff, mit Pointer Events (Maus und Touch), touch-action: none am Griff.
+- Ab 4 px Bewegung hebt sich die Zeile ab (weißer Hintergrund, Schatten, abgerundet) und folgt dem Zeiger senkrecht (translateY).
+- Ablageposition: eine deutliche pinke Linie (4 px, Punkte von 12 px an beiden Enden) zwischen den Zeilen. Ziel ist die Lücke vor der ersten Zeile, deren Mitte unter dem Zeiger liegt, sonst hinter der letzten. Ergäbe die Ablage keine Änderung, keine Linie.
+- Nahe am oberen oder unteren Fensterrand (70 px) scrollt die Seite mit (requestAnimationFrame), die Zielberechnung läuft dabei weiter.
+- Beim Loslassen verschieben, Abbruch (pointercancel) ändert nichts. Während des Ziehens Cursor „grabbing“ und keine Textauswahl.
+- Tastatur: Griff ist ein Button (aria-label „Name verschieben (Pfeiltasten hoch und runter)“); Pfeil hoch/runter verschiebt um einen Platz unter den sichtbaren Aufgaben, der Fokus bleibt auf dem Griff der verschobenen Aufgabe.
+
+## Filter (nur im Ergebnis)
+- „Anzeigen:“ und vier Pillen-Schalter in Feldfarbe, Text „Possible · Lückenfüller (2)“ usw. mit Anzahl. Ausgeschaltet: weiß, grau, durchgestrichen.
+- Ausgeblendete Felder fehlen in der Liste (die Zeilen bleiben im DOM, nur unsichtbar) und erscheinen in der Matrix blass (28 % Deckkraft) ohne Nummer. Platznummern zählen nur Sichtbare. Im Zustand Einschätzen sieht man immer alle Aufgaben.
+
+## Matrix (SVG, viewBox 0 0 400 400, volle Breite, max. 680 px, zentriert)
+- Zeichenfläche 360×360 ab (34, 6). Vier Quadranten in Feldfarbe, dünner Rahmen. In jeder Ecke der Feldname groß (19 px, fett) und der Zusatz klein (12 px) in der dunklen Feldfarbe: oben links „Implement / Quick Win“, oben rechts „Challenge / Großes Projekt“ (rechtsbündig), unten links „Possible / Lückenfüller“, unten rechts „Kill / Streichen“ (unten in den Ecken).
+- Achsen: unten „gering“ – „Aufwand →“ (mittig, fett) – „hoch“; links senkrecht gedreht „gering“ – „Nutzen →“ – „hoch“.
+- Punkte: Kreis r=11, dunkelgrün mit weißem Rand, weiße Platznummer darin. Position x = Aufwand, y = Nutzen (oben hoch). Platz 1 liegt obenauf.
+- Tooltip (HTML, absolut über der Grafik, dunkel mit weißer Schrift, 14 px über dem Punkt, am Rand eingeklemmt): erste Zeile „3. E-Mail-Signaturen vereinheitlichen“, zweite Zeile klein „Possible · Nutzen gering, Aufwand sehr gering“. Erscheint bei Hover, Fokus (Punkte sind per Tab erreichbar, role="img" mit vollständigem aria-label) und Tippen; verschwindet beim Verlassen bzw. Tippen daneben. Der aktive Punkt wird pink.
+- Unter der Matrix: „Die Zahlen sind die Plätze in der Prioritätenliste; zeigen oder tippen Sie auf einen Punkt für den Namen. Bewegen Sie einen Regler, verschwindet die Matrix wieder.“
+- In der Matrix lässt sich nichts verschieben oder anklicken (nur Tooltips).
+- Darunter, quer und flach: ein Kasten mit der Frage „Bei gleichem Verhältnis zählt mehr …“, den drei Pillen nebeneinander und darunter einzeilig der Erklärungstext der gewählten Option.
+
+## Kopieren und Dateien
+- Auswahl „als Liste“ (ein Name pro Zeile; Todoist, Things, TickTick machen daraus einzelne Aufgaben), „als Checkliste (Markdown)“ („- [ ] Name“), „als Tabelle (Excel)“ (Tab-getrennt mit Kopf Rang, Aufgabe, Nutzen, Aufwand, Feld, Wert). Knopf „Kopieren“: im Ergebnis die sichtbare Liste in angezeigter Reihenfolge, sonst alle in Listenreihenfolge; Aufgaben ohne Namen weglassen. navigator.clipboard mit Rückfall auf textarea + execCommand. Meldung „N Aufgaben in die Zwischenablage kopiert.“ bzw. „Die Liste ist leer.“
+- „CSV herunterladen“: Datei prioritaeten.csv, UTF-8 mit BOM, Semikolon, CRLF, Kopf Rang;Aufgabe;Nutzen;Aufwand;Feld, alle Aufgaben mit Namen in Listenreihenfolge, Felder mit ; " oder Zeilenumbruch in Anführungszeichen (" verdoppelt).
+- „CSV laden“: Trennzeichen aus der ersten Zeile erkennen (; Tab ,), Anführungszeichen korrekt lesen. Spalten per Kopf finden (Aufgabe|Name|Titel|Projekt|Task|Title, Nutzen|Value|Impact, Aufwand|Effort, Rang|Rank|Nr), ohne erkennbaren Kopf: Spalte 1 Name, 2 Nutzen, 3 Aufwand. Zahlen mit Komma oder Punkt, auf 1–100 begrenzt und gerundet, fehlend = 50. Sortiert nach Rang. Rückfrage „N Aufgaben laden und die jetzige Liste ersetzen?“, danach Zustand Einschätzen, Dateireihenfolge wird zur manuellen Reihenfolge. Meldung „N Aufgaben geladen, in der Reihenfolge der Datei.“ Ohne Aufgaben: „In der Datei stehen keine Aufgaben. Erwartet: Spalten Aufgabe, Nutzen, Aufwand (1–100).“
+
+## Speicherung
+Gesamter Zustand (Aufgaben, angezeigte Reihenfolge, manuelle Reihenfolge, Sortierung, Gewichtung, ausgeblendete Felder, Zustand Einschätzen/Ergebnis) in localStorage unter „pick-chart“, jeder Zugriff in try/catch; ohne localStorage funktioniert alles, nur ohne Gedächtnis. Hinweis klein unter den Aktionen: „Ihre Aufgaben bleiben in diesem Browser gespeichert. Es wird nichts übertragen.“
+
+## Beispielaufgaben (Name, Nutzen, Aufwand)
+Angebotsvorlage überarbeiten 78/22; Rechnungen per E-Mail statt per Post verschicken 70/15; Ablage digitalisieren 80/80; Neue Website 85/88; Kundendaten an einem Ort sammeln 66/58; E-Mail-Signaturen vereinheitlichen 32/14; Bestellung von Büromaterial automatisieren 20/20; Auf allen Social-Media-Kanälen posten 24/82; Altes Intranet weiterpflegen 14/70.
+
+## Gestaltung
+- Farben: Text #092f26, gedämpft #52685c, Linien #d6ddd1, Flächen #f5f7f2, Hintergrund #fff, Akzent Pink #ff1693 (Fokus, Ablagelinie, aktiver Punkt), Kopf-Akzent ein 6 px Streifen #c7ff23 ganz oben.
+- Feldfarben (Fläche / Schrift): Possible #eceee8 / #52685c, Implement #e4f8a8 / #3b6500, Challenge #dceaff / #1b56ad, Kill #ffe1ef / #b8005f.
+- Schrift Space Grotesk, 15 px, Zeilenhöhe 1,45. Pillen: 999 px Radius, aktiv dunkel gefüllt. Knöpfe mit 6 px Radius; Hauptknopf dunkel gefüllt, Nebenknöpfe grau umrandet.
+- Fokus sichtbar: 2 px pinker Rahmen mit 2 px Abstand.
+- Unter 560 px Breite: Zeile zweistufig (Titel oben, Regler darunter, Griff/Nummer links, × rechts), Kopfzeile ersetzt durch den Reglerhinweis. Kein horizontales Scrollen.
+
+## Abnahme
+Bitte selbst prüfen: Regler bewegen blendet die Matrix aus und sortiert nichts; „Matrix anzeigen“ sortiert neu; Ziehen am Griff zeigt die pinke Linie und verschiebt; auto → manuell → auto → manuell behält die eigene Reihenfolge; Filter blenden Felder aus; CSV herunterladen und wieder laden ergibt dieselbe Liste; Tooltips nennen den Aufgabennamen; Seite neu laden behält alles; auf 375 px Breite benutzbar.

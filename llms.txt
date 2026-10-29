@@ -22,6 +22,7 @@ WORK WITH EASE sind Andrea Kaden (CEO, Digitalberaterin und Speakerin) und Ralf 
 ## Blog
 
 - [Anwender programmieren wieder selbst](https://work-with-ease.com/blog/anwender-programmieren-wieder-selbst/): Mit KI-Assistenten wie Claude Code entwickeln Anwender ihre Software wieder selbst – wie in den Anfängen der Softwareentwicklung, nur ohne Programmierstudium.
+- [Besser als Eisenhower: Prioritäten nach Nutzen und Aufwand](https://work-with-ease.com/blog/aufgaben-priorisieren-nutzen-aufwand/): Aufgaben priorisieren ohne Rätselraten über Wichtigkeit: Nutzen und Aufwand schätzen, das PICK-Chart ordnet ein. Mit kostenlosem Werkzeug im Browser.
 - [Dateien richtig benennen: Regeln und Vorlage fürs Team](https://work-with-ease.com/blog/dateien-richtig-benennen/): Einheitliche Dateinamen sparen Suchzeit und verhindern Versionschaos. Regeln zur Dateibenennung fürs Team, mit kostenloser Vorlage und Hilfe durch KI.
 - [Digitalisierung im Office lohnt sich](https://work-with-ease.com/blog/digitalisierung-im-office-lohnt-sich/): Wenn von Digitalisierung die Rede ist, denken viele zuerst an neue Software, Scanner oder Computer. Doch Digitalisierung ist kein Selbstzweck. Es geht nicht darum, Papier durch …
 - [Einfacher Projektplan: Das geht ohne Excel noch einfacher](https://work-with-ease.com/blog/einfacher-projektplan/): Statt Excel-Vorlage eine kostenlose Projektplan-App zum Herunterladen, mit Kalender, Feiertagen und Abhängigkeiten. Mit KI in 10 Minuten gebaut.
