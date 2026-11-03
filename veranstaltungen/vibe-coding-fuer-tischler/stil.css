@@ -18,3 +18,4 @@
 .tw-way-eiche{background-image:url(holz/holz-eiche.webp)}
 .tw-way-kirsche{background-image:url(holz/holz-kirsche.webp)}
 .tw-way-nuss{background-image:url(holz/holz-nuss.webp)}
+.tw-btn-ghost[hidden]{display:none}
