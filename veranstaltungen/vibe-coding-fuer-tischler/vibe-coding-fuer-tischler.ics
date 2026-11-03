@@ -1,0 +1,24 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//WORK WITH EASE//Veranstaltungen//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:webinar-vibe-coding-fuer-tischler-20261119@work-with-ease.com
+DTSTAMP:20261103T120000Z
+DTSTART:20261119T150000Z
+DTEND:20261119T170000Z
+SUMMARY:Webinar: Vibe Coding für Tischler
+DESCRIPTION:Kostenloses Live-Online-Webinar für Tischlereien mit Andrea Ka
+ den und Ralf Westphal.\n\nDen Zoom-Link schicken wir Ihnen rechtzeitig vor
+  dem Termin per E-Mail.\n\nFragen? contact@work-with-ease.com\nhttps://wor
+ k-with-ease.com/veranstaltungen/vibe-coding-fuer-tischler/
+LOCATION:Online (Zoom-Link per E-Mail)
+URL:https://work-with-ease.com/veranstaltungen/vibe-coding-fuer-tischler/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Webinar: Vibe Coding für Tischler
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+END:VCALENDAR
