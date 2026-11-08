@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">
+<title>Quartalsbericht Q3 2026 – Präsentation (Beispiel)</title>
+<!-- Beispiel für den Kurs „Vibe Coding Practitioner – Office Assistance Edition“: aus quartalsbericht.pdf entstanden, gleiche CI,
+     aber interaktiv. Erfundene Firma und Zahlen. Bühne 1280 × 720, wird auf das Fenster skaliert. -->
+<style>
+:root{--fw:#0b4f6c;--fw-2:#0e6a8f;--hell:#eef5f7;--linie:#c9d8de;--koralle:#f26b4f;--grau:#5d717b;--gruen:#2b8a5b;--text:#1b2b33}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#0a3346;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--text);overflow:hidden}
+.buehne{position:absolute;left:50%;top:50%;width:1280px;height:720px;transform-origin:center;background:#fff;box-shadow:0 30px 80px rgba(0,0,0,.4)}
+.folie{position:absolute;inset:0;padding:70px 80px 90px;opacity:0;visibility:hidden;transform:translateX(40px);transition:opacity .45s,transform .45s,visibility 0s .45s}
+.folie.aktiv{opacity:1;visibility:visible;transform:none;transition:opacity .45s,transform .45s}
+.folie.zurueck{transform:translateX(-40px)}
+.kopf{position:absolute;left:80px;right:80px;top:34px;display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--grau)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2em;color:var(--fw);font-size:16px}
+h1{font-size:72px;line-height:1.02;margin:0;color:var(--fw)}
+h2{font-size:44px;margin:40px 0 28px;color:var(--fw)}
+.titel{background:linear-gradient(135deg,var(--fw),#06374d);color:#fff}
+.titel h1{color:#fff;margin-top:150px}
+.titel p{font-size:26px;color:#bfd8e2;margin:16px 0 0}
+.titel .logo{color:#fff}
+.titel .tipp{position:absolute;left:80px;bottom:100px;font-size:16px;color:#9cc4d4}
+.titel .welle{position:absolute;right:-40px;bottom:-30px;width:620px;opacity:.18}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:20px}
+.kpi{padding:28px 26px;border:1px solid var(--linie);border-top:6px solid var(--koralle);border-radius:4px;transition:transform .2s,box-shadow .2s;cursor:default}
+.kpi:hover{transform:translateY(-6px);box-shadow:0 18px 30px -16px rgba(11,79,108,.45)}
+.kpi b{display:block;font-size:46px;color:var(--fw);font-variant-numeric:tabular-nums}
+.kpi span{font-size:18px;color:var(--grau)}
+.kpi i{display:block;font-style:normal;color:var(--gruen);margin-top:10px;font-size:16px}
+.leiste{display:flex;gap:10px;margin-bottom:18px}
+.chip{border:1.5px solid var(--fw);background:#fff;color:var(--fw);border-radius:999px;padding:8px 18px;font-family:inherit;font-size:15px;font-weight:600;line-height:1;cursor:pointer}
+.chip.an{background:var(--fw);color:#fff}
+.regionen{display:grid;grid-template-columns:1.25fr 1fr;gap:44px;align-items:start}
+.balken{display:grid;gap:16px}
+.balken button{display:grid;grid-template-columns:80px 1fr 70px;align-items:center;gap:14px;border:0;background:none;padding:6px 8px;border-radius:6px;text-align:left;font:inherit;cursor:pointer}
+.balken button:hover,.balken button.an{background:var(--hell)}
+.balken strong{font-size:20px}
+.spur{position:relative;height:34px}
+.spur i{position:absolute;left:0;height:100%;border-radius:3px;transition:width .6s cubic-bezier(.3,.8,.3,1)}
+.spur .q3{background:var(--fw);top:0;height:20px}
+.spur .q2{background:#9fc3d1;top:24px;height:10px}
+.balken em{font-style:normal;color:var(--gruen);font-weight:700;text-align:right}
+.detail{padding:28px 30px;border-radius:6px;background:var(--hell);min-height:300px}
+.detail h3{margin:0 0 6px;font-size:30px;color:var(--fw)}
+.detail .zahl{font-size:52px;font-weight:800;color:var(--fw)}
+.detail p{font-size:18px;line-height:1.5;margin:8px 0}
+.detail small{color:var(--grau);font-size:15px}
+.projekte{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.projekt{padding:20px 22px;border:1px solid var(--linie);border-radius:6px;border-left:6px solid var(--fw);transition:opacity .3s,transform .3s}
+.projekt.weg{opacity:.15;transform:scale(.97)}
+.projekt b{display:block;font-size:20px;margin-bottom:4px}
+.projekt span{color:var(--grau)}
+.projekt strong{display:block;margin-top:10px;font-size:26px;color:var(--fw)}
+.service{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.messer{padding:26px;border-radius:6px;background:var(--hell);text-align:center}
+.messer svg{width:200px;height:120px}
+.messer b{display:block;font-size:40px;color:var(--fw);margin-top:-20px}
+.messer span{color:var(--grau);font-size:17px}
+.messer i{display:block;font-style:normal;color:var(--gruen);font-weight:700;margin-top:6px}
+.ziel{margin:6px 0 28px}
+.ziel .bahn{position:relative;height:28px;border-radius:14px;background:var(--hell);overflow:hidden}
+.ziel .bahn i{position:absolute;inset:0 auto 0 0;border-radius:14px;background:linear-gradient(90deg,var(--fw),var(--fw-2));transition:width 1s}
+.ziel p{display:flex;justify-content:space-between;color:var(--grau);font-size:17px}
+.liste{display:grid;gap:12px}
+.liste label{display:flex;gap:14px;align-items:center;padding:14px 18px;border:1px solid var(--linie);border-radius:6px;font-size:20px;cursor:pointer;transition:background .2s}
+.liste input{width:24px;height:24px;accent-color:var(--gruen)}
+.liste label:has(input:checked){background:#e8f5ee;text-decoration:line-through;color:var(--grau)}
+.fragen{background:linear-gradient(135deg,#06374d,var(--fw));color:#fff;display:flex;flex-direction:column;justify-content:center}
+.fragen h1{color:#fff}
+.fragen p{font-size:24px;color:#bfd8e2}
+.navi{position:absolute;left:0;right:0;bottom:0;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 30px;background:rgba(255,255,255,.92);border-top:1px solid var(--linie);z-index:5}
+.navi button{border:0;background:var(--fw);color:#fff;width:44px;height:44px;border-radius:50%;font-size:22px;cursor:pointer}
+.navi button:disabled{opacity:.3;cursor:default}
+.punkte{display:flex;gap:8px}
+.punkte span{width:10px;height:10px;border-radius:50%;background:var(--linie);cursor:pointer}
+.punkte span.an{background:var(--koralle);transform:scale(1.3)}
+.navi small{color:var(--grau);font-size:13px}
+</style></head><body>
+<div class="buehne" id="buehne">
+  <section class="folie titel">
+    <div class="kopf"><div class="logo"><svg width="40" height="26" viewBox="0 0 34 22"><path d="M1 15 C6 5,11 5,16 13 S26 21,33 7" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><circle cx="29" cy="5" r="2.6" fill="#f26b4f"/></svg>FJORDWERK</div><span>Vertrieb &amp; Service</span></div>
+    <h1>Quartalsbericht<br>Q3 2026</h1>
+    <p>Vertrieb und Service, Juli bis September 2026</p>
+    <svg class="welle" viewBox="0 0 34 22"><path d="M1 15 C6 5,11 5,16 13 S26 21,33 7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+    <p class="tipp">Weiter mit den Pfeiltasten, einem Klick auf → oder Wischen.</p>
+  </section>
+  <section class="folie">
+    <div class="kopf"><div class="logo">FJORDWERK</div><span>Q3 2026</span></div>
+    <h2>Kennzahlen im Überblick</h2>
+    <div class="kpis">
+      <div class="kpi"><b data-zahl="4.82" data-stellen="2" data-nach=" Mio. €">0</b><span>Umsatz</span><i>+6,4 % zum Vorquartal</i></div>
+      <div class="kpi"><b data-zahl="1247" data-stellen="0">0</b><span>Aufträge</span><i>+3,1 % zum Vorquartal</i></div>
+      <div class="kpi"><b data-zahl="38" data-stellen="0">0</b><span>Neukunden</span><i>Q2: 29</i></div>
+      <div class="kpi"><b data-zahl="4.5" data-stellen="1" data-nach=" / 5">0</b><span>Kundenzufriedenheit</span><i>Q2: 4,3</i></div>
+    </div>
+  </section>
+  <section class="folie">
+    <div class="kopf"><div class="logo">FJORDWERK</div><span>Q3 2026</span></div>
+    <h2>Umsatz nach Region</h2>
+    <div class="leiste" id="ansicht"><button class="chip an" data-ansicht="beide">Q2 und Q3</button><button class="chip" data-ansicht="q3">nur Q3</button></div>
+    <div class="regionen">
+      <div class="balken" id="balken"></div>
+      <div class="detail" id="detail"></div>
+    </div>
+  </section>
+  <section class="folie">
+    <div class="kopf"><div class="logo">FJORDWERK</div><span>Q3 2026</span></div>
+    <h2>Die größten Projekte</h2>
+    <div class="leiste" id="filter"><button class="chip an" data-region="alle">Alle</button><button class="chip" data-region="Nord">Nord</button><button class="chip" data-region="Süd">Süd</button><button class="chip" data-region="West">West</button><button class="chip" data-region="Ost">Ost</button></div>
+    <div class="projekte" id="projekte"></div>
+  </section>
+  <section class="folie">
+    <div class="kopf"><div class="logo">FJORDWERK</div><span>Q3 2026</span></div>
+    <h2>Service</h2>
+    <div class="service">
+      <div class="messer"><svg viewBox="0 0 200 110"><path d="M20 100 A80 80 0 0 1 180 100" fill="none" stroke="#c9d8de" stroke-width="16"/><path class="bogen" data-anteil=".83" d="M20 100 A80 80 0 0 1 180 100" fill="none" stroke="#0b4f6c" stroke-width="16" stroke-dasharray="251" stroke-dashoffset="251"/></svg><b>83 %</b><span>Erstlösungsquote</span><i>Q2: 78 %</i></div>
+      <div class="messer"><svg viewBox="0 0 200 110"><path d="M20 100 A80 80 0 0 1 180 100" fill="none" stroke="#c9d8de" stroke-width="16"/><path class="bogen" data-anteil=".66" d="M20 100 A80 80 0 0 1 180 100" fill="none" stroke="#0b4f6c" stroke-width="16" stroke-dasharray="251" stroke-dashoffset="251"/></svg><b>655</b><span>Serviceeinsätze</span><i>Q2: 612</i></div>
+      <div class="messer"><svg viewBox="0 0 200 110"><path d="M20 100 A80 80 0 0 1 180 100" fill="none" stroke="#c9d8de" stroke-width="16"/><path class="bogen" data-anteil=".52" d="M20 100 A80 80 0 0 1 180 100" fill="none" stroke="#f26b4f" stroke-width="16" stroke-dasharray="251" stroke-dashoffset="251"/></svg><b>4,8 Std.</b><span>Reaktionszeit</span><i>Q2: 6,1 Std.</i></div>
+    </div>
+  </section>
+  <section class="folie">
+    <div class="kopf"><div class="logo">FJORDWERK</div><span>Ausblick</span></div>
+    <h2>Ausblick Q4 2026</h2>
+    <div class="ziel"><div class="bahn"><i id="zielbalken" style="width:0"></i></div><p><span>Q3: 4,82 Mio. €</span><span>Ziel Q4: 5,1 Mio. €</span></p></div>
+    <div class="liste">
+      <label><input type="checkbox"> Schwerpunkt Wartungsverträge</label>
+      <label><input type="checkbox"> Kundenportal für Ersatzteile startet im November</label>
+      <label><input type="checkbox"> Partnertag im März 2027 vorbereiten</label>
+      <label><input type="checkbox"> Region Ost: zusätzlicher Servicetechniker ab Dezember</label>
+    </div>
+  </section>
+  <section class="folie fragen">
+    <h1>Fragen?</h1>
+    <p>Vertriebsassistenz, Telefon 040 000 000-12</p>
+  </section>
+  <nav class="navi"><button id="zurueck" aria-label="Vorherige Folie">←</button><small>Fjordwerk Instruments · erfundenes Beispiel</small><div class="punkte" id="punkte"></div><small id="nummer"></small><button id="weiter" aria-label="Nächste Folie">→</button></nav>
+</div>
+<script>
+const regionen = [
+  { name: 'Nord', q3: 1.64, q2: 1.53, projekt: 'Messtechnik Netzleitstelle, Stadtwerke Elmsdorf', text: 'Wartungsverträge tragen das Wachstum.' },
+  { name: 'Süd', q3: 1.38, q2: 1.33, projekt: 'Sensorik Abfüllung, Brauerei Kessler', text: 'Stabil, ein großes Neuprojekt in der Getränkeindustrie.' },
+  { name: 'West', q3: 1.12, q2: 1.02, projekt: 'Wartungsvertrag 3 Jahre, Klinikverbund Rheinaue', text: 'Stärkstes Wachstum: zwei neue Servicepartner gestartet.' },
+  { name: 'Ost', q3: 0.68, q2: 0.66, projekt: 'Kalibrierservice, Labor Dr. Albers', text: 'Ab Dezember mit zusätzlichem Servicetechniker.' },
+];
+const projekte = [
+  ['Stadtwerke Elmsdorf', 'Messtechnik Netzleitstelle', 'Nord', '412.000 €'],
+  ['Klinikverbund Rheinaue', 'Wartungsvertrag 3 Jahre', 'West', '288.000 €'],
+  ['Brauerei Kessler', 'Sensorik Abfüllung', 'Süd', '196.000 €'],
+  ['Hafenbetriebe Wismarer Bucht', 'Nachrüstung Pegelmessung', 'Nord', '154.000 €'],
+  ['Labor Dr. Albers', 'Kalibrierservice', 'Ost', '87.000 €'],
+];
+const zahl = (wert, stellen) => wert.toLocaleString('de-DE', { minimumFractionDigits: stellen, maximumFractionDigits: stellen });
+const folien = [...document.querySelectorAll('.folie')];
+let aktuell = 0;
+
+// Bühne auf das Fenster skalieren
+const buehne = document.getElementById('buehne');
+const passen = () => { const s = Math.min(innerWidth / 1280, innerHeight / 720); buehne.style.transform = `translate(-50%,-50%) scale(${s})`; };
+addEventListener('resize', passen); passen();
+
+// Balken und Detail
+const balken = document.getElementById('balken'), detail = document.getElementById('detail');
+let ansicht = 'beide';
+const zeigeRegion = r => {
+  balken.querySelectorAll('button').forEach(b => b.classList.toggle('an', b.dataset.name === r.name));
+  const plus = ((r.q3 / r.q2 - 1) * 100);
+  detail.innerHTML = `<h3>Region ${r.name}</h3><div class="zahl">${zahl(r.q3, 2)} Mio. €</div><p><small>Q2: ${zahl(r.q2, 2)} Mio. € · Anteil am Umsatz: ${zahl(r.q3 / 4.82 * 100, 0)} %</small></p><p>${r.text}</p><p><small>Größtes Projekt: ${r.projekt}</small></p>`;
+};
+const zeichneBalken = () => {
+  balken.innerHTML = regionen.map(r => `<button data-name="${r.name}"><strong>${r.name}</strong><span class="spur"><i class="q3" style="width:0"></i><i class="q2" style="width:0"></i></span><em>+${zahl((r.q3 / r.q2 - 1) * 100, 1)} %</em></button>`).join('');
+  balken.querySelectorAll('button').forEach((b, i) => b.addEventListener('click', () => zeigeRegion(regionen[i])));
+  requestAnimationFrame(() => setTimeout(fuelleBalken, 60));
+  zeigeRegion(regionen[2]);
+};
+const fuelleBalken = () => balken.querySelectorAll('button').forEach((b, i) => {
+  b.querySelector('.q3').style.width = (regionen[i].q3 / 1.64 * 100) + '%';
+  b.querySelector('.q2').style.width = ansicht === 'beide' ? (regionen[i].q2 / 1.64 * 100) + '%' : '0';
+});
+document.querySelectorAll('#ansicht .chip').forEach(c => c.addEventListener('click', () => {
+  ansicht = c.dataset.ansicht;
+  document.querySelectorAll('#ansicht .chip').forEach(x => x.classList.toggle('an', x === c));
+  fuelleBalken();
+}));
+zeichneBalken();
+
+// Projekte mit Filter
+const liste = document.getElementById('projekte');
+liste.innerHTML = projekte.map(([kunde, was, region, betrag]) => `<div class="projekt" data-region="${region}"><b>${kunde}</b><span>${was} · ${region}</span><strong>${betrag}</strong></div>`).join('');
+document.querySelectorAll('#filter .chip').forEach(c => c.addEventListener('click', () => {
+  document.querySelectorAll('#filter .chip').forEach(x => x.classList.toggle('an', x === c));
+  liste.querySelectorAll('.projekt').forEach(p => p.classList.toggle('weg', c.dataset.region !== 'alle' && p.dataset.region !== c.dataset.region));
+}));
+
+// Beim Zeigen einer Folie: Zahlen zählen hoch, Bögen und Zielbalken füllen sich
+const belebe = folie => {
+  folie.querySelectorAll('[data-zahl]').forEach(el => {
+    const ziel = +el.dataset.zahl, stellen = +el.dataset.stellen, nach = el.dataset.nach || '', start = performance.now();
+    const schritt = t => { const p = Math.min(1, (t - start) / 900), e = 1 - Math.pow(1 - p, 3); el.textContent = zahl(ziel * e, stellen) + nach; if (p < 1) requestAnimationFrame(schritt); };
+    requestAnimationFrame(schritt);
+  });
+  folie.querySelectorAll('.bogen').forEach(b => { b.style.transition = 'none'; b.style.strokeDashoffset = 251; requestAnimationFrame(() => { b.style.transition = 'stroke-dashoffset 1.1s cubic-bezier(.3,.8,.3,1)'; b.style.strokeDashoffset = 251 * (1 - b.dataset.anteil); }); });
+  const ziel = folie.querySelector('#zielbalken'); if (ziel) { ziel.style.width = 0; setTimeout(() => ziel.style.width = (4.82 / 5.1 * 100) + '%', 80); }
+  if (folie.contains(balken)) { balken.querySelectorAll('.spur i').forEach(i => i.style.width = 0); setTimeout(fuelleBalken, 80); }
+};
+
+// Navigation
+const punkte = document.getElementById('punkte');
+punkte.innerHTML = folien.map(() => '<span></span>').join('');
+const gehe = n => {
+  if (n < 0 || n >= folien.length) return;
+  folien.forEach((f, i) => { f.classList.toggle('aktiv', i === n); f.classList.toggle('zurueck', i < n); });
+  punkte.querySelectorAll('span').forEach((p, i) => p.classList.toggle('an', i === n));
+  document.getElementById('nummer').textContent = `${n + 1} / ${folien.length}`;
+  document.getElementById('zurueck').disabled = n === 0;
+  document.getElementById('weiter').disabled = n === folien.length - 1;
+  aktuell = n; belebe(folien[n]);
+};
+document.getElementById('zurueck').addEventListener('click', () => gehe(aktuell - 1));
+document.getElementById('weiter').addEventListener('click', () => gehe(aktuell + 1));
+punkte.querySelectorAll('span').forEach((p, i) => p.addEventListener('click', () => gehe(i)));
+addEventListener('keydown', e => {
+  if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); gehe(aktuell + 1); }
+  if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); gehe(aktuell - 1); }
+});
+let startX = null;
+addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+addEventListener('touchend', e => { if (startX === null) return; const d = e.changedTouches[0].clientX - startX; if (Math.abs(d) > 50) gehe(aktuell + (d < 0 ? 1 : -1)); startX = null; });
+gehe(0);
+</script>
+</body></html>

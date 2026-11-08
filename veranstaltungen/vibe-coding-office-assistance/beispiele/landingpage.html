@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">
+<title>Partnertag 2027 – Anmeldung (Beispiel)</title>
+<!-- Beispiel für den Kurs „Vibe Coding Practitioner – Office Assistance Edition“: aus dem fotografierten Programm (programm-foto.jpg)
+     entstanden, in der CI der erfundenen Firma Fjordwerk. Das Formular sendet nichts. -->
+<style>
+:root{--fw:#0b4f6c;--fw-2:#0e6a8f;--hell:#eef5f7;--linie:#c9d8de;--koralle:#f26b4f;--grau:#5d717b;--text:#1b2b33}
+*{box-sizing:border-box}
+/* Eingebettet im Handy-Rahmen der Kursseite: statt der breiten Bildlaufleiste nur ein schmaler Strich am Rand. */
+html.eingebettet{scrollbar-width:none}
+html.eingebettet::-webkit-scrollbar{display:none}
+.laufleiste{display:none}
+html.eingebettet .laufleiste{display:block;position:fixed;right:2px;top:0;width:3px;border-radius:3px;background:rgba(11,79,108,.45);z-index:9;pointer-events:none;transition:opacity .3s}
+body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--text);line-height:1.5;background:#fff}
+.beispiel{background:#fff4e5;color:#7a4b00;text-align:center;font-size:13px;padding:7px 12px}
+header{background:linear-gradient(135deg,var(--fw),#06374d);color:#fff;padding:26px 24px 64px;position:relative;overflow:hidden}
+.innen{max-width:980px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2em;font-size:15px}
+header h1{font-size:clamp(2.1rem,6vw,3.6rem);line-height:1.05;margin:46px 0 12px}
+header p{font-size:clamp(1.05rem,2.4vw,1.3rem);color:#cfe3eb;margin:0}
+.knopf{display:inline-block;margin-top:28px;padding:14px 26px;border-radius:999px;background:var(--koralle);color:#fff;font-weight:700;text-decoration:none;border:0;font-size:1rem;cursor:pointer}
+.welle{position:absolute;right:-60px;bottom:-40px;width:420px;opacity:.15}
+main{max-width:980px;margin:0 auto;padding:0 24px 60px}
+section{margin-top:56px}
+h2{color:var(--fw);font-size:1.7rem;margin:0 0 18px}
+.ablauf{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);grid-auto-flow:column;grid-template-rows:repeat(4,auto);column-gap:40px}
+.ablauf li{position:relative;padding:8px 0 14px 22px;border-left:3px solid var(--linie)}
+.ablauf li:before{content:"";position:absolute;left:-8px;top:14px;width:13px;height:13px;border-radius:50%;background:#fff;border:3px solid var(--fw)}
+.ablauf li.runde:before{background:var(--koralle);border-color:var(--koralle)}
+.ablauf time{display:block;font-weight:700;color:var(--fw)}
+.runde-titel{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:26px 0 12px}
+.runde-titel h3{margin:0;font-size:1.2rem}
+.runde-titel span{color:var(--grau);font-size:.9rem}
+.wahl{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.wahl label{position:relative;display:block;padding:18px 18px 16px;border:2px solid var(--linie);border-radius:10px;cursor:pointer;transition:border-color .2s,box-shadow .2s,transform .2s}
+.wahl label:hover{transform:translateY(-2px)}
+.wahl input{position:absolute;opacity:0}
+.wahl b{display:block;font-size:1.05rem;margin:6px 0 4px}
+.wahl small{color:var(--grau)}
+.wahl .buchstabe{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--hell);color:var(--fw);font-weight:800}
+.wahl label:has(input:checked){border-color:var(--fw);box-shadow:0 10px 24px -14px rgba(11,79,108,.6)}
+.wahl label:has(input:checked) .buchstabe{background:var(--fw);color:#fff}
+.wahl label:has(input:focus-visible){outline:3px solid var(--koralle);outline-offset:2px}
+.felder{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.felder label{display:grid;gap:5px;font-weight:600;font-size:.95rem}
+.felder input,.felder select{font:inherit;padding:11px 12px;border:1.5px solid var(--linie);border-radius:8px}
+.felder input:focus,.felder select:focus{outline:none;border-color:var(--fw)}
+.ganz{grid-column:1/-1}
+.fehler{color:#b3261e;font-weight:600;margin-top:12px;min-height:1.4em}
+.danke{display:none;padding:30px;border-radius:12px;background:var(--hell);border-left:6px solid var(--fw)}
+.danke h2{margin-bottom:8px}
+.danke ul{margin:10px 0 0;padding-left:20px}
+form.fertig{display:none}
+form.fertig + .danke{display:block}
+footer{border-top:1px solid var(--linie);color:var(--grau);font-size:.85rem;padding:18px 24px;text-align:center}
+@media(max-width:720px){.wahl,.felder{grid-template-columns:1fr}.ablauf{grid-template-columns:1fr;grid-auto-flow:row;grid-template-rows:none}}
+</style></head><body>
+<div class="beispiel">Beispielseite: erfundene Firma und Veranstaltung, das Formular sendet keine Daten.</div>
+<header>
+  <div class="innen">
+    <div class="logo"><svg width="40" height="26" viewBox="0 0 34 22"><path d="M1 15 C6 5,11 5,16 13 S26 21,33 7" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/><circle cx="29" cy="5" r="2.6" fill="#f26b4f"/></svg>FJORDWERK</div>
+    <h1>Partnertag 2027</h1>
+    <p>Freitag, 19. März 2027 · 9:00 bis 16:30 Uhr · Alte Seilerei, Hamburg-Altona</p>
+    <a class="knopf" href="#anmeldung">Jetzt anmelden</a>
+  </div>
+  <svg class="welle" viewBox="0 0 34 22"><path d="M1 15 C6 5,11 5,16 13 S26 21,33 7" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+</header>
+<main>
+  <section>
+    <h2>Ablauf</h2>
+    <ol class="ablauf">
+      <li><time>9:00</time>Ankommen, Kaffee und Gespräche</li>
+      <li><time>9:30</time>Begrüßung durch die Geschäftsführung</li>
+      <li><time>10:00</time>Keynote: Service, der mitdenkt</li>
+      <li class="runde"><time>11:00–12:30</time>Workshops, Runde 1: drei parallele Workshops</li>
+      <li><time>12:30</time>Mittagessen</li>
+      <li class="runde"><time>13:30–15:00</time>Workshops, Runde 2: drei parallele Workshops</li>
+      <li><time>15:15</time>Podium: Was Partner 2027 brauchen</li>
+      <li><time>16:00</time>Ausklang mit Imbiss</li>
+    </ol>
+  </section>
+  <section id="anmeldung">
+    <h2>Anmeldung</h2>
+    <form id="formular" novalidate>
+      <div class="runde-titel"><h3>Runde 1, 11:00–12:30 Uhr</h3><span>Bitte einen Workshop wählen</span></div>
+      <div class="wahl">
+        <label><input type="radio" name="runde1" value="A Wartung digital planen"><span class="buchstabe">A</span><b>Wartung digital planen</b><small>Termine, Intervalle und Einsätze im Blick</small></label>
+        <label><input type="radio" name="runde1" value="B Ersatzteile schneller finden"><span class="buchstabe">B</span><b>Ersatzteile schneller finden</b><small>Vom Typenschild zur Bestellung</small></label>
+        <label><input type="radio" name="runde1" value="C Das Kundenportal in der Praxis"><span class="buchstabe">C</span><b>Das Kundenportal in der Praxis</b><small>Live-Vorführung und Fragen</small></label>
+      </div>
+      <div class="runde-titel"><h3>Runde 2, 13:30–15:00 Uhr</h3><span>Bitte einen Workshop wählen</span></div>
+      <div class="wahl">
+        <label><input type="radio" name="runde2" value="D Messdaten verstehen und nutzen"><span class="buchstabe">D</span><b>Messdaten verstehen und nutzen</b><small>Was die Geräte schon heute erzählen</small></label>
+        <label><input type="radio" name="runde2" value="E Neue Kolleginnen und Kollegen schulen"><span class="buchstabe">E</span><b>Neue Kolleginnen und Kollegen schulen</b><small>Einarbeitung mit Checklisten</small></label>
+        <label><input type="radio" name="runde2" value="F Fragen an die Entwicklung"><span class="buchstabe">F</span><b>Fragen an die Entwicklung</b><small>Offene Runde mit dem Entwicklungsteam</small></label>
+      </div>
+      <div class="runde-titel"><h3>Ihre Angaben</h3></div>
+      <div class="felder">
+        <label>Vorname<input name="vorname" autocomplete="given-name"></label>
+        <label>Nachname<input name="nachname" autocomplete="family-name"></label>
+        <label>Firma<input name="firma" autocomplete="organization"></label>
+        <label>E-Mail<input name="email" type="email" autocomplete="email"></label>
+        <label class="ganz">Mittagessen<select name="essen"><option>Ja, gern</option><option>Ja, vegetarisch</option><option>Nein, danke</option></select></label>
+      </div>
+      <p class="fehler" id="fehler" aria-live="polite"></p>
+      <button class="knopf" type="submit">Verbindlich anmelden</button>
+    </form>
+    <div class="danke" id="danke" tabindex="-1"></div>
+  </section>
+</main>
+<footer>Fjordwerk Instruments GmbH · erfundenes Beispiel aus dem Kurs „Vibe Coding Practitioner – Office Assistance Edition“</footer>
+<div class="laufleiste" aria-hidden="true"></div>
+<script>
+// Eingebettet (iframe): eigene schmale Laufleiste zeigen, wie weit gescrollt ist.
+if (window.self !== window.top) {
+  document.documentElement.classList.add('eingebettet');
+  const leiste = document.querySelector('.laufleiste');
+  const zeichne = () => {
+    const sichtbar = innerHeight, gesamt = document.documentElement.scrollHeight;
+    const hoehe = Math.max(24, sichtbar * sichtbar / gesamt);
+    leiste.style.height = hoehe + 'px';
+    leiste.style.top = (scrollY / (gesamt - sichtbar || 1)) * (sichtbar - hoehe) + 'px';
+  };
+  addEventListener('scroll', zeichne, { passive: true });
+  addEventListener('resize', zeichne);
+  zeichne();
+}
+const form = document.getElementById('formular'), fehler = document.getElementById('fehler'), danke = document.getElementById('danke');
+const text = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const d = new FormData(form);
+  const fehlt = [];
+  if (!d.get('runde1')) fehlt.push('einen Workshop in Runde 1');
+  if (!d.get('runde2')) fehlt.push('einen Workshop in Runde 2');
+  if (!d.get('vorname') || !d.get('nachname')) fehlt.push('Ihren Namen');
+  if (!/^\S+@\S+\.\S+$/.test(d.get('email') || '')) fehlt.push('Ihre E-Mail-Adresse');
+  if (fehlt.length) { fehler.textContent = 'Bitte noch angeben: ' + fehlt.join(', ') + '.'; return; }
+  danke.innerHTML = `<h2>Danke, ${text(d.get('vorname'))}!</h2><p>So sähe Ihre Anmeldung aus (im Beispiel wird nichts gesendet):</p><ul><li>Runde 1: ${text(d.get('runde1'))}</li><li>Runde 2: ${text(d.get('runde2'))}</li><li>Mittagessen: ${text(d.get('essen'))}</li></ul>`;
+  form.classList.add('fertig');
+  danke.focus();
+});
+</script>
+</body></html>
