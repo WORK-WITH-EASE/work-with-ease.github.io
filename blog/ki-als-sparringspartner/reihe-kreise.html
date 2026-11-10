@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta name="robots" content="noindex,follow">
+<meta name="googlebot" content="noindex,indexifembedded">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KI für Führungskräfte: Wo wir in der Reihe stehen</title>
+<style>
+/* Schrift der Website; einzeln geöffnet greift die Ersatzschrift. Immer hell wie die Website. */
+@font-face { font-family: Space; src: url('/assets/space-grotesk.ttf') format('truetype'); font-weight: 300 700; font-display: swap; }
+:root {
+  color-scheme: light;
+  --ink: #092f26;
+  --lime: #c7ff23;
+  --pink: #ff1693;
+  --paper: #f5f7f2;
+  --muted: #5b6b65;
+  --font-sans: Space, -apple-system, ui-sans-serif, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+html, body { margin: 0; }
+body { background: #fff; color: var(--ink); font-family: var(--font-sans); font-size: 15px; line-height: 1.45; }
+#kreise { display: flex; gap: 20px; align-items: center; padding: 16px 18px; background: var(--paper); border-radius: 12px; }
+svg { flex: 0 0 auto; width: 170px; height: auto; }
+svg text { font-family: var(--font-sans); font-size: 18px; font-weight: 600; }
+.text { min-width: 0; }
+.eyebrow { margin: 0 0 2px; color: var(--pink); font-size: 13px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; }
+h2 { margin: 0 0 6px; font-size: 18px; font-weight: 600; }
+p { margin: 0 0 8px; }
+ol { margin: 0; padding: 0; list-style: none; font-size: 14px; color: var(--muted); }
+li { margin: 1px 0; }
+li.hier { color: var(--ink); font-weight: 600; }
+li.hier::after { content: ' ← hier'; color: var(--pink); }
+a { color: inherit; }
+@media (max-width: 520px) { #kreise { flex-direction: column; align-items: flex-start; } svg { width: 150px; align-self: center; } }
+</style>
+</head>
+<body>
+<div id="kreise">
+  <svg viewBox="0 0 340 340" role="img" aria-label="Fünf Kreise von innen nach außen: Ich selbst, Team, Rolle, Bereich, Unternehmen. Der innerste Kreis ist hervorgehoben."></svg>
+  <div class="text">
+    <p class="eyebrow">Wo wir stehen</p>
+    <h2>Teil 2 von 6: der innerste Kreis</h2>
+    <ol id="teile"></ol>
+  </div>
+</div>
+<script>
+(() => {
+  // Für einen anderen Teil der Reihe: Datei kopieren und HIER ändern.
+  const HIER = 2;
+  const teile = [
+    { nr: 1, name: 'Überblick und Team', href: '/blog/ki-schulung-fuehrungskraefte/', kreis: 1 },
+    { nr: 2, name: 'Ich selbst', href: '/blog/ki-als-sparringspartner/', kreis: 0 },
+    { nr: 3, name: 'Wenn KI am Selbstbild rüttelt', quer: true },
+    { nr: 4, name: 'Meine Rolle als Führungskraft', kreis: 2 },
+    { nr: 5, name: 'Mein Verantwortungsbereich', kreis: 3 },
+    { nr: 6, name: 'Unternehmen und Umfeld', kreis: 4 }
+  ];
+  const kurz = ['Ich selbst', 'Team', 'Rolle', 'Bereich', 'Unternehmen'];
+  const farben = ['#092f26', '#2d5a4c', '#5b8576', '#9bb8ac', '#d4e2dc'];
+  const schrift = ['#fff', '#fff', '#fff', '#092f26', '#092f26'];
+  const radien = [48, 78, 108, 138, 168];
+  const aktuell = teile.find(t => t.nr === HIER);
+  const svg = document.querySelector('svg');
+  const ns = 'http://www.w3.org/2000/svg';
+  const c = 170;
+  const el = (tag, attrs) => { const e = document.createElementNS(ns, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; };
+
+  for (let i = radien.length - 1; i >= 0; i--) {
+    const hier = aktuell.kreis === i;
+    svg.appendChild(el('circle', { cx: c, cy: c, r: radien[i], fill: hier ? '#c7ff23' : farben[i], stroke: hier ? '#ff1693' : '#fff', 'stroke-width': hier ? 5 : 2 }));
+    const y = i === 0 ? c - 4 : c - (radien[i] + radien[i - 1]) / 2 + 7;
+    const t = el('text', { x: c, y, 'text-anchor': 'middle', fill: hier ? '#092f26' : schrift[i] });
+    // Der innerste Kreis ist zu schmal für eine Zeile: „Ich selbst“ zweizeilig.
+    kurz[i].split(i === 0 ? ' ' : '|').forEach((wort, n) => { const s = el('tspan', { x: c, dy: n ? 19 : 0 }); s.textContent = wort; t.appendChild(s); });
+    svg.appendChild(t);
+  }
+  svg.appendChild(el('line', { x1: c + 20, y1: c + 20, x2: c + 128, y2: c + 128, stroke: '#ff1693', 'stroke-width': aktuell.quer ? 8 : 4, 'stroke-linecap': 'round', 'stroke-dasharray': '2 8' }));
+
+  // Erschienene Teile verlinken; was noch nicht online ist, steht ohne Link.
+  document.getElementById('teile').innerHTML = teile.map(t => {
+    const name = t.href && t.nr < HIER ? `<a href="${t.href}" target="_top">${t.name}</a>` : t.name;
+    return `<li${t.nr === HIER ? ' class="hier"' : ''}>${t.nr}. ${name}</li>`;
+  }).join('');
+})();
+</script>
+</body>
+</html>

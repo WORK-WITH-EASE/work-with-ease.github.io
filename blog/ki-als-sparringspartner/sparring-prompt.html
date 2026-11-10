@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta name="robots" content="noindex,follow">
+<meta name="googlebot" content="noindex,indexifembedded">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sparring-Prompt für Führungskräfte</title>
+<style>
+/* Schrift der Website; einzeln geöffnet greift die Ersatzschrift. Immer hell wie die Website. */
+@font-face { font-family: Space; src: url('/assets/space-grotesk.ttf') format('truetype'); font-weight: 300 700; font-display: swap; }
+:root {
+  color-scheme: light;
+  --ink: #092f26;
+  --lime: #c7ff23;
+  --pink: #ff1693;
+  --paper: #f5f7f2;
+  --border: #d4ded8;
+  --muted: #5b6b65;
+  --font-sans: Space, -apple-system, ui-sans-serif, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+html, body { margin: 0; }
+body { background: #fff; color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 1.5; }
+#baukasten { padding: 20px; background: var(--paper); border-radius: 12px; }
+h2 { font-size: 22px; font-weight: 600; margin: 0 0 4px; }
+.intro { margin: 0 0 16px; color: var(--muted); font-size: 15px; }
+fieldset { border: 0; margin: 0 0 14px; padding: 0; }
+legend, .label { display: block; font-weight: 600; margin-bottom: 6px; padding: 0; }
+.options { display: flex; flex-wrap: wrap; gap: 8px; }
+.options label { position: relative; }
+.options input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.options span { display: inline-block; padding: 8px 14px; border: 1.5px solid var(--ink); border-radius: 999px; background: #fff; font-size: 15px; cursor: pointer; }
+.options input:checked + span { background: var(--ink); color: #fff; }
+.options input:focus-visible + span { outline: 3px solid var(--pink); outline-offset: 2px; }
+.hidden { display: none; }
+input[type="text"] { box-sizing: border-box; width: 100%; padding: 10px 12px; border: 1.5px solid var(--border); border-radius: 8px; font: inherit; color: var(--ink); background: #fff; }
+input[type="text"]:focus { outline: 3px solid var(--pink); outline-offset: 1px; border-color: var(--ink); }
+.prompt { margin-top: 18px; background: #fff; border-left: 6px solid var(--lime); border-radius: 10px; padding: 16px 18px; }
+pre { margin: 0 0 12px; white-space: pre-wrap; word-wrap: break-word; font-family: var(--font-sans); font-size: 15px; }
+button { font: inherit; font-weight: 600; padding: 9px 18px; border: 0; border-radius: 999px; background: var(--ink); color: #fff; cursor: pointer; }
+button:focus-visible { outline: 3px solid var(--pink); outline-offset: 2px; }
+.meldung { margin-left: 10px; color: var(--muted); font-size: 14px; }
+</style>
+</head>
+<body>
+<div id="baukasten">
+  <h2>Ihr Sparring-Prompt</h2>
+  <p class="intro">Wählen Sie, wofür Sie die KI brauchen. Den fertigen Prompt kopieren Sie in ChatGPT, Copilot, Claude oder Gemini.</p>
+
+  <fieldset>
+    <legend>Wofür brauchen Sie die KI?</legend>
+    <div class="options">
+      <label><input type="radio" name="zweck" value="konzept" checked><span>Konzept prüfen lassen</span></label>
+      <label><input type="radio" name="zweck" value="thema"><span>Neues Thema verstehen</span></label>
+      <label><input type="radio" name="zweck" value="gespraech"><span>Gespräch vorbereiten</span></label>
+    </div>
+  </fieldset>
+
+  <fieldset data-zweck="konzept">
+    <legend>Wie soll die KI Sie herausfordern?</legend>
+    <div class="options">
+      <label><input type="checkbox" name="blick" value="annahmen" checked><span>Annahmen prüfen</span></label>
+      <label><input type="checkbox" name="blick" value="gegen" checked><span>Gegenposition</span></label>
+      <label><input type="checkbox" name="blick" value="perspektiven"><span>Perspektiven ergänzen</span></label>
+      <label><input type="checkbox" name="blick" value="scheitern"><span>Scheitern durchspielen</span></label>
+    </div>
+  </fieldset>
+
+  <fieldset data-zweck="thema" class="hidden">
+    <legend>Was wissen Sie schon?</legend>
+    <div class="options">
+      <label><input type="radio" name="stand" value="wenig" checked><span>Kaum etwas</span></label>
+      <label><input type="radio" name="stand" value="grundlagen"><span>Die Grundlagen</span></label>
+      <label><input type="radio" name="stand" value="erfahrung"><span>Schon einiges</span></label>
+    </div>
+  </fieldset>
+
+  <fieldset data-zweck="gespraech" class="hidden">
+    <legend>Mit wem sprechen Sie?</legend>
+    <div class="options">
+      <label><input type="radio" name="wer" value="gl" checked><span>Geschäftsleitung</span></label>
+      <label><input type="radio" name="wer" value="team"><span>Mein Team</span></label>
+      <label><input type="radio" name="wer" value="kunde"><span>Kunde</span></label>
+      <label><input type="radio" name="wer" value="betriebsrat"><span>Betriebsrat</span></label>
+    </div>
+  </fieldset>
+
+  <label class="label" for="thema">Worum geht es? <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+  <input type="text" id="thema" placeholder="z. B. Urlaubsplanung">
+
+  <div class="prompt">
+    <pre id="prompt" aria-live="polite"></pre>
+    <button type="button" id="kopieren">Prompt kopieren</button><span class="meldung" id="meldung" role="status"></span>
+  </div>
+</div>
+<script>
+(() => {
+  const root = document.getElementById('baukasten');
+  const pre = document.getElementById('prompt');
+  const meldung = document.getElementById('meldung');
+  const thema = document.getElementById('thema');
+  const blicke = {
+    annahmen: 'Welche Voraussetzungen meines Konzepts sind besonders wackelig? Wo fehlen Belege?',
+    gegen: 'Welchen Einwand hätte jemand, der mein Ziel teilt, aber meinen Lösungsweg ablehnt?',
+    perspektiven: 'Wessen Erfahrungen und Interessen habe ich zu wenig berücksichtigt?',
+    scheitern: 'Unter welchen Bedingungen scheitert die Umsetzung, obwohl das Konzept schlüssig wirkt?'
+  };
+  const staende = {
+    wenig: 'Ich verstehe davon noch kaum etwas.',
+    grundlagen: 'Die Grundlagen kenne ich.',
+    erfahrung: 'Ich habe schon einige Erfahrung und möchte tiefer einsteigen.'
+  };
+  const gegenueber = {
+    gl: { mit: 'der Geschäftsleitung', wer: 'die Geschäftsleitung', rolle: 'der Geschäftsleitung' },
+    team: { mit: 'meinem Team', wer: 'mein Team', rolle: 'meines Teams' },
+    kunde: { mit: 'einem Kunden', wer: 'der Kunde', rolle: 'des Kunden' },
+    betriebsrat: { mit: 'dem Betriebsrat', wer: 'der Betriebsrat', rolle: 'des Betriebsrats' }
+  };
+  const wert = name => root.querySelector(`input[name="${name}"]:checked`)?.value;
+  const worum = () => thema.value.trim() || '[Thema kurz beschreiben]';
+
+  function prompt() {
+    const zweck = wert('zweck');
+    if (zweck === 'thema') return [
+      `Ich möchte mich in dieses Thema einarbeiten: ${worum()}. ${staende[wert('stand')]} Fang bitte auf meinem Wissensstand an.`,
+      '',
+      'Erkläre in kurzen Schritten und warte nach jedem Schritt auf meine Antwort. Nimm Beispiele aus dem Arbeitsalltag eines kleinen Unternehmens.',
+      'Stell mir zwischendurch Fragen, mit denen ich prüfen kann, ob ich es wirklich verstanden habe.',
+      'Wenn ich schreibe „Das habe ich jetzt nicht verstanden“, erkläre es anders und mit einem neuen Beispiel.'
+    ].join('\n');
+    if (zweck === 'gespraech') {
+      const g = gegenueber[wert('wer')];
+      return [
+        `Ich bereite ein Gespräch mit ${g.mit} vor. Es geht um: ${worum()}.`,
+        'Mein Vorschlag: [in zwei, drei Sätzen beschreiben]',
+        '',
+        'Hilf mir, vorbereitet aufzutreten. Antworte knapp:',
+        `- Welche Rückfragen könnte ${g.wer} stellen?`,
+        '- Wo würde eine fachkundige Person widersprechen?',
+        '- Welche Annahme muss ich erklären können, damit mein Vorschlag nachvollziehbar wird?',
+        '- Welche Unsicherheit sollte ich offen benennen?',
+        '',
+        `Danach übernimm die Rolle ${g.rolle} und stell mir die Fragen einzeln, damit ich die Antworten üben kann.`
+      ].join('\n');
+    }
+    const gewaehlt = [...root.querySelectorAll('input[name="blick"]:checked')].map(i => `- ${blicke[i.value]}`);
+    return [
+      `Sei mein kritischer Sparringspartner. Ich bin Führungskraft und möchte mein Konzept prüfen lassen. Es geht um: ${worum()}.`,
+      '',
+      ...(gewaehlt.length ? gewaehlt : ['- Wo hat mein Konzept Schwächen, und was habe ich übersehen?']),
+      '',
+      'Begründe jeden Einwand und sag, was daraus folgt. Nenne höchstens die drei wichtigsten Punkte.',
+      'Stell mir zuerst Rückfragen, wenn dir etwas fehlt.',
+      '',
+      '[Konzept hier einfügen]'
+    ].join('\n');
+  }
+
+  function zeigen() {
+    const zweck = wert('zweck');
+    root.querySelectorAll('fieldset[data-zweck]').forEach(f => f.classList.toggle('hidden', f.dataset.zweck !== zweck));
+    pre.textContent = prompt();
+    meldung.textContent = '';
+  }
+  root.addEventListener('change', zeigen);
+  thema.addEventListener('input', zeigen);
+  document.getElementById('kopieren').addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(pre.textContent); }
+    catch {
+      const t = Object.assign(document.createElement('textarea'), { value: pre.textContent });
+      document.body.append(t); t.select(); document.execCommand('copy'); t.remove();
+    }
+    meldung.textContent = 'Kopiert. Jetzt in den KI-Assistenten einfügen.';
+  });
+  zeigen();
+})();
+</script>
+</body>
+</html>
