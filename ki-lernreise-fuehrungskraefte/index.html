@@ -166,11 +166,9 @@
 .lp-ki-lernreise-fuehrungskraefte .role .duo{display:grid;gap:12px;margin-top:16px}
 .lp-ki-lernreise-fuehrungskraefte .role .duo div{background:#fff;border-radius:12px;padding:14px 16px;font-size:16px;line-height:1.45}
 .lp-ki-lernreise-fuehrungskraefte .role .duo b{display:block;margin-bottom:2px}
-.lp-ki-lernreise-fuehrungskraefte .roles-photo{margin-top:46px;display:grid;grid-template-columns:.7fr 1.3fr;gap:44px;align-items:center}
-.lp-ki-lernreise-fuehrungskraefte .roles-photo figure{margin:0;position:relative}
-.lp-ki-lernreise-fuehrungskraefte .roles-photo img{border-radius:var(--r);width:100%;height:auto}
-.lp-ki-lernreise-fuehrungskraefte .roles-photo figcaption{white-space:nowrap;position:absolute;bottom:-18px;left:22px;background:var(--pink);color:var(--ink);font:600 28px/1.1 Caveat,cursive;padding:8px 18px;transform:rotate(-2deg)}
-.lp-ki-lernreise-fuehrungskraefte .roles-photo p{font-size:clamp(20px,1.9vw,24px);font-weight:500;line-height:1.45;color:var(--ink)}
+.lp-ki-lernreise-fuehrungskraefte .roles-end{margin-top:46px;display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:center;background:var(--lime-soft);border:2px solid var(--ink);border-radius:var(--r);padding:34px 40px}
+.lp-ki-lernreise-fuehrungskraefte .roles-end .note{transform:rotate(-5deg);margin:0}
+.lp-ki-lernreise-fuehrungskraefte .roles-end p:not(.note){margin:0;font-size:clamp(20px,1.9vw,24px);font-weight:500;line-height:1.45;color:var(--ink);letter-spacing:-.3px}
 .lp-ki-lernreise-fuehrungskraefte .method{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:stretch}
 .lp-ki-lernreise-fuehrungskraefte .acc{border-top:1px solid var(--line)}
 .lp-ki-lernreise-fuehrungskraefte .acc-item{border-bottom:1px solid var(--line)}
@@ -231,6 +229,9 @@
 .lp-ki-lernreise-fuehrungskraefte .line .amt{font-weight:600;font-size:18px;white-space:nowrap;color:var(--ink);text-align:right}
 .lp-ki-lernreise-fuehrungskraefte .line .amt .ico{color:var(--ink);background:var(--lime);border-radius:50%;padding:4px;width:26px;height:26px;display:block}
 .lp-ki-lernreise-fuehrungskraefte .line.sum{background:var(--lime-soft)}
+.lp-ki-lernreise-fuehrungskraefte .line.tier .amt{color:var(--muted)}
+.lp-ki-lernreise-fuehrungskraefte .line.tier.on{background:var(--lime-soft)}
+.lp-ki-lernreise-fuehrungskraefte .line.tier.on .amt{color:var(--ink);font-size:20px}
 .lp-ki-lernreise-fuehrungskraefte .line.sum b,.lp-ki-lernreise-fuehrungskraefte .line.sum .amt{font-size:20px}
 .lp-ki-lernreise-fuehrungskraefte .stepper{display:flex;align-items:center;gap:18px;margin:28px 0 0;padding:22px 28px;background:#fff;border-radius:var(--r);border:1px solid var(--line);flex-wrap:wrap}
 .lp-ki-lernreise-fuehrungskraefte .stepper .lbl{font-weight:600;flex:1;min-width:200px}
@@ -265,7 +266,7 @@
 .lp-ki-lernreise-fuehrungskraefte .cta em.mark:before{background:#fff}
 .lp-ki-lernreise-fuehrungskraefte .cta p{font-size:20px;color:var(--ink);max-width:620px;margin-bottom:30px}
 .lp-ki-lernreise-fuehrungskraefte .cta figure{margin:0;position:relative}
-.lp-ki-lernreise-fuehrungskraefte .cta img{border-radius:var(--r);max-height:520px;object-fit:cover;width:100%;object-position:center}
+.lp-ki-lernreise-fuehrungskraefte .cta img{border-radius:var(--r);max-height:600px;object-fit:cover;width:100%;object-position:center top}
 .lp-ki-lernreise-fuehrungskraefte .cta figcaption{position:absolute;bottom:26px;left:-26px}
 .lp-ki-lernreise-fuehrungskraefte .btn-ink{background:var(--ink);color:#fff}
 .lp-ki-lernreise-fuehrungskraefte footer{padding:50px 0;font-size:14px;color:var(--muted);border-top:1px solid var(--line)}
@@ -277,7 +278,7 @@
 .lp-ki-lernreise-fuehrungskraefte .reveal{opacity:1;transform:none;transition:none}
 .lp-ki-lernreise-fuehrungskraefte .btn,.lp-ki-lernreise-fuehrungskraefte .res,.lp-ki-lernreise-fuehrungskraefte .chev,.lp-ki-lernreise-fuehrungskraefte .acc-body,.lp-ki-lernreise-fuehrungskraefte .nav{transition:none}}
 @media (max-width:1020px){.lp-ki-lernreise-fuehrungskraefte .nav-links{display:none}
-.lp-ki-lernreise-fuehrungskraefte .hero .wrap:not(.stats-wrap),.lp-ki-lernreise-fuehrungskraefte .intro-grid,.lp-ki-lernreise-fuehrungskraefte .stages-head,.lp-ki-lernreise-fuehrungskraefte .method,.lp-ki-lernreise-fuehrungskraefte .prepost,.lp-ki-lernreise-fuehrungskraefte .invest,.lp-ki-lernreise-fuehrungskraefte .cta .wrap,.lp-ki-lernreise-fuehrungskraefte .roles-photo,.lp-ki-lernreise-fuehrungskraefte .deep{grid-template-columns:1fr}
+.lp-ki-lernreise-fuehrungskraefte .hero .wrap:not(.stats-wrap),.lp-ki-lernreise-fuehrungskraefte .intro-grid,.lp-ki-lernreise-fuehrungskraefte .stages-head,.lp-ki-lernreise-fuehrungskraefte .method,.lp-ki-lernreise-fuehrungskraefte .prepost,.lp-ki-lernreise-fuehrungskraefte .invest,.lp-ki-lernreise-fuehrungskraefte .cta .wrap,.lp-ki-lernreise-fuehrungskraefte .deep{grid-template-columns:1fr}
 .lp-ki-lernreise-fuehrungskraefte .stats{grid-template-columns:1fr 1fr}
 .lp-ki-lernreise-fuehrungskraefte .stat:nth-child(2){border-right:0}
 .lp-ki-lernreise-fuehrungskraefte .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
@@ -302,6 +303,7 @@
 .lp-ki-lernreise-fuehrungskraefte .compare{grid-template-columns:1fr}
 .lp-ki-lernreise-fuehrungskraefte .arrow{transform:rotate(90deg);justify-self:center}
 .lp-ki-lernreise-fuehrungskraefte .goal{grid-template-columns:1fr}
+.lp-ki-lernreise-fuehrungskraefte .roles-end{grid-template-columns:1fr;padding:28px 22px;gap:20px;justify-items:start}
 .lp-ki-lernreise-fuehrungskraefte .results{grid-template-columns:1fr}
 .lp-ki-lernreise-fuehrungskraefte .deep{padding:34px 24px}
 .lp-ki-lernreise-fuehrungskraefte .deep .scribble{right:16px;font-size:26px}
@@ -367,12 +369,12 @@
       <div class="board-paper" aria-hidden="true"></div>
       <img id="heroImg" src="assets/hero-wegweiser.jpg" alt="Wegweiser ins Neuland KI mit den fünf Etappen Erkunden, Verhandeln, Platz bereiten, Einladen und Dazuholen">
       <div class="board-tape" aria-hidden="true"></div>
-      <p class="note lime board-note">Max. 15 Plätze<br>je Gruppe.</p>
+      <p class="note lime board-note">Max. 10 Plätze<br>je Gruppe.</p>
     </figure>
   </div>
   <div class="wrap stats-wrap">
     <div class="stats">
-      <div class="stat"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><div><b>Bis zu 15 Führungskräfte je Gruppe</b><span>so viele Gruppen, wie Ihr Unternehmen braucht</span></div></div>
+      <div class="stat"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><div><b>Bis zu 10 Führungskräfte je Gruppe</b><span>so viele Gruppen, wie Ihr Unternehmen braucht</span></div></div>
       <div class="stat"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg><div><b>2 Präsenztage + 3 Online-Termine</b><span>je Gruppe, Online-Termine à 2,5 Stunden</span></div></div>
       <div class="stat"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><div><b>Inhouse</b><span>vor Ort in Ihrem Unternehmen und online</span></div></div>
       <div class="stat"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg><div><b>2 Trainer</b><span>Andrea Kaden und Ralf Westphal, immer gemeinsam</span></div></div>
@@ -571,13 +573,14 @@
               </div>
             </div>
             <div class="block team"><h4><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Für Ihr Team</h4><p>Ab jetzt sind Sie selbst die Pioniere: Sie gehen mit Ihrem Team die Etappen, die Sie hier erlebt haben.</p></div>
-            <div class="block wow"><h4><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg> Staunen</h4><p>Wie viele gute Ideen in 15 Köpfen stecken, wenn man sie zusammenbringt.</p></div>
+            <div class="block wow"><h4><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg> Staunen</h4><p>Wie viele gute Ideen in 10 Köpfen stecken, wenn man sie zusammenbringt.</p></div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="cross reveal"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><p><strong>Ein Faden durch alle Etappen:</strong> Was macht KI mit meiner eigenen Rolle? Darüber sprechen wir ehrlich, ohne zu dramatisieren. Und wir lassen Raum für unterschiedliche Wege: Nicht jede Führungskraft muss selbst Werkzeuge bauen. Aber alle sollen verstehen, was möglich ist.</p></div>
+    <div class="cross reveal" style="margin-top:18px"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><p><strong>Das detaillierte Programm</strong> erstellen wir nach den ersten Sondierungsgesprächen. Dann wissen wir, wo Ihre Führungskräfte und Ihr Unternehmen beim Thema KI stehen und welche Werkzeuge genutzt werden dürfen.</p></div>
   </div>
 </section>
 
@@ -609,12 +612,9 @@
         <p>Wir gehen voran und bringen Erfahrung aus vielen anderen Unternehmen mit, auch aus unseren Fehlern. Und wir ziehen weiter, wenn die Führungskräfte sicher unterwegs sind.</p>
       </div>
     </div>
-    <div class="roles-photo reveal">
-      <figure>
-        <img src="assets/buehne.jpg" alt="Andrea Kaden und Ralf Westphal gemeinsam auf einer Konferenzbühne">
-        <figcaption>Immer zu zweit unterwegs</figcaption>
-      </figure>
-      <p>Am Ende der Lernreise sind die Führungskräfte selbst Pioniere: Sie gehen mit ihren Teams voran, so wie wir mit ihnen.</p>
+    <div class="roles-end reveal">
+      <p class="note pink">Und dann?</p>
+      <p>Am Ende der Lernreise sind die Führungskräfte <span class="marker">selbst Pioniere</span>: Sie gehen mit ihren Teams voran, so wie wir mit ihnen.</p>
     </div>
   </div>
 </section>
@@ -630,7 +630,7 @@
       <div class="acc" id="acc">
         <div class="acc-item open">
           <button class="acc-btn" aria-expanded="true">Doppelbesetzung<span class="chev"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></button>
-          <div class="acc-body"><div><p>Auch bei höchstens 15 Teilnehmenden sind wir immer zu zweit. Einer führt durch das Programm, der andere ist an den Tischen und hilft, wenn es bei der KI hakt. So kommt niemand ins Hintertreffen, und die Gruppe bleibt im Tempo.</p></div></div>
+          <div class="acc-body"><div><p>Auch bei höchstens 10 Teilnehmenden sind wir immer zu zweit. Einer führt durch das Programm, der andere ist an den Tischen und hilft, wenn es bei der KI hakt. So kommt niemand ins Hintertreffen, und die Gruppe bleibt im Tempo.</p></div></div>
         </div>
         <div class="acc-item">
           <button class="acc-btn" aria-expanded="false">Reizexposition in vivo<span class="chev"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></button>
@@ -652,7 +652,7 @@
       </div>
       <div class="format">
         <h3>Format je Gruppe</h3>
-        <p class="meta">bis zu 15 Teilnehmende · Andrea Kaden und Ralf Westphal</p>
+        <p class="meta">bis zu 10 Teilnehmende · Andrea Kaden und Ralf Westphal</p>
         <div class="flow" aria-hidden="true">
           <div class="p">Präsenz<br>8 Std.</div>
           <div class="o">online<br>2,5 Std.</div>
@@ -750,27 +750,29 @@
           <div class="line"><div><b>Durchführung</b><span>2 Präsenztage bei Ihnen im Haus und 3 Online-Termine à 2,5 Stunden je Gruppe</span></div><div class="amt"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div></div>
           <div class="line"><div><b>Vor- und Nachbereitung</b><span>Befragung der Führungskräfte, Zuschnitt auf Ihr Unternehmen und Unterlagen</span></div><div class="amt"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div></div>
           <div class="line"><div><b>Doppelbesetzung</b><span>Andrea Kaden und Ralf Westphal, in jedem Termin gemeinsam</span></div><div class="amt"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div></div>
-          <div class="line"><div><b>Reise und Übernachtung</b><span>ab 11 Teilnehmenden je Gruppe inklusive, bei kleineren Gruppen pauschal 1.000 € je Gruppe für beide Präsenztage</span></div><div class="amt" id="travelAmt">1.000 €</div></div>
-          <div class="line sum"><div><b>Pro Führungskraft</b><span>in Gruppen mit 5 bis 15 Teilnehmenden</span></div><div class="amt">ab 950 €</div></div>
+          <div class="line tier" data-tier="0"><div><b>Bis 10 Führungskräfte</b><span>Preis pro Führungskraft</span></div><div class="amt">1.600 €</div></div>
+          <div class="line tier" data-tier="1"><div><b>Ab 11 Führungskräften</b><span>Preis pro Führungskraft, gilt für alle Teilnehmenden</span></div><div class="amt">1.400 €</div></div>
+          <div class="line tier" data-tier="2"><div><b>Ab 21 Führungskräften</b><span>Preis pro Führungskraft, gilt für alle Teilnehmenden</span></div><div class="amt">1.200 €</div></div>
+          <div class="line"><div><b>Reise und Übernachtung</b><span>pauschal 2.000 € je Gruppe für beide Präsenztage</span></div><div class="amt" id="travelAmt">2.000 €</div></div>
         </div>
         <div class="stepper">
-          <div class="lbl"><label for="fk">Anzahl Führungskräfte</label><span id="split">1 Gruppe mit 5 Teilnehmenden</span></div>
+          <div class="lbl"><label for="fk">Anzahl Führungskräfte</label><span id="split">1 Gruppe mit 4 Teilnehmenden</span></div>
           <button type="button" id="minus" aria-label="Eine Führungskraft weniger"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button>
-          <input type="number" id="fk" min="5" max="300" step="1" value="5" inputmode="numeric">
+          <input type="number" id="fk" min="4" max="300" step="1" value="4" inputmode="numeric">
           <button type="button" id="plus" aria-label="Eine Führungskraft mehr"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></button>
         </div>
-        <p class="pilot"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><span id="splitNote">Eine Gruppe hat 5 bis 15 Teilnehmende.</span></p>
+        <p class="pilot"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><span id="splitNote">Eine Gruppe hat 4 bis 10 Teilnehmende.</span></p>
         <div class="vat"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg><span>Alle Beträge sind Nettobeträge. Die Zugänge zum KI-Werkzeug stellt Ihr Unternehmen.</span></div>
       </div>
       <aside class="total">
         <div class="k">Pro Führungskraft</div>
-        <div class="big">ab 950 €</div>
+        <div class="big" id="perHead">1.600 €</div>
         <div class="net">netto, für drei Tage Lernreise mit zwei Trainern</div>
         <div class="rows">
-          <div><span id="rowFk">5 Führungskräfte</span><span id="rowSum">ab 4.750 €</span></div>
-          <div><span id="rowGroups">1 Gruppe</span><span id="rowSplit">5 Teilnehmende</span></div>
-          <div><span>Reise und Übernachtung</span><span id="rowTravel">1.000 €</span></div>
-          <div class="grand"><span>Gesamt</span><span id="rowTotal">ab 5.750 €</span></div>
+          <div><span id="rowFk">4 Führungskräfte × 1.600 €</span><span id="rowSum">6.400 €</span></div>
+          <div><span id="rowGroups">1 Gruppe</span><span id="rowSplit">4 Teilnehmende</span></div>
+          <div><span>Reise und Übernachtung</span><span id="rowTravel">2.000 €</span></div>
+          <div class="grand"><span>Gesamt</span><span id="rowTotal">8.400 €</span></div>
         </div>
         <div class="perfk">
           <span class="hand">Darin steckt:</span>
@@ -812,7 +814,7 @@
       </div>
     </div>
     <figure>
-      <img src="assets/feldweg.jpg" alt="Andrea Kaden und Ralf Westphal auf einem Feldweg vor Bergen">
+      <img src="assets/buehne.jpg" alt="Andrea Kaden und Ralf Westphal gemeinsam auf einer Konferenzbühne">
       <figcaption><span class="note pink" style="transform:rotate(-6deg)">Wir freuen<br>uns drauf!</span></figcaption>
     </figure>
   </div>
@@ -861,8 +863,8 @@
     hi.alt='Abflugtafel im Terminal: Neuland KI mit den fünf Etappen Erkunden, Verhandeln, Platz bereiten, Einladen und Dazuholen, Etappe 1 im Boarding';
   }
 
-  // Rechner: Anzahl Führungskräfte -> Gruppen (5 bis 15 je Gruppe, gleichmäßig verteilt) und Gesamtpreis
-  var MIN=5,MAX=15,PER=950,TRAVEL=1000,TRAVEL_FREE=11,LIMIT=300,fmt=function(v){return v.toLocaleString('de-DE')+' €'};
+  // Rechner: Anzahl Führungskräfte -> Gruppen (4 bis 10 je Gruppe, gleichmäßig verteilt), Staffelpreis nach Gesamtzahl und Gesamtpreis
+  var MIN=4,MAX=10,TIERS=[[21,1200],[11,1400],[0,1600]],TRAVEL=2000,LIMIT=300,fmt=function(v){return v.toLocaleString('de-DE')+' €'};
   var fk=document.getElementById('fk'),minus=document.getElementById('minus'),plus=document.getElementById('plus');
   function list(a){return a.length===1?String(a[0]):a.slice(0,-1).join(', ')+' und '+a[a.length-1]}
   function upd(n){
@@ -871,21 +873,24 @@
     var gTxt=g+(g===1?' Gruppe':' Gruppen');
     var sTxt=g<=4?list(sizes):(rem?base+' bis '+(base+1):'je '+base);
     document.getElementById('split').textContent=g===1?'1 Gruppe mit '+n+' Teilnehmenden':gTxt+': '+sTxt+' Teilnehmende';
-    document.getElementById('rowFk').textContent=n+' Führungskräfte';
-    document.getElementById('rowSum').textContent='ab '+fmt(n*PER);
+    var ti=n>=TIERS[0][0]?0:n>=TIERS[1][0]?1:2,PER=TIERS[ti][1];
+    [].forEach.call(document.querySelectorAll('.line.tier'),function(el){el.classList.toggle('on',+el.getAttribute('data-tier')===2-ti)});
+    document.getElementById('perHead').textContent=fmt(PER);
+    document.getElementById('rowFk').textContent=n+' Führungskräfte × '+fmt(PER);
+    document.getElementById('rowSum').textContent=fmt(n*PER);
     document.getElementById('rowGroups').textContent=gTxt;
     document.getElementById('rowSplit').textContent=g===1?n+' Teilnehmende':sTxt;
-    var travel=sizes.filter(function(x){return x<TRAVEL_FREE}).length*TRAVEL,tTxt=travel?fmt(travel):'inklusive';
+    var travel=g*TRAVEL,tTxt=fmt(travel);
     document.getElementById('travelAmt').textContent=tTxt;
     document.getElementById('rowTravel').textContent=tTxt;
-    document.getElementById('rowTotal').textContent='ab '+fmt(n*PER+travel);
-    var note='Eine Gruppe hat 5 bis 15 Teilnehmende.';
+    document.getElementById('rowTotal').textContent=fmt(n*PER+travel);
+    var note='Eine Gruppe hat '+MIN+' bis '+MAX+' Teilnehmende.';
     if(g>1){
-      note='Wir verteilen gleichmäßig. Jede Gruppe hat 5 bis 15 Teilnehmende.';
+      note='Wir verteilen gleichmäßig. Jede Gruppe hat '+MIN+' bis '+MAX+' Teilnehmende.';
       var lo=Math.min.apply(null,sizes),hi=Math.max.apply(null,sizes),d=lo-2>=MIN&&hi+2<=MAX?2:lo-1>=MIN&&hi+1<=MAX?1:0;
       if(d){
         var alt=sizes.slice();alt[alt.length-1]-=d;alt[0]+=d;alt.sort(function(a,b){return a-b});
-        note='Wir verteilen gleichmäßig. Sie können die Gruppen auch anders zuschneiden, zum Beispiel '+list(alt)+' statt '+list(sizes)+'. Jede Gruppe hat 5 bis 15 Teilnehmende.';
+        note='Wir verteilen gleichmäßig. Sie können die Gruppen auch anders zuschneiden, zum Beispiel '+list(alt)+' statt '+list(sizes)+'. Jede Gruppe hat '+MIN+' bis '+MAX+' Teilnehmende.';
       }
     }
     document.getElementById('splitNote').textContent=note;
