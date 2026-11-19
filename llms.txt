@@ -22,6 +22,7 @@ WORK WITH EASE sind Andrea Kaden (CEO, Digitalberaterin und Speakerin) und Ralf 
 
 ## Blog
 
+- [Angst vor KI? Wenn KI am Selbstbild rüttelt](https://work-with-ease.com/blog/angst-vor-ki-selbstbild/): Angst vor KI kennen auch Führungskräfte: Wenn KI auf dem eigenen Fachgebiet überzeugt, rüttelt das am Selbstbild. Was mir hilft und was mein Beitrag bleibt.
 - [Anwender programmieren wieder selbst](https://work-with-ease.com/blog/anwender-programmieren-wieder-selbst/): Mit KI-Assistenten wie Claude Code entwickeln Anwender ihre Software wieder selbst – wie in den Anfängen der Softwareentwicklung, nur ohne Programmierstudium.
 - [Aufgaben priorisieren nach Nutzen und Aufwand: besser als Eisenhower](https://work-with-ease.com/blog/aufgaben-priorisieren-nutzen-aufwand/): Aufgaben priorisieren ohne Rätselraten über Wichtigkeit: Nutzen und Aufwand schätzen, das PICK-Chart ordnet ein. Mit kostenlosem Werkzeug im Browser.
 - [Dateien richtig benennen: Regeln und Vorlage fürs Team](https://work-with-ease.com/blog/dateien-richtig-benennen/): Einheitliche Dateinamen sparen Suchzeit und verhindern Versionschaos. Regeln zur Dateibenennung fürs Team, mit kostenloser Vorlage und Hilfe durch KI.
