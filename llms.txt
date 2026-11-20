@@ -18,6 +18,7 @@ WORK WITH EASE sind Andrea Kaden (CEO, Digitalberaterin und Speakerin) und Ralf 
 - [Selbstorganisation und Zusammenarbeit](https://work-with-ease.com/selbstorganisation-zusammenarbeit.html): Zusagen halten nicht, ständig Unterbrechungen, zu viele Meetings? Wir bringen einfache Techniken für Selbstorganisation und Zusammenarbeit im Team.
 - [Über uns – Andrea Kaden und Ralf Westphal](https://work-with-ease.com/ueber-uns.html): Andrea Kaden und Ralf Westphal: Büroorganisation trifft Softwareentwicklung. Wir arbeiten mit Unternehmen in Deutschland, Österreich und der Schweiz.
 - [Veranstaltungen und offene Termine](https://work-with-ease.com/veranstaltungen.html): Webinare und Veranstaltungen von Andrea Kaden und Ralf Westphal zu einfacheren Prozessen, digitalen Werkzeugen und KI im Office. Mit Termin, Preis und Anmeldung.
+- [Nachlese: Vibe Coding im Handwerk – 14 selbst gebaute Werkzeuge](https://work-with-ease.com/vibe-coding-tischler-webinar-261119-nachlese/): Nachlese zum Webinar Vibe Coding für Tischler vom 19. November 2026: 14 selbst gebaute Werkzeuge mit Aufzeichnung, Screenshots, Aufwand und KI-Werkzeugen.
 - [Andrea Kaden: Vorträge zu KI, Führung und Arbeit](https://work-with-ease.com/vortraege.html): Keynotes und Impulsvorträge von Andrea Kaden für Führungskräfte und Teams im Mittelstand: Mensch und KI, Führung, Selbstmanagement, Vibe Coding, Authentizität.
 
 ## Blog
@@ -51,7 +52,6 @@ WORK WITH EASE sind Andrea Kaden (CEO, Digitalberaterin und Speakerin) und Ralf 
 
 ## Veranstaltungen
 
-- [Vibe Coding – Grundlagen bis zum App-Gesellenstück](https://work-with-ease.com/veranstaltungen/vibe-coding-app-gesellenstueck/): 12., 19. und 26. Januar 2027, 16:00–18:00 Uhr. Kurs für Tischlereien, 3 × 2 Stunden: Mit Vibe Coding selbst Apps bauen – von der ersten App im Browser über eine Web-App fürs Team bis zur App mit E-Mail-Versand und KI.
 - [Vibe Coding für Tischler](https://work-with-ease.com/veranstaltungen/vibe-coding-fuer-tischler/): Donnerstag, 14. Januar 2027, 16:00–18:00 Uhr. Webinar für Tischlereien: Wie mit KI-Werkzeugen wie Claude Code eigene Programme für Büro und Baustelle entstehen – maßgeschneidert statt von der Stange.
 
 ## English
