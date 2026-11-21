@@ -19,5 +19,3 @@
 .tw-way-kirsche{background-image:url(holz/holz-kirsche.webp)}
 .tw-way-nuss{background-image:url(holz/holz-nuss.webp)}
 .tw-btn-ghost[hidden]{display:none}
-/* Ralf, 2026-11-20: Kurs-Karte entfernt, die zwei übrigen Wege füllen die Breite */
-@media(min-width:981px){#weitermachen .tw-ways{grid-template-columns:repeat(2,minmax(0,1fr))}}
