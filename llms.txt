@@ -20,6 +20,9 @@ WORK WITH EASE sind Andrea Kaden (CEO, Digitalberaterin und Speakerin) und Ralf 
 - [Veranstaltungen und offene Termine](https://work-with-ease.com/veranstaltungen.html): Webinare und Veranstaltungen von Andrea Kaden und Ralf Westphal zu einfacheren Prozessen, digitalen Werkzeugen und KI im Office. Mit Termin, Preis und Anmeldung.
 - [Nachlese: Vibe Coding im Handwerk – 14 selbst gebaute Werkzeuge](https://work-with-ease.com/vibe-coding-tischler-webinar-261119-nachlese/): Nachlese zum Webinar Vibe Coding für Tischler vom 19. November 2026: 14 selbst gebaute Werkzeuge mit Aufzeichnung, Screenshots, Aufwand und KI-Werkzeugen.
 - [Vorlagen und Werkzeuge kostenlos](https://work-with-ease.com/vorlagen.html): Kostenlose Vorlagen und Werkzeuge für Büro und Team: Aktenplan mit Branchenbeispielen, Ordnerstruktur, Dateinamen, Projektplan und KI-Selbsttests.
+- [PICK-Chart – kostenlos zum Mitnehmen](https://work-with-ease.com/vorlagen/pick-chart/): Aufgaben nach Nutzen und Aufwand einordnen und sehen, was zuerst drankommt. Kostenlos zum Herunterladen und Weitergeben, unter CC BY 4.0.
+- [Einfacher Projektplan – kostenlos zum Mitnehmen](https://work-with-ease.com/vorlagen/projektplan/): Ein Projektplan ohne Excel und ohne Projektsoftware, direkt im Browser. Kostenlos zum Herunterladen und Weitergeben, unter CC BY 4.0.
+- [Vibe-Coding-Ampel – kostenlos zum Mitnehmen](https://work-with-ease.com/vorlagen/vibe-coding-ampel/): Können Sie Ihr Programm mit KI selbst bauen, oder brauchen Sie Hilfe? Die Ampel zeigt es. Kostenlos zum Herunterladen und Weitergeben, unter CC BY 4.0.
 - [Andrea Kaden: Vorträge zu KI, Führung und Arbeit](https://work-with-ease.com/vortraege.html): Keynotes und Impulsvorträge von Andrea Kaden für Führungskräfte und Teams im Mittelstand: Mensch und KI, Führung, Selbstmanagement, Vibe Coding, Authentizität.
 
 ## Blog
@@ -69,6 +72,9 @@ WORK WITH EASE sind Andrea Kaden (CEO, Digitalberaterin und Speakerin) und Ralf 
 - [Self-organisation and collaboration](https://work-with-ease.com/en/selbstorganisation-zusammenarbeit.html): Promises that don’t hold, constant interruptions, too many meetings? We bring simple techniques for self-organisation and collaboration in teams.
 - [About us – Andrea Kaden and Ralf Westphal](https://work-with-ease.com/en/ueber-uns.html): Andrea Kaden and Ralf Westphal: office organisation meets software development. We work with companies in Germany, Austria and Switzerland.
 - [Free templates and tools](https://work-with-ease.com/en/vorlagen.html): Free templates and tools for office and team: filing plan, folder structure, file naming rules, project plan, PICK chart and prompts for leaders.
+- [PICK chart – free to take away](https://work-with-ease.com/en/vorlagen/pick-chart/): Sort tasks by benefit and effort and see what comes first. Free to download and pass on, under CC BY 4.0.
+- [Simple project plan – free to take away](https://work-with-ease.com/en/vorlagen/projektplan/): A project plan without Excel or project software, right in your browser. Free to download and pass on, under CC BY 4.0.
+- [Vibe coding traffic light – free to take away](https://work-with-ease.com/en/vorlagen/vibe-coding-ampel/): Can you build your program yourself with AI, or do you need help? The traffic light shows you. Free to download and pass on, under CC BY 4.0.
 - [Andrea Kaden: talks on AI, leadership and work](https://work-with-ease.com/en/vortraege.html): Keynotes and talks by Andrea Kaden for leaders and teams in medium-sized businesses: people and AI, leadership, self-management, vibe coding, authenticity.
 
 ## Optional

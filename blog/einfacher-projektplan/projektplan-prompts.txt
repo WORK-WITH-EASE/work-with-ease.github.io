@@ -1,0 +1,41 @@
+Prompt 1
+
+schau mal diesen artikel an: https://zeitgewinn-hamburg.de/einfacher-excel-projektplan
+
+ich möchte das, was mit excel hier gemacht wurde, besser machen mit einer kleinen html-anwendung. sie soll einen projektplan als datei laden/speichern können.
+
+eine ganze datei steht für ein projekt. in dem projekt gibt es aufgaben.
+jeden aufgabe hat anfang, ende, dauer, arbeitstage. wenn das erfasst wird, soll fehlendes möglichst autom. berechnet werden, zb anfang und ende werden erfasst, dann ergeben sich dauer und arbeitstage.
+aber wenn ich dann dauer ändere, dann verschiebt sich das ende und die arbeitstage womöglich auch usw.
+
+rechts daneben der kalender. für jede aufgabe im projekt eine zeile mit farblichem balken.
+
+ich kann aufgaben vertikal verschieben.
+
+ich kann aufgaben verbinden als vorgänger/nachfolger. daraus folgen constraints für verbundene aufgaben. verschiebe ich eine, müssen sich andere womögl. anpassen.
+
+im kalender kann ich wochenenden ein/ausblenden.
+
+ich kann aufgabenbalken auch im kalender verschieben und in der größe verändern; das verändert die detailangaben.
+
+neue aufgaben kann ich anfügen. beim löschen muss man aufpassen, wenn es abhängigkeiten gibt.
+
+was sind deine ideen?
+
+
+Prompt 2
+
+das projekt bekommt natürlich auch einen titel und einen gesamtzeitraum. in dem müssen sich die aufgaben bewegen.
+
+für das projekt auch festlegen, welche bundesländer relevant sind.
+
+verbinden von aufgaben über eine auswahlliste, wenn ich vorgänger/nachfolger zuweise. (nicht über nummern) in der liste wählen können.
+alternativ: ich wähle zwei aufgaben aus und bestimme die reihenfolge in einem menü.
+
+verantwortliche person kann pro projekt und aufgaben schon auch erfasst werden.
+
+dauer ergibt sich aus den datums. die tatsächliche kapazität (arbeitstage) ist <= dauer.
+
+vorziehen: nachfolger bleiben.
+
+ich benutze chromium basierte browser: dia, chrome, brave. aber andere benutzen firefox.
