@@ -20,6 +20,7 @@
 .blog-results>.blog-grid{scroll-margin-top:calc(var(--header-h,var(--header)) + 24px)}
 .blog-substack{margin:0;padding-top:20px;border-top:1px solid #dce4dd;font-size:15px;font-weight:600}
 .blog-substack a{text-decoration-color:var(--pink);text-underline-offset:6px}
+.blog-vorlagen+.blog-substack{border-top:0;padding-top:10px}
 .blog-filter{display:grid;gap:18px}
 .blog-filter[hidden]{display:none}
 .blog-search{display:grid;gap:6px;font-size:13px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase}

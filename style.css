@@ -880,3 +880,25 @@ a.booking-contact,a.mobile-contact,.hero-actions a.primary{text-decoration:none}
 /* Keep language and contact actions on one second row even at 320px. */
 @media(max-width:560px){.quick-contact a.booking-contact{height:48px;padding-inline:10px;gap:6px}}
 @media(max-width:370px){.header-inner{column-gap:6px}}
+/* Templates and tools page (vorlagen.njk): groups of cards, each linking to its file or tool and to its article. */
+.templates-page{max-width:1240px;margin:auto;padding:75px 5% 100px}
+.templates-hero h1{font-size:clamp(40px,6vw,72px);line-height:1.02;font-weight:500;letter-spacing:-1.5px;margin:0 0 28px}
+.templates-hero h1 em{font-style:normal;background:linear-gradient(transparent 62%,var(--lime) 62%)}
+.templates-intro{font-size:20px;line-height:1.5;max-width:720px;margin:0 0 30px}
+.templates-group{margin-top:60px}
+.templates-group h2{font-size:28px;font-weight:500;margin:0 0 22px;padding-bottom:12px;border-bottom:2px solid var(--ink)}
+.templates-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px}
+.template-card{border:1px solid #092f2626;border-radius:14px;padding:24px 24px 14px;display:flex;flex-direction:column;background:#fff}
+.template-card h3{font-size:21px;font-weight:600;margin:0 0 10px}
+.template-card p{margin:0 0 14px;line-height:1.5}
+.template-kind{text-transform:uppercase;font-size:12px;letter-spacing:1.3px;font-weight:600;color:#092f26b3;display:flex;align-items:center;gap:10px}
+.template-type{display:inline-block;padding:4px 9px;border-radius:6px;color:var(--ink);letter-spacing:1px}
+.type-app{background:var(--lime)}.type-vorlage{background:#e6edf0}.type-selbsttest{background:#ffd3ea}
+.templates-legend{font-size:16px;line-height:1.5;max-width:720px;margin:0;color:#092f26cc}
+.template-links{margin-top:auto!important;display:flex;flex-wrap:wrap;align-items:center;gap:6px 20px}
+.template-links .primary{min-height:46px;padding:12px 18px;font-size:16px;text-decoration:none}
+.template-links .text-link{font-size:16px;padding:10px 0}
+.templates-close{margin-top:70px;padding:34px;border-radius:14px;background:#f1ffd0;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px}
+.templates-close p{margin:0;font-size:19px;line-height:1.5;max-width:640px}
+.templates-close .primary{text-decoration:none}
+@media(max-width:560px){.templates-page{padding-top:45px}.templates-close{padding:24px}}

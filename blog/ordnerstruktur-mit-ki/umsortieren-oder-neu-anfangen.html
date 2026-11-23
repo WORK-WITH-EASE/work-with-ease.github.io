@@ -46,7 +46,7 @@ legend { font-weight: 600; margin-bottom: 6px; padding: 0; }
 <body>
 <div id="entscheidung">
   <h2>Umsortieren lassen oder neu anfangen?</h2>
-  <p class="intro">Drei Fragen zu Ihrer Ablage, dann sehen Sie, wie KI Ihnen am besten hilft.</p>
+  <p class="intro">Fünf Fragen zu Ihrer Ablage, dann sehen Sie, wie KI Ihnen am besten hilft.</p>
 
   <fieldset>
     <legend>Wer arbeitet mit der Ablage?</legend>
@@ -69,9 +69,23 @@ legend { font-weight: 600; margin-bottom: 6px; padding: 0; }
       <label><input type="radio" name="ballast" value="viel"><span>Vieles ist Ballast</span></label>
     </div>
   </fieldset>
+  <fieldset>
+    <legend>Wie viel ist es?</legend>
+    <div class="options">
+      <label><input type="radio" name="menge" value="ueberschaubar"><span>Überschaubar</span></label>
+      <label><input type="radio" name="menge" value="riesig"><span>Sehr viel, kaum noch zu überblicken</span></label>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend>Wie oft brauchen Sie die alten Dateien?</legend>
+    <div class="options">
+      <label><input type="radio" name="nutzung" value="oft"><span>Fast jeden Tag</span></label>
+      <label><input type="radio" name="nutzung" value="selten"><span>Eher selten</span></label>
+    </div>
+  </fieldset>
 
   <div class="result" id="result" aria-live="polite">
-    <p class="placeholder">Beantworten Sie die drei Fragen.</p>
+    <p class="placeholder">Beantworten Sie die fünf Fragen.</p>
   </div>
   <p class="always">Gilt immer: Arbeiten Sie mit einer Kopie, und geben Sie der KI nur die Ordner frei, um die es geht.</p>
 </div>
@@ -90,7 +104,7 @@ legend { font-weight: 600; margin-bottom: 6px; padding: 0; }
     },
     neu: {
       titel: 'Fangen Sie neu an und lassen Sie das Alte stehen.',
-      text: 'Beim Umsortieren würde der ganze Ballast mit in die neue Struktur wandern.',
+      text: 'Umsortieren lohnt sich hier nicht: Ballast würde mit in die neue Struktur wandern, oder die alten Dateien werden zu selten gebraucht.',
       schritte: [
         'Beschreiben Sie der KI Ihren Betrieb und lassen Sie eine neue Struktur entwerfen, ohne Blick auf die alten Ordner.',
         'Lassen Sie die KI die leere Struktur anlegen.',
@@ -120,9 +134,10 @@ legend { font-weight: 600; margin-bottom: 6px; padding: 0; }
   const out = document.getElementById('result');
   const value = name => root.querySelector(`input[name="${name}"]:checked`)?.value;
   root.addEventListener('change', () => {
-    const team = value('team'), alter = value('alter'), ballast = value('ballast');
-    if (!team || !alter || !ballast) return;
-    const sauber = alter === 'jung' && ballast === 'wenig';
+    const team = value('team'), alter = value('alter'), ballast = value('ballast'), menge = value('menge'), nutzung = value('nutzung');
+    if (!team || !alter || !ballast || !menge || !nutzung) return;
+    // Re-sorting pays off only for a young, lean, manageable filing system that is still in daily use.
+    const sauber = alter === 'jung' && ballast === 'wenig' && menge === 'ueberschaubar' && nutzung === 'oft';
     const r = team === 'klein'
       ? (sauber ? results.umsortieren : results.neu)
       : (sauber ? results.gemeinsamUmsortieren : results.gemeinsamNeu);

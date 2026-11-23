@@ -19,6 +19,7 @@ WORK WITH EASE sind Andrea Kaden (CEO, Digitalberaterin und Speakerin) und Ralf 
 - [Über uns – Andrea Kaden und Ralf Westphal](https://work-with-ease.com/ueber-uns.html): Andrea Kaden und Ralf Westphal: Büroorganisation trifft Softwareentwicklung. Wir arbeiten mit Unternehmen in Deutschland, Österreich und der Schweiz.
 - [Veranstaltungen und offene Termine](https://work-with-ease.com/veranstaltungen.html): Webinare und Veranstaltungen von Andrea Kaden und Ralf Westphal zu einfacheren Prozessen, digitalen Werkzeugen und KI im Office. Mit Termin, Preis und Anmeldung.
 - [Nachlese: Vibe Coding im Handwerk – 14 selbst gebaute Werkzeuge](https://work-with-ease.com/vibe-coding-tischler-webinar-261119-nachlese/): Nachlese zum Webinar Vibe Coding für Tischler vom 19. November 2026: 14 selbst gebaute Werkzeuge mit Aufzeichnung, Screenshots, Aufwand und KI-Werkzeugen.
+- [Vorlagen und Werkzeuge kostenlos](https://work-with-ease.com/vorlagen.html): Kostenlose Vorlagen und Werkzeuge für Büro und Team: Aktenplan mit Branchenbeispielen, Ordnerstruktur, Dateinamen, Projektplan und KI-Selbsttests.
 - [Andrea Kaden: Vorträge zu KI, Führung und Arbeit](https://work-with-ease.com/vortraege.html): Keynotes und Impulsvorträge von Andrea Kaden für Führungskräfte und Teams im Mittelstand: Mensch und KI, Führung, Selbstmanagement, Vibe Coding, Authentizität.
 
 ## Blog
@@ -39,7 +40,7 @@ WORK WITH EASE sind Andrea Kaden (CEO, Digitalberaterin und Speakerin) und Ralf 
 - [Office X-Ray: Büroabläufe durchleuchten, bevor KI kommt](https://work-with-ease.com/blog/office-x-ray/): Ein Office X-Ray ist eine Prozessinventur fürs Büro: Mit Post-its an der Wand wird sichtbar, wie Abläufe wirklich laufen, bevor man digitalisiert.
 - [Ordnerstruktur mit KI entwickeln und aufräumen](https://work-with-ease.com/blog/ordnerstruktur-mit-ki/): KI entwirft Ihre neue Ordnerstruktur und sortiert Dateien ein. Warum klare Ordner jetzt wichtiger sind und wann sich das Umsortieren lohnt.
 - [Ordnerstruktur umstellen: So gelingt der Neustart](https://work-with-ease.com/blog/ordnerstruktur-umstellen/): Eine neue Ordnerstruktur einführen, ohne jede Datei umzusortieren. So stellen Sie Ihre Ablage Schritt für Schritt um, auf dem Laufwerk oder in SharePoint.
-- [Ordnerstruktur und Aktenplan: Vorlage für kleine Betriebe](https://work-with-ease.com/blog/ordnerstruktur-und-aktenplan/): Eine gute Ordnerstruktur spart Suchzeit. So erstellen Sie einen Aktenplan für Ihren Betrieb, mit kostenloser Vorlage für Laufwerk, Cloud und Teams.
+- [Ordnerstruktur und Aktenplan: Vorlage für kleine Betriebe](https://work-with-ease.com/blog/ordnerstruktur-und-aktenplan/): Eine gute Ordnerstruktur spart Suchzeit. So erstellen Sie einen Aktenplan, mit kostenloser Vorlage und Beispielen für Handwerk, Hotel und Büro.
 - [Posteingang organisieren: erst der Ablauf, dann Copilot](https://work-with-ease.com/blog/posteingang-organisieren/): Posteingang organisieren in Outlook: sortieren statt färben, vier Wege statt sechs. Und was Copilot danach wirklich übernimmt.
 - [Spart KI wirklich Zeit? Mein Arbeitstag sagt Nein](https://work-with-ease.com/blog/spart-ki-zeit/): Spart KI wirklich Zeit? Viele Aufgaben gehen schneller, der Arbeitstag wird nicht kürzer. Die Zeit verschwindet im Prüfen und im Multitasking der neuen Art.
 - [User oder Maker/Builder? KI braucht ein Engineering-Mindset](https://work-with-ease.com/blog/user-oder-maker-builder/): KI ist kein Werkzeug mit festen Funktionen mehr, sondern ein Möglichkeitsraum. Wer ihn nutzen will, braucht ein Engineering-Mindset: Maker/Builder statt User.
@@ -67,6 +68,7 @@ WORK WITH EASE sind Andrea Kaden (CEO, Digitalberaterin und Speakerin) und Ralf 
 - [Case studies: going digital in practice](https://work-with-ease.com/en/praxis.html): Ten real cases: paperless payroll, ERP in metalworking, an app instead of 92 Excel columns, SharePoint across a whole company and more.
 - [Self-organisation and collaboration](https://work-with-ease.com/en/selbstorganisation-zusammenarbeit.html): Promises that don’t hold, constant interruptions, too many meetings? We bring simple techniques for self-organisation and collaboration in teams.
 - [About us – Andrea Kaden and Ralf Westphal](https://work-with-ease.com/en/ueber-uns.html): Andrea Kaden and Ralf Westphal: office organisation meets software development. We work with companies in Germany, Austria and Switzerland.
+- [Free templates and tools](https://work-with-ease.com/en/vorlagen.html): Free templates and tools for office and team: filing plan, folder structure, file naming rules, project plan, PICK chart and prompts for leaders.
 - [Andrea Kaden: talks on AI, leadership and work](https://work-with-ease.com/en/vortraege.html): Keynotes and talks by Andrea Kaden for leaders and teams in medium-sized businesses: people and AI, leadership, self-management, vibe coding, authenticity.
 
 ## Optional
