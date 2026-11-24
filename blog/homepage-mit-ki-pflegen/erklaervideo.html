@@ -1,0 +1,389 @@
+<!doctype html>
+<!--
+  Erklärvideo „Homepage mit KI pflegen“ von WORK WITH EASE, https://work-with-ease.com/
+  Lizenz: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/deed.de)
+  Animation in HTML: drei Runden derselben vier Schritte (Ordner wählen, prompten, Vorschau prüfen, veröffentlichen), dann die Domain.
+-->
+<html lang="de">
+<head>
+<meta name="robots" content="noindex,follow">
+<meta name="googlebot" content="noindex,indexifembedded">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Erklärvideo: Homepage mit KI pflegen</title>
+<style>
+@font-face { font-family: Space; src: url('/assets/space-grotesk.ttf') format('truetype'); font-weight: 300 700; font-display: swap; }
+@font-face { font-family: Caveat; src: url('/assets/caveat.ttf') format('truetype'); font-weight: 400 700; font-display: swap; }
+:root { color-scheme: light; --ink:#092f26; --lime:#c7ff23; --pink:#ff1693; --papier:#f4f7f5; --linie:#d6e0dc; --claude:#d97757; --cf:#f38020; --blau:#1f3f8f; --gold:#c9a227; }
+* { box-sizing: border-box; }
+html, body { margin:0; background:#fff; color:var(--ink); font-family: Space, -apple-system, system-ui, Arial, sans-serif; }
+#rahmen { position:relative; width:100%; aspect-ratio:16/9; overflow:hidden; border-radius:16px; background:var(--papier); border:2px solid var(--ink); }
+#szene { position:absolute; left:0; top:0; width:1280px; height:720px; transform-origin:0 0; }
+#welt { position:absolute; left:0; top:0; width:2400px; height:1320px; transform-origin:0 0; transition: transform 1.1s cubic-bezier(.65,0,.25,1); }
+
+/* Fenster */
+.fenster { position:absolute; background:#fff; border:3px solid var(--ink); border-radius:18px; overflow:hidden; box-shadow:0 18px 40px rgba(9,47,38,.12); transition: box-shadow .4s, outline-color .4s; outline:6px solid transparent; outline-offset:4px; }
+.fenster.aktiv { outline-color: var(--lime); }
+.leiste { height:54px; display:flex; align-items:center; gap:12px; padding:0 18px; border-bottom:2px solid var(--linie); background:#fbfcfb; font-weight:600; font-size:22px; }
+.punkte { display:flex; gap:7px; margin-right:6px; } .punkte i { width:13px; height:13px; border-radius:50%; background:var(--linie); display:block; }
+.leiste svg { width:30px; height:30px; flex:none; }
+.leiste small { font-weight:400; color:#5b7770; font-size:18px; margin-left:auto; }
+.inhalt { position:absolute; inset:54px 0 0 0; padding:22px; }
+
+/* alte Homepage */
+.altseite { position:absolute; inset:14px; border:2px dashed var(--linie); border-radius:10px; padding:16px; }
+.marke { display:flex; align-items:center; gap:10px; font-weight:700; font-size:22px; }
+.marke b { width:34px; height:34px; border-radius:8px; background:var(--ink); position:relative; display:inline-block; }
+.marke b:after { content:''; position:absolute; right:-6px; bottom:-6px; width:18px; height:18px; background:var(--pink); border-radius:4px; }
+.cms { position:absolute; right:14px; top:14px; font-size:15px; padding:3px 9px; border-radius:999px; background:#e9edf9; color:#33449a; font-weight:600; }
+.balken { height:14px; border-radius:7px; background:#e3e9e6; margin:12px 0; }
+
+/* Ordner */
+.baum { font-size:24px; line-height:1.25; }
+.baum .zeile { display:flex; align-items:center; gap:12px; padding:8px 10px; border-radius:10px; transition: background .3s; }
+.baum .zeile svg { width:28px; height:28px; flex:none; }
+.baum .zeile.markiert { background:var(--ink); color:#fff; }
+.baum .datei { margin-left:42px; animation: rein .45s ease-out both; }
+.baum .datei.blink { animation: blink 1s ease-in-out 2; }
+@keyframes rein { from { opacity:0; transform:translateX(-14px); } to { opacity:1; transform:none; } }
+@keyframes blink { 50% { background:var(--lime); } }
+.baum .neu { animation: rein .45s ease-out both; }
+
+/* Claude */
+.chips { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:16px; }
+.chip { display:inline-flex; align-items:center; gap:8px; font-size:19px; padding:7px 14px; border:2px solid var(--linie); border-radius:999px; background:#fff; transition: background .3s, border-color .3s; }
+.chip svg { width:22px; height:22px; }
+.chip.gesetzt { background:var(--lime); border-color:var(--ink); }
+.verlauf { position:absolute; left:22px; right:22px; top:84px; bottom:150px; overflow:hidden; display:flex; flex-direction:column; gap:14px; }
+.blase { align-self:flex-end; max-width:86%; background:#f1f4f2; border-radius:16px; padding:14px 18px; font: 18px/1.45 ui-monospace, Menlo, monospace; animation: rein .4s ease-out both; }
+.aufgaben { border:2px solid var(--linie); border-radius:14px; padding:12px 16px; font-size:20px; animation: rein .4s ease-out both; }
+.aufgaben div { display:flex; align-items:center; gap:12px; padding:5px 0; color:#7b918b; transition: color .3s; }
+.aufgaben div i { width:22px; height:22px; border-radius:50%; border:2px dashed #9fb3ad; flex:none; display:grid; place-items:center; font-style:normal; font-size:14px; transition: all .3s; }
+.aufgaben div.fertig { color:var(--ink); }
+.aufgaben div.fertig i { background:var(--ink); border:2px solid var(--ink); color:#fff; }
+.antwort { font-size:20px; line-height:1.45; animation: rein .4s ease-out both; }
+.antwort b { background:var(--lime); padding:0 4px; }
+.eingabe { position:absolute; left:22px; right:22px; bottom:22px; height:110px; border:2px solid var(--ink); border-radius:16px; padding:14px 70px 14px 18px; font: 19px/1.45 ui-monospace, Menlo, monospace; color:var(--ink); }
+.eingabe .platzhalter { color:#9fb3ad; font-family: Space, sans-serif; }
+.eingabe .cursor { display:inline-block; width:10px; height:22px; background:var(--ink); vertical-align:-4px; animation: cblink 1s steps(1) infinite; }
+@keyframes cblink { 50% { opacity:0; } }
+.senden { position:absolute; right:14px; bottom:14px; width:46px; height:46px; border-radius:50%; background:var(--ink); color:#fff; display:grid; place-items:center; font-size:24px; transition: transform .2s, background .2s; }
+.senden.druck { transform:scale(.85); background:var(--pink); }
+
+/* Browser */
+.url { flex:1; margin-left:6px; height:36px; border-radius:999px; background:#eef2f0; display:flex; align-items:center; padding:0 16px; font-weight:500; font-size:19px; gap:10px; overflow:hidden; white-space:nowrap; }
+.url .live { margin-left:auto; font-size:14px; font-weight:700; padding:2px 10px; border-radius:999px; background:var(--lime); opacity:0; transition: opacity .4s; }
+.url.online .live { opacity:1; }
+.seite { position:absolute; inset:54px 0 0 0; }
+.seite > div:not(.stempel) { position:absolute; inset:0; opacity:0; transition: opacity .6s; padding:26px; }
+.seite > div:not(.stempel).zeigen { opacity:1; }
+.leer { display:grid; place-items:center; color:#9fb3ad; font-size:22px; }
+.willkommen { display:flex !important; flex-direction:column; align-items:center; justify-content:center; gap:26px; }
+.willkommen .marke { font-size:34px; } .willkommen .marke b { width:54px; height:54px; }
+.willkommen h4 { margin:0; font-size:52px; letter-spacing:-1.5px; }
+.kopie .kopf, .neu-design .kopf { display:flex; align-items:center; justify-content:space-between; padding-bottom:14px; border-bottom:3px solid var(--lime); }
+.kopie .knopf { background:var(--pink); color:#fff; border-radius:10px; padding:10px 16px; font-weight:700; font-size:17px; display:inline-block; margin-top:18px; }
+.kopie h4, .neu-design h4 { margin:22px 0 8px; font-size:38px; line-height:1.05; letter-spacing:-1px; font-family:Georgia, serif; }
+.kopie .foto { position:absolute; right:26px; top:110px; width:210px; height:230px; border-radius:12px; background: linear-gradient(160deg,#cfd8d4,#8fa39c); }
+.kopie .foto:after { content:''; position:absolute; left:60px; top:40px; width:90px; height:90px; border-radius:50%; background:#e9eeeb; box-shadow: 0 120px 0 30px #e9eeeb; clip-path: inset(0 0 -200px 0); }
+.neu-design { color:var(--blau); }
+.neu-design .kopf { border-bottom-color: var(--gold); }
+.neu-design .marke b { background:var(--blau); } .neu-design .marke b:after { background:var(--gold); }
+.neu-design h4 { font-family: Space, sans-serif; font-weight:400; }
+.neu-design h4 em { font-style:normal; font-weight:700; border-bottom:5px solid var(--gold); }
+.neu-design .knopf { background:var(--blau); color:#fff; padding:10px 16px; font-weight:700; font-size:17px; display:inline-block; margin-top:18px; }
+.schema { position:absolute; right:26px; top:110px; width:220px; height:230px; border-top:4px solid var(--gold); }
+.schema i { position:absolute; width:70px; height:40px; border:3px solid var(--blau); border-radius:4px; }
+.schema i:nth-child(1){left:0;top:20px} .schema i:nth-child(2){left:0;top:120px} .schema i:nth-child(3){right:0;top:70px;border-color:var(--gold);background:#f6efd6}
+.schema b { position:absolute; height:3px; background:var(--blau); transform-origin:0 50%; }
+.stempel { position:absolute; right:26px; bottom:22px; font-family:Caveat, cursive; font-size:40px; font-weight:700; color:var(--ink); background:var(--lime); padding:4px 18px 8px; transform:rotate(-6deg) scale(0); transition: transform .35s cubic-bezier(.3,1.6,.5,1); }
+.stempel.zeigen { transform:rotate(-6deg) scale(1); }
+
+/* Cloudflare */
+.projekt { display:flex; align-items:center; gap:16px; font-size:22px; padding:12px 16px; border:2px solid var(--linie); border-radius:12px; }
+.projekt b { font-weight:600; }
+.fortschritt { flex:1; height:16px; border-radius:8px; background:#eef2f0; overflow:hidden; }
+.fortschritt i { display:block; height:100%; width:0; background:var(--cf); transition: width 1.6s linear; }
+.status { font-size:18px; font-weight:700; padding:3px 10px; border-radius:999px; background:#eef2f0; white-space:nowrap; }
+.status.ok { background:var(--lime); }
+
+/* DNS */
+.dns { width:100%; border-collapse:collapse; font-size:21px; }
+.dns td { padding:9px 10px; border-bottom:2px solid var(--linie); }
+.dns td:nth-child(2) { font-weight:700; width:90px; }
+.dns tr.neu td { animation: blink 1.2s ease-in-out 2; }
+
+/* Flugobjekte */
+.flug { position:absolute; z-index:5; display:flex; align-items:center; gap:8px; padding:8px 12px; background:#fff; border:2px solid var(--ink); border-radius:10px; font-size:18px; font-weight:600; box-shadow:0 10px 24px rgba(9,47,38,.2); transition: left .9s cubic-bezier(.5,0,.3,1), top .9s cubic-bezier(.5,0,.3,1), opacity .3s; }
+.flug svg { width:22px; height:22px; }
+.zeiger { position:absolute; z-index:9; width:44px; height:44px; left:1100px; top:700px; transition: left .8s cubic-bezier(.5,0,.3,1), top .8s cubic-bezier(.5,0,.3,1); pointer-events:none; }
+.zeiger.klick:after { content:''; position:absolute; left:-12px; top:-12px; width:40px; height:40px; border-radius:50%; border:4px solid var(--pink); animation: klick .5s ease-out forwards; }
+@keyframes klick { from { transform:scale(.3); opacity:1; } to { transform:scale(1.4); opacity:0; } }
+
+/* Download und Upload: gestrichelte Bahn mit Beschriftung */
+.bahn { position:absolute; z-index:4; pointer-events:none; overflow:visible; }
+.bahn path { fill:none; stroke-width:6; stroke-dasharray:14 10; animation: laufen .6s linear infinite; }
+@keyframes laufen { to { stroke-dashoffset:-24; } }
+.transfer { position:absolute; z-index:6; display:flex; align-items:center; gap:10px; padding:8px 18px 8px 10px; border-radius:999px; color:#fff; font-size:26px; font-weight:700; white-space:nowrap; box-shadow:0 10px 24px rgba(9,47,38,.25); animation: rein .35s ease-out both; }
+.transfer i { width:40px; height:40px; border-radius:50%; background:#fff; display:grid; place-items:center; font-style:normal; font-size:26px; }
+.transfer.down { background:var(--lime); color:var(--ink); border:3px solid var(--ink); font-size:30px; } .transfer.down i { background:var(--ink); color:var(--lime); }
+.transfer.up { background:var(--cf); font-size:46px; padding:12px 28px 12px 14px; } .transfer.up i { width:62px; height:62px; font-size:40px; } .transfer.up i { color:var(--cf); }
+/* neue Adresse im Browser hervorheben */
+.url { transition: background .3s, box-shadow .3s, transform .3s; }
+.url.betont { background:var(--lime); box-shadow:0 0 0 5px var(--pink); transform:scale(1.04); }
+.hinweis { position:absolute; z-index:6; font-family:Caveat, cursive; font-size:44px; font-weight:700; color:var(--pink); white-space:nowrap; animation: rein .3s ease-out both; }
+
+/* Einblendungen über der Kamera */
+#leiste { position:absolute; left:0; top:0; bottom:0; width:300px; z-index:10; background:#fff; border-right:2px solid var(--linie); padding:24px 22px; display:flex; flex-direction:column; gap:14px; }
+.wwe { display:flex; align-items:center; gap:10px; font-weight:700; font-size:15px; letter-spacing:2px; line-height:1.05; }
+.wwe svg { width:44px; height:30px; }
+#runde { font-size:22px; font-weight:600; line-height:1.25; min-height:56px; }
+/* Die Schleife: vier Stationen untereinander, ein Bogen führt vom letzten Schritt zurück zum ersten */
+.schleife { position:relative; width:256px; height:430px; flex:none; }
+.schleife svg { position:absolute; inset:0; width:100%; height:100%; overflow:visible; }
+.schleife .bahnlinie { fill:none; stroke:var(--pink); stroke-width:4; stroke-linecap:round; stroke-linejoin:round; }
+.schleife .zurueck { fill:none; stroke:var(--pink); stroke-width:4; stroke-linecap:round; stroke-dasharray:10 8; animation: laufen .8s linear infinite; }
+.schleife .mitte { position:absolute; left:0; right:0; top:392px; text-align:center; font-family:Caveat, cursive; font-size:32px; font-weight:700; color:var(--pink); }
+.schleife span { position:absolute; left:100px; transform:translate(-50%,-50%); font-size:16px; font-weight:700; padding:7px 13px; border-radius:999px; border:2px solid var(--ink); background:#fff; color:var(--ink); white-space:nowrap; transition: all .35s; }
+.schleife span[data-s="1"] { top:40px; } .schleife span[data-s="2"] { top:140px; } .schleife span[data-s="3"] { top:240px; } .schleife span[data-s="4"] { top:340px; }
+.schleife span.jetzt { background:var(--lime); transform:translate(-50%,-50%) scale(1.15); box-shadow:0 0 0 5px rgba(199,255,35,.45); }
+#leiste .schleife span:not(.jetzt) { color:#5b7770; border-color:#b9c8c3; }
+#untertitel { position:absolute; left:790px; bottom:20px; transform:translateX(-50%); z-index:10; background:var(--ink); color:#fff; font-size:24px; font-weight:500; padding:10px 22px; border-radius:12px; white-space:nowrap; transition: opacity .3s; max-width:940px; overflow:hidden; text-overflow:ellipsis; }
+#untertitel b { color:var(--lime); font-weight:700; }
+#titelkarte, #schluss { position:absolute; inset:0; z-index:20; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:26px; background:var(--papier); transition: opacity .6s; text-align:center; }
+#titelkarte h2, #schluss h2 { margin:0; font-family:Georgia, serif; font-size:64px; letter-spacing:-2px; line-height:1.05; }
+#titelkarte h2 span, #schluss h2 span { position:relative; white-space:nowrap; }
+#titelkarte h2 span:after, #schluss h2 span:after { content:''; position:absolute; left:0; right:-4px; bottom:-8px; height:9px; background:var(--pink); border-radius:60% 30% 55% 35%; transform:rotate(-1.5deg); }
+.gross { margin:0; }
+.weg { opacity:0; pointer-events:none; }
+#steuerung { position:absolute; right:10px; bottom:10px; z-index:30; display:flex; gap:8px; }
+#steuerung[hidden] { display:none; }
+#steuerung button { font:600 12px Space, sans-serif; border:1.5px solid var(--ink); background:rgba(255,255,255,.9); color:var(--ink); border-radius:999px; padding:3px 10px; cursor:pointer; }
+#steuerung button:hover { background:var(--lime); }
+/* Start nur per Klick auf den Play-Knopf in der Mitte (Ralf, 2026-11-24) */
+#start { position:absolute; inset:0; z-index:40; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; border:0; padding:0; background:rgba(244,247,245,.35); cursor:pointer; font:inherit; color:var(--ink); }
+#start .knopf { width:clamp(64px,15%,128px); aspect-ratio:1; border-radius:50%; background:var(--pink); display:grid; place-items:center; box-shadow:0 12px 30px rgba(9,47,38,.3); transition: transform .2s, background .2s; }
+#start .knopf svg { width:42%; margin-left:8%; }
+#start:hover .knopf, #start:focus-visible .knopf { transform:scale(1.08); background:var(--ink); }
+#start .text { font-weight:700; font-size:clamp(13px,2vw,18px); background:#fff; border:2px solid var(--ink); border-radius:999px; padding:4px 14px; }
+#start[hidden] { display:none; }
+</style>
+</head>
+<body>
+<div id="rahmen" role="img" aria-label="Erklärvideo: Eine Homepage mit KI pflegen geht in vier Schritten, die sich immer wiederholen: Claude Code auf den Ordner der Homepage einstellen, einen Prompt schreiben, das Ergebnis in der Vorschau prüfen und bei Cloudflare veröffentlichen. Drei Runden zeigen das an einer Testseite, an der Kopie der bisherigen Homepage und an einem Redesign; zum Schluss zeigt die eigene Domain auf die neue Homepage.">
+<div id="szene">
+  <div id="welt">
+    <!-- alte Homepage -->
+    <div class="fenster" id="f-alt" style="left:60px;top:80px;width:500px;height:360px">
+      <div class="leiste"><span class="punkte"><i></i><i></i><i></i></span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="none" stroke="#092f26" stroke-width="2"/><path d="M2.5 12h19M12 2.5c3 3.2 3 15.8 0 19M12 2.5c-3 3.2-3 15.8 0 19" fill="none" stroke="#092f26" stroke-width="2"/></svg>meinefirma.de<small>bisher</small></div>
+      <div class="inhalt"><div class="altseite"><span class="cms">CMS</span><div class="marke"><b></b>Meine Firma</div><div class="balken" style="width:80%;margin-top:26px"></div><div class="balken" style="width:65%"></div><div class="balken" style="width:72%"></div><div class="balken" style="width:40%;background:#f7c3dd"></div></div></div>
+    </div>
+    <!-- Ordner -->
+    <div class="fenster" id="f-ordner" style="left:60px;top:500px;width:500px;height:520px">
+      <div class="leiste"><span class="punkte"><i></i><i></i><i></i></span><svg viewBox="0 0 24 24"><path d="M2 6.5A1.5 1.5 0 0 1 3.5 5h5l2 2h10A1.5 1.5 0 0 1 22 8.5v10a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 18.5z" fill="#c7ff23" stroke="#092f26" stroke-width="1.8"/></svg>Repositories<small>eigener Rechner</small></div>
+      <div class="inhalt"><div class="baum" id="baum"></div></div>
+    </div>
+    <!-- Claude Code -->
+    <div class="fenster" id="f-claude" style="left:640px;top:80px;width:920px;height:940px">
+      <div class="leiste"><span class="punkte"><i></i><i></i><i></i></span><svg viewBox="0 0 24 24"><g stroke="#d97757" stroke-width="2.6" stroke-linecap="round"><path d="M12 2.5v19M2.5 12h19M5.3 5.3l13.4 13.4M18.7 5.3 5.3 18.7"/></g></svg>Claude Code<small>KI-Assistent</small></div>
+      <div class="inhalt">
+        <div class="chips"><span class="chip" id="chip-ordner"><svg viewBox="0 0 24 24"><path d="M2 6.5A1.5 1.5 0 0 1 3.5 5h5l2 2h10A1.5 1.5 0 0 1 22 8.5v10a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 18.5z" fill="none" stroke="#092f26" stroke-width="1.8"/></svg><span id="chip-text">Ordner wählen …</span></span><span class="chip">Opus 5.5</span></div>
+        <div class="verlauf" id="verlauf"></div>
+        <div class="eingabe" id="eingabe"><span class="platzhalter">Beschreibe eine Aufgabe …</span><div class="senden" id="senden">↑</div></div>
+      </div>
+    </div>
+    <!-- Browser -->
+    <div class="fenster" id="f-browser" style="left:1640px;top:80px;width:700px;height:540px">
+      <div class="leiste"><span class="punkte"><i></i><i></i><i></i></span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="none" stroke="#092f26" stroke-width="2"/><path d="M2.5 12h19M12 2.5c3 3.2 3 15.8 0 19M12 2.5c-3 3.2-3 15.8 0 19" fill="none" stroke="#092f26" stroke-width="2"/></svg><div class="url" id="url"><span id="url-text">localhost</span><span class="live">ONLINE</span></div></div>
+      <div class="seite" id="seite">
+        <div class="leer zeigen">Vorschau</div>
+        <div class="willkommen"><div class="marke"><b></b>Meine Firma</div><h4>Herzlich willkommen</h4></div>
+        <div class="kopie"><div class="kopf"><div class="marke"><b></b>Meine Firma</div><span>Menü ☰</span></div><h4>Gute Arbeit<br>aus der Region.</h4><div class="balken" style="width:50%"></div><div class="balken" style="width:42%"></div><span class="knopf">Kontakt aufnehmen →</span><div class="foto"></div></div>
+        <div class="neu-design"><div class="kopf"><div class="marke"><b></b>Meine Firma</div><span>Menü ☰</span></div><h4>Gute Arbeit<br>aus der <em>Region</em>.</h4><div class="balken" style="width:50%;background:#e3e8f4"></div><div class="balken" style="width:42%;background:#e3e8f4"></div><span class="knopf">Kontakt aufnehmen →</span><div class="schema"><i></i><i></i><i></i><b style="left:70px;top:40px;width:84px;transform:rotate(22deg)"></b><b style="left:70px;top:140px;width:84px;transform:rotate(-22deg)"></b></div></div>
+        <div class="stempel" id="stempel">passt!</div>
+      </div>
+    </div>
+    <!-- Cloudflare -->
+    <div class="fenster" id="f-cf" style="left:1640px;top:680px;width:700px;height:250px">
+      <div class="leiste"><span class="punkte"><i></i><i></i><i></i></span><svg viewBox="0 0 32 24"><path d="M8 19h19.5a4 4 0 0 0 .3-8 7 7 0 0 0-13.4-2.3A5 5 0 0 0 8 19z" fill="#f38020"/></svg>Cloudflare<small>Hosting, kostenlos</small></div>
+      <div class="inhalt"><div class="projekt"><b id="cf-name">–</b><div class="fortschritt"><i id="cf-balken"></i></div><span class="status" id="cf-status">wartet</span></div></div>
+    </div>
+    <!-- Domain-Anbieter -->
+    <div class="fenster" id="f-dns" style="left:1640px;top:990px;width:700px;height:300px">
+      <div class="leiste"><span class="punkte"><i></i><i></i><i></i></span><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2.5" fill="none" stroke="#092f26" stroke-width="2"/><path d="M3 9h18M8 14h8" stroke="#092f26" stroke-width="2"/></svg>Domain-Anbieter<small>DNS-Einträge</small></div>
+      <div class="inhalt"><table class="dns" id="dns"><tr><td>meinefirma.de</td><td>MX</td><td>Mailserver · bleibt</td></tr><tr id="dns-www"><td>www</td><td>CNAME</td><td id="dns-ziel">altes CMS</td></tr></table></div>
+    </div>
+    <svg class="zeiger" id="zeiger" viewBox="0 0 24 24"><path d="M4 2.5 20 12l-7 1.6L9.6 21z" fill="#092f26" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/></svg>
+  </div>
+
+  <div id="leiste">
+    <div class="wwe"><svg viewBox="0 0 44 30"><path d="M2 2h6l7 26H9zM12 2h6l7 26h-6z" fill="#092f26"/><path d="M25 2h17l-2 6H23z" fill="#c7ff23"/><path d="M23 12h17l-2 6H21z" fill="#092f26"/><path d="M21 22h17l-2 6H19z" fill="#ff1693"/></svg><span>WORK<br>WITH EASE</span></div>
+    <div id="runde">Homepage mit KI pflegen</div>
+    <div class="schleife" id="schleife"></div>
+  </div>
+  <div id="untertitel" class="weg"></div>
+
+  <div id="titelkarte"><div class="wwe" style="font-size:20px"><svg viewBox="0 0 44 30" style="width:66px;height:45px"><path d="M2 2h6l7 26H9zM12 2h6l7 26h-6z" fill="#092f26"/><path d="M25 2h17l-2 6H23z" fill="#c7ff23"/><path d="M23 12h17l-2 6H21z" fill="#092f26"/><path d="M21 22h17l-2 6H19z" fill="#ff1693"/></svg><span>WORK<br>WITH EASE</span></div><h2>Homepage <span>mit KI</span> pflegen</h2><div class="schleife gross"></div></div>
+  <div id="schluss" class="weg"><h2>Jedes Mal <span>dieselben</span> vier Schritte.</h2><div class="schleife gross"></div><div style="font-size:22px">Kein CMS. Keine Abo-Gebühren fürs Hosting. Nur Wünsche an die KI.</div></div>
+</div>
+<div id="steuerung" hidden><button id="b-pause" type="button">Pause</button></div>
+<button id="start" type="button" aria-label="Erklärvideo abspielen"><span class="knopf"><svg viewBox="0 0 24 24"><path d="M5 3.5 20 12 5 20.5z" fill="#fff"/></svg></span><span class="text" id="start-text">Video starten · 2:37</span></button>
+</div>
+
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const aufnahme = new URLSearchParams(location.search).has('aufnahme');
+  const szene = $('#szene'), welt = $('#welt'), rahmen = $('#rahmen');
+  const ICON = {
+    ordner: '<svg viewBox="0 0 24 24"><path d="M2 6.5A1.5 1.5 0 0 1 3.5 5h5l2 2h10A1.5 1.5 0 0 1 22 8.5v10a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 18.5z" fill="#c7ff23" stroke="#092f26" stroke-width="1.8"/></svg>',
+    datei: '<svg viewBox="0 0 24 24"><path d="M6 2.5h8l4.5 4.5v14.5H6z" fill="#fff" stroke="#092f26" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 2.5V7h4.5" fill="none" stroke="#092f26" stroke-width="1.8"/></svg>',
+  };
+
+  // Die Schleife: vier Stationen, Bögen mit Pfeilspitzen im Uhrzeigersinn.
+  const SCHLEIFE = `<svg viewBox="0 0 256 430"><defs><marker id="spitze" markerWidth="4" markerHeight="4" refX="2" refY="2" orient="auto"><path d="M0 0 4 2 0 4z" fill="#ff1693"/></marker></defs>
+    <path class="bahnlinie" marker-end="url(#spitze)" d="M100 62 V112"/><path class="bahnlinie" marker-end="url(#spitze)" d="M100 162 V212"/><path class="bahnlinie" marker-end="url(#spitze)" d="M100 262 V312"/>
+    <path class="zurueck" marker-end="url(#spitze)" d="M172 340 C232 340 236 330 236 290 V90 C236 50 232 40 186 40"/></svg>
+    <div class="mitte">↻ jedes Mal gleich</div><span data-s="1">1 Ordner wählen</span><span data-s="2">2 Prompten</span><span data-s="3">3 Vorschau prüfen</span><span data-s="4">4 Publizieren</span>`;
+  document.querySelectorAll('.schleife').forEach(k => k.innerHTML = SCHLEIFE);
+  // Skalierung der festen 1280×720-Szene auf die Breite des Rahmens.
+  const passen = () => { szene.style.transform = `scale(${rahmen.clientWidth / 1280})`; };
+  new ResizeObserver(passen).observe(rahmen); passen();
+
+  // Ablaufsteuerung: Pause, Sichtbarkeit, Neustart.
+  let pause = false, sichtbar = true, lauf = 0;
+  const warten = ms => new Promise(res => { const id = lauf; let rest = ms;
+    const tick = () => { if (id !== lauf) return; if (!pause && sichtbar) rest -= 40; if (rest <= 0) res(); else setTimeout(tick, 40); }; setTimeout(tick, 40); });
+  new IntersectionObserver(e => { sichtbar = aufnahme || e[0].isIntersecting; }, { threshold: .25 }).observe(rahmen);
+
+  // Kamera: zeigt einen Weltausschnitt im Bereich zwischen Kopf (74px) und Untertitel.
+  const kamera = (x, y, w, h) => { const s = Math.min(940 / w, 600 / h), tx = 790 - (x + w / 2) * s, ty = 340 - (y + h / 2) * s;
+    welt.style.transform = `translate(${tx}px,${ty}px) scale(${s})`; };
+  const FENSTER = { alt: [60, 80, 500, 360], ordner: [60, 500, 500, 520], claude: [640, 80, 920, 940], browser: [1640, 80, 700, 540], cf: [1640, 680, 700, 250], dns: [1640, 990, 700, 300] };
+  const fokus = (...namen) => { document.querySelectorAll('.fenster').forEach(f => f.classList.toggle('aktiv', namen.includes(f.id.slice(2))));
+    const r = namen.map(n => FENSTER[n]); const x = Math.min(...r.map(a => a[0])), y = Math.min(...r.map(a => a[1]));
+    const x2 = Math.max(...r.map(a => a[0] + a[2])), y2 = Math.max(...r.map(a => a[1] + a[3])); kamera(x - 40, y - 30, x2 - x + 80, y2 - y + 60); };
+  const ueberblick = () => { document.querySelectorAll('.fenster').forEach(f => f.classList.remove('aktiv')); kamera(20, 40, 2360, 1270); };
+
+  const schritt = n => document.querySelectorAll('#schleife span').forEach(s => s.classList.toggle('jetzt', s.dataset.s == n));
+  const sag = html => { const u = $('#untertitel'); u.innerHTML = html; u.classList.toggle('weg', !html); };
+  const zeiger = async (x, y, klick = true) => { const z = $('#zeiger'); z.style.left = x + 'px'; z.style.top = y + 'px'; await warten(850);
+    if (klick) { z.classList.remove('klick'); void z.offsetWidth; z.classList.add('klick'); await warten(350); } };
+  const fliegen = async (html, von, nach) => { const f = document.createElement('div'); f.className = 'flug'; f.innerHTML = html;
+    f.style.left = von[0] + 'px'; f.style.top = von[1] + 'px'; welt.appendChild(f); await warten(60);
+    f.style.left = nach[0] + 'px'; f.style.top = nach[1] + 'px'; await warten(950); f.style.opacity = 0; await warten(300); f.remove(); };
+  // Gestrichelte Bahn mit Beschriftung für Download (dunkel) und Upload (Cloudflare-Orange).
+  const transfer = (art, von, nach, text, ort) => {
+    const farbe = art === 'down' ? '#092f26' : '#f38020';
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); svg.setAttribute('class', 'bahn'); svg.setAttribute('width', 2400); svg.setAttribute('height', 1320); svg.style.left = svg.style.top = 0;
+    const mx = (von[0] + nach[0]) / 2, my = Math.min(von[1], nach[1]) - 60;
+    svg.innerHTML = `<defs><marker id="spitze-${art}" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto"><path d="M0 0 5 2.5 0 5z" fill="${farbe}" stroke="none" style="animation:none"/></marker></defs><path d="M${von[0]} ${von[1]} Q${mx} ${my} ${nach[0]} ${nach[1]}" stroke="${farbe}" marker-end="url(#spitze-${art})"/>`;
+    const b = document.createElement('div'); b.className = 'transfer ' + art; b.innerHTML = `<i>${art === 'down' ? '⬇' : '⬆'}</i>${text}`; b.style.left = ort[0] + 'px'; b.style.top = ort[1] + 'px';
+    welt.append(svg, b); return () => { svg.remove(); b.remove(); }; };
+  const zeile = (text, icon, klasse = '') => { const d = document.createElement('div'); d.className = 'zeile ' + klasse; d.innerHTML = ICON[icon] + '<span>' + text + '</span>'; $('#baum').appendChild(d); return d; };
+  const seite = name => { document.querySelectorAll('#seite > div:not(.stempel)').forEach(d => d.classList.toggle('zeigen', d.classList.contains(name))); };
+  const url = (text, online, betonen) => { const u = $('#url'); $('#url-text').textContent = text; u.classList.toggle('online', !!online);
+    if (betonen) { u.classList.add('betont'); setTimeout(() => u.classList.remove('betont'), 2400);
+      const h = document.createElement('div'); h.className = 'hinweis'; h.textContent = '↑ neue Adresse'; h.style.left = '1760px'; h.style.top = '150px'; welt.appendChild(h); setTimeout(() => h.remove(), 2600); } };
+
+  async function tippen(text) { const e = $('#eingabe'); e.innerHTML = '<span id="getippt"></span><span class="cursor"></span><div class="senden" id="senden">↑</div>';
+    const t = $('#getippt'); for (const ch of text) { t.textContent += ch; await warten(ch === ' ' ? 18 : 26); } }
+  async function senden(text) { await zeiger(1495, 955); $('#senden').classList.add('druck'); await warten(200);
+    $('#eingabe').innerHTML = '<span class="platzhalter">Beschreibe eine Aufgabe …</span><div class="senden" id="senden">↑</div>';
+    const b = document.createElement('div'); b.className = 'blase'; b.textContent = text; $('#verlauf').appendChild(b); await warten(500); }
+  async function aufgaben(liste, nebenher) { const a = document.createElement('div'); a.className = 'aufgaben';
+    a.innerHTML = liste.map(t => `<div><i>✓</i>${t}</div>`).join(''); $('#verlauf').appendChild(a); await warten(400);
+    for (const [i, d] of [...a.children].entries()) { if (nebenher?.[i]) await nebenher[i](); else await warten(650); d.classList.add('fertig'); } }
+  const antwort = html => { const a = document.createElement('div'); a.className = 'antwort'; a.innerHTML = html; $('#verlauf').appendChild(a); };
+
+  async function hochladen(name, adresse, dateien) { fokus('ordner', 'cf'); $('#cf-name').textContent = name; $('#cf-status').textContent = 'lädt hoch';
+    $('#cf-status').classList.remove('ok'); $('#cf-balken').style.transition = 'none'; $('#cf-balken').style.width = '0'; await warten(1100);
+    $('#cf-balken').style.transition = ''; $('#cf-balken').style.width = '100%';
+    const weg = transfer('up', [560, 700], [1640, 790], 'Upload zu Cloudflare', [860, 540]);
+    for (const d of dateien) { fliegen(ICON.datei + d, [380, 640], [1700, 800]); await warten(380); }
+    await warten(1400); weg(); $('#cf-status').textContent = 'online'; $('#cf-status').classList.add('ok'); await warten(700);
+    fokus('browser'); await warten(900); url(adresse, true, true); await warten(2600); }
+
+  // Eine Runde: immer dieselben vier Schritte.
+  async function runde(r) {
+    $('#runde').textContent = r.titel; $('#verlauf').innerHTML = ''; $('#stempel').classList.remove('zeigen');
+    ueberblick(); schritt(0); sag(r.ziel); await warten(2600);
+    // 1 Ordner wählen
+    schritt(1); fokus('ordner', 'claude'); sag('<b>1</b> Claude auf den Ordner der Homepage einstellen'); await warten(1200);
+    if (r.neuerOrdner) { await zeiger(200, 600 + ordner.length * 46); $('#baum').innerHTML = ''; ordner.forEach(o => zeile(o, 'ordner')); zeile(r.ordner, 'ordner', 'neu markiert'); ordner.push(r.ordner); await warten(700); }
+    else { await zeiger(200, 600 + ordner.indexOf(r.ordner) * 46); }
+    $('#chip-ordner').classList.remove('gesetzt'); await fliegen(ICON.ordner + r.ordner, [120, 600 + ordner.indexOf(r.ordner) * 46], [680, 145]);
+    $('#chip-text').textContent = r.ordner; $('#chip-ordner').classList.add('gesetzt'); await warten(900);
+    // 2 Prompten
+    schritt(2); fokus('claude'); sag('<b>2</b> Wünschen, was entstehen soll'); await warten(1100);
+    await zeiger(900, 935, false); await tippen(r.prompt); await warten(500); await senden(r.prompt);
+    await aufgaben(r.aufgaben, r.nebenher); antwort(r.antwort); await warten(1500);
+    // 3 Vorschau prüfen
+    schritt(3); fokus('browser'); sag('<b>3</b> Ergebnis in der Vorschau prüfen'); url('localhost', false); await warten(1300);
+    seite(r.vorschau); await warten(1600); await zeiger(2200, 560); $('#stempel').classList.add('zeigen'); await warten(1300);
+    // 4 Veröffentlichen
+    schritt(4); fokus('claude'); sag('<b>4</b> Bei Cloudflare publizieren'); await warten(900);
+    await zeiger(900, 935, false); await tippen('Veröffentliche das bei Cloudflare.'); await warten(300); await senden('Veröffentliche das bei Cloudflare.');
+    $('#stempel').classList.remove('zeigen'); await hochladen(r.projekt, r.adresse, r.upload); sag(r.fazit); await warten(2200);
+  }
+
+  const RUNDEN = [
+    { titel: 'Runde 1: eine erste Seite', ziel: 'Runde 1: eine erste Seite ins Internet bringen', neuerOrdner: true, ordner: 'homepage-test',
+      prompt: 'Lege eine Seite mit unserem Logo von meinefirma.de an, darunter „Herzlich willkommen“.',
+      aufgaben: ['Logo von meinefirma.de holen', 'index.html anlegen', 'Seite lokal prüfen'],
+      nebenher: [async () => { fokus('alt', 'ordner'); await warten(1000); const weg = transfer('down', [440, 420], [440, 560], 'Download', [250, 445]);
+                   await fliegen(ICON.datei + 'logo.svg', [200, 300], [160, 700]); zeile('logo.svg', 'datei', 'datei'); await warten(700); weg(); },
+                 async () => { zeile('index.html', 'datei', 'datei'); await warten(800); fokus('claude'); await warten(1100); }],
+      antwort: 'Fertig: <b>index.html</b> mit Logo und „Herzlich willkommen“.', vorschau: 'willkommen',
+      projekt: 'homepage-test', adresse: 'homepage-test.pages.dev', upload: ['index.html', 'logo.svg'], fazit: 'Online. Ohne CMS, ohne Hosting-Vertrag.' },
+    { titel: 'Runde 2: die Homepage kopieren', ziel: 'Runde 2: die bisherige Homepage als statische Kopie', neuerOrdner: true, ordner: 'homepage',
+      prompt: 'Lade meinefirma.de komplett herunter, nur Links auf unserer Domain. Mach statisches HTML daraus.',
+      aufgaben: ['Alle Seiten herunterladen', 'Links und Pfade anpassen', 'Kopie lokal prüfen'],
+      nebenher: [async () => { fokus('alt', 'ordner'); await warten(1000); const weg = transfer('down', [440, 420], [440, 560], 'Download', [250, 445]);
+                   for (const d of ['index.html', 'leistungen.html', 'kontakt.html', 'style.css', 'bilder/']) { fliegen(ICON.datei + d, [200, 300], [160, 700]); await warten(420); zeile(d, d.endsWith('/') ? 'ordner' : 'datei', 'datei'); }
+                   await warten(900); weg(); fokus('claude'); await warten(1100); }],
+      antwort: 'Die Kopie liegt im Ordner. Das Kontaktformular braucht einen Ersatz, ich schlage dir zwei vor.', vorschau: 'kopie',
+      projekt: 'homepage', adresse: 'homepage.pages.dev', upload: ['index.html', 'leistungen.html', 'kontakt.html', 'style.css'], fazit: 'Die Homepage, eins zu eins, kostenlos gehostet.' },
+    { titel: 'Runde 3: das Redesign', ziel: 'Runde 3: die Homepage neu gestalten', neuerOrdner: false, ordner: 'homepage',
+      prompt: 'Gestalte die Homepage neu: Blau und Gold, klassisch, Schemazeichnungen statt Fotos.',
+      aufgaben: ['Neues Stylesheet in Blau und Gold', 'Fotos durch Schemazeichnungen ersetzen', 'Alle Seiten lokal prüfen'],
+      nebenher: [async () => { fokus('ordner', 'claude'); await warten(900); $('#baum').querySelectorAll('.datei').forEach(d => { if (/style\.css|bilder/.test(d.textContent)) { d.classList.remove('blink'); void d.offsetWidth; d.classList.add('blink'); } }); await warten(1500); fokus('claude'); await warten(900); }],
+      antwort: 'Neues Design steht, alle Inhalte und Adressen sind geblieben.', vorschau: 'neu-design',
+      projekt: 'homepage', adresse: 'homepage.pages.dev', upload: ['index.html', 'style.css', 'bilder/'], fazit: 'Neues Design, gleicher Ablauf.' },
+  ];
+
+  async function domain() {
+    $('#runde').textContent = 'Zum Schluss: die eigene Domain'; schritt(0); fokus('dns'); sag('Einmalig: die eigene Domain auf die neue Homepage zeigen lassen'); await warten(1800);
+    await zeiger(2100, 1130); $('#dns-ziel').textContent = 'homepage.pages.dev'; $('#dns-www').classList.remove('neu'); void $('#dns-www').offsetWidth; $('#dns-www').classList.add('neu');
+    await warten(1800); sag('E-Mail-Einträge (MX) bleiben, wie sie sind'); await warten(2200);
+    fokus('browser'); sag('meinefirma.de zeigt jetzt die neue Homepage'); await warten(1000); url('meinefirma.de', true, true); await warten(3000); }
+
+  let ordner = [];
+  function zuruecksetzen() {
+    ordner = []; $('#baum').innerHTML = ''; $('#verlauf').innerHTML = ''; seite('leer'); url('localhost', false);
+    $('#chip-text').textContent = 'Ordner wählen …'; $('#chip-ordner').classList.remove('gesetzt'); $('#stempel').classList.remove('zeigen');
+    $('#cf-name').textContent = '–'; $('#cf-status').textContent = 'wartet'; $('#cf-status').classList.remove('ok'); $('#cf-balken').style.width = '0';
+    $('#dns-ziel').textContent = 'altes CMS'; schritt(0); sag(''); welt.querySelectorAll('.flug').forEach(f => f.remove()); ueberblick();
+  }
+
+  // Ein Durchlauf; danach erscheint der Play-Knopf wieder.
+  async function film() {
+    const id = ++lauf; const noch = () => id === lauf;
+    zuruecksetzen(); $('#schluss').classList.add('weg'); $('#titelkarte').classList.remove('weg'); await warten(3200); if (!noch()) return;
+    $('#titelkarte').classList.add('weg'); await warten(600);
+    for (const r of RUNDEN) { await runde(r); if (!noch()) return; }
+    await domain(); if (!noch()) return;
+    sag(''); ueberblick(); await warten(1200); $('#schluss').classList.remove('weg'); await warten(6000);
+    if (aufnahme) { window.__fertig = true; return; }
+    $('#steuerung').hidden = true; $('#start-text').textContent = 'Nochmal ansehen'; $('#start').hidden = false;
+  }
+
+  const starten = () => { pause = false; $('#b-pause').textContent = 'Pause'; $('#start').hidden = true; $('#steuerung').hidden = false; film(); };
+  $('#start').onclick = starten;
+  $('#b-pause').onclick = () => { pause = !pause; $('#b-pause').textContent = pause ? 'Weiter' : 'Pause'; };
+  zuruecksetzen();
+  if (aufnahme) { $('#start').hidden = true; rahmen.style.border = '0'; rahmen.style.borderRadius = '0'; film(); }
+})();
+</script>
+</body>
+</html>

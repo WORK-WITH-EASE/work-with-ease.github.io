@@ -81,6 +81,14 @@
 .blog-prose img{display:block;max-width:100%;height:auto;margin:30px auto;border-radius:8px}
 .blog-prose blockquote{margin:30px 0;padding:6px 0 6px 24px;border-left:4px solid var(--pink);font-size:21px;font-style:italic}
 .blog-prose blockquote p:last-child{margin-bottom:0}
+/* Kasten für Erklärungen am Rand, im Artikel als > [!info] Titel (Ralf, 2026-11-24). */
+.blog-prose .blog-kasten{margin:34px 0;padding:22px 26px 6px;background:#f7fbe6;border:2px solid var(--ink);border-radius:14px;font-size:18px}
+.blog-prose .blog-kasten p{font-size:inherit}
+.blog-prose .blog-kasten-titel{display:inline-block;margin:0 0 14px;padding:2px 10px;background:var(--lime);border-radius:999px;font-weight:600;font-size:16px;letter-spacing:.3px}
+@media(max-width:760px){.blog-prose .blog-kasten{padding:18px 18px 4px;font-size:17px}}
+/* Kleingedrucktes, im Artikel als > [!klein] Text (Ralf, 2026-11-24). */
+.blog-prose .blog-kleingedruckt{margin:-6px 0 28px;font-size:15px;line-height:1.55;color:#4d6a62}
+.blog-prose .blog-kleingedruckt p{font-size:inherit;line-height:inherit;margin:0 0 8px}
 .blog-prose code{padding:2px 6px;border-radius:4px;background:#eef2f0;font-family:Menlo,Consolas,monospace;font-size:.85em}
 .blog-prose pre{overflow-x:auto;padding:18px 20px;border-radius:8px;background:#eef2f0;font-size:15px;line-height:1.5;margin:0 0 22px}
 .blog-prose pre code{padding:0;background:none;font-size:inherit;hyphens:none;-webkit-hyphens:none;overflow-wrap:normal}

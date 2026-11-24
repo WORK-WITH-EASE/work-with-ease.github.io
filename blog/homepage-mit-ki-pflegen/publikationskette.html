@@ -1,0 +1,68 @@
+<!doctype html>
+<!--
+  Publikationskette einer Homepage mit KI, WORK WITH EASE, https://work-with-ease.com/
+  Lizenz: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/deed.de)
+-->
+<html lang="de">
+<head>
+<meta name="robots" content="noindex,follow">
+<meta name="googlebot" content="noindex,indexifembedded">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Publikationskette: Homepage mit KI</title>
+<style>
+@font-face { font-family: Space; src: url('/assets/space-grotesk.ttf') format('truetype'); font-weight: 300 700; font-display: swap; }
+:root { color-scheme: light; --ink:#092f26; --lime:#c7ff23; --pink:#ff1693; --line:#dfe7e3; }
+html, body { margin:0; background:#fff; color:var(--ink); font-family: Space, -apple-system, system-ui, Arial, sans-serif; }
+.kette { display:grid; grid-template-columns: 1.25fr auto 1fr auto 1fr; align-items:stretch; gap:14px; padding:6px 2px 4px; }
+.glied { border:2px solid var(--ink); border-radius:14px; padding:18px 18px 16px; background:#fff; display:flex; flex-direction:column; gap:8px; }
+.glied.desktop { background: #f7fbe6; }
+.nr { display:inline-block; align-self:flex-start; font-size:13px; letter-spacing:1px; font-weight:600; padding:3px 9px; border-radius:999px; background:var(--lime); }
+.glied h3 { margin:2px 0 0; font-size:20px; line-height:1.2; letter-spacing:-.4px; font-weight:600; }
+.glied p { margin:0; font-size:15px; line-height:1.45; }
+.innen { display:flex; gap:8px; flex-wrap:wrap; margin-top:4px; }
+.chip { font-size:13px; border:1.5px solid var(--ink); border-radius:8px; padding:4px 8px; background:#fff; }
+.chip.ki { background:var(--ink); color:#fff; border-color:var(--ink); }
+.pfeil { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; font-size:12px; text-align:center; min-width:70px; }
+.pfeil svg { width:56px; height:20px; }
+.pfeil span { max-width:90px; line-height:1.25; }
+.unten { margin:12px 2px 0; font-size:14px; line-height:1.45; color:#3d5a52; }
+.unten b { background:var(--lime); padding:0 4px; font-weight:600; color:var(--ink); }
+@media (max-width: 760px) {
+  .kette { grid-template-columns: 1fr; }
+  .pfeil { flex-direction:row; min-width:0; }
+  .pfeil svg { transform: rotate(90deg); width:40px; }
+  .pfeil span { max-width:none; }
+}
+</style>
+</head>
+<body>
+<div class="kette" role="img" aria-label="Publikationskette: Ordner mit allen Seiten auf dem eigenen Rechner, gepflegt mit dem KI-Assistenten; die KI veröffentlicht zum Hosting-Dienst; die eigene Domain zeigt per DNS auf den Hosting-Dienst.">
+  <div class="glied desktop">
+    <span class="nr">1 · EIGENER RECHNER</span>
+    <h3>Ordner mit der Homepage</h3>
+    <p>Alle Seiten, Bilder und Stylesheets liegen lokal oder im Cloud-Speicher.</p>
+    <div class="innen"><span class="chip">index.html</span><span class="chip">blog/</span><span class="chip">bilder/</span><span class="chip ki">KI-Assistent</span></div>
+  </div>
+  <div class="pfeil" aria-hidden="true">
+    <svg viewBox="0 0 56 20"><path d="M2 10 H48 M40 3 L50 10 L40 17" fill="none" stroke="#ff1693" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span>„Veröffentliche das“</span>
+  </div>
+  <div class="glied">
+    <span class="nr">2 · HOSTING</span>
+    <h3>Kostenloser Dienst</h3>
+    <p>GitHub Pages, Netlify oder Cloudflare liefern die fertigen Dateien aus.</p>
+  </div>
+  <div class="pfeil" aria-hidden="true">
+    <svg viewBox="0 0 56 20"><path d="M2 10 H48 M40 3 L50 10 L40 17" fill="none" stroke="#ff1693" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span>DNS-Eintrag</span>
+  </div>
+  <div class="glied">
+    <span class="nr">3 · INTERNET</span>
+    <h3>meinefirma.de</h3>
+    <p>Die eigene Domain zeigt auf die neue Homepage.</p>
+  </div>
+</div>
+<p class="unten">Gepflegt wird nur an einer Stelle: <b>im Ordner auf dem eigenen Rechner</b>, im Dialog mit der KI. Kein CMS, keine Datenbank, kein Login im Internet.</p>
+</body>
+</html>
