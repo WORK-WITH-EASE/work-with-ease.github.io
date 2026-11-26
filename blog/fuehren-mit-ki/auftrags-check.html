@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta name="robots" content="noindex,follow">
+<meta name="googlebot" content="noindex,indexifembedded">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auftrags-Check: Würde Ihr letzter Auftrag den KI-Test bestehen?</title>
+<style>
+/* Schrift der Website; einzeln geöffnet greift die Ersatzschrift. Immer hell wie die Website. */
+@font-face { font-family: Space; src: url('/assets/space-grotesk.ttf') format('truetype'); font-weight: 300 700; font-display: swap; }
+:root {
+  color-scheme: light;
+  --ink: #092f26;
+  --lime: #c7ff23;
+  --pink: #ff1693;
+  --amber: #ffc83d;
+  --paper: #f5f7f2;
+  --line: #d6e0d6;
+  --muted: #5b6b65;
+  --font-sans: Space, -apple-system, ui-sans-serif, system-ui, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: #fff; color: var(--ink); font-family: var(--font-sans); font-size: 15px; line-height: 1.45; }
+#check { padding: 18px 20px 20px; background: var(--paper); border-radius: 12px; }
+.eyebrow { margin: 0 0 2px; color: var(--pink); font-size: 13px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; }
+h2 { margin: 0 0 6px; font-size: 20px; font-weight: 600; line-height: 1.25; text-wrap: balance; }
+.intro { margin: 0 0 14px; }
+fieldset { margin: 0 0 10px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
+legend { float: left; width: 100%; padding: 0; margin: 0 0 8px; }
+legend b { display: block; color: var(--pink); font-size: 12px; letter-spacing: .6px; text-transform: uppercase; }
+legend span { display: block; font-weight: 500; }
+.wahl { clear: both; display: flex; flex-wrap: wrap; gap: 6px; }
+.wahl label { position: relative; }
+.wahl input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.wahl span { display: inline-block; min-width: 92px; padding: 6px 12px; border: 1.5px solid var(--ink); border-radius: 999px; text-align: center; font-weight: 500; font-size: 14px; background: #fff; }
+.wahl input:checked + span { background: var(--ink); color: #fff; }
+.wahl input:focus-visible + span { outline: 3px solid var(--pink); outline-offset: 2px; }
+#ergebnis { margin-top: 14px; }
+.ampel { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border-radius: 10px; background: #fff; border-left: 6px solid var(--farbe, var(--line)); }
+.lampe { flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; background: var(--farbe); margin-top: 2px; box-shadow: inset 0 0 0 2px rgb(9 47 38 / .15); }
+.ampel h3 { margin: 0 0 2px; font-size: 17px; font-weight: 600; }
+.ampel p { margin: 0; }
+.fehlt { margin: 12px 0 0; }
+.fehlt h4 { margin: 0 0 6px; font-size: 15px; font-weight: 600; }
+.fehlt ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.fehlt li { padding: 8px 12px; background: #fff; border-radius: 8px; border: 1px dashed var(--line); }
+.fehlt li b { color: var(--pink); font-size: 12px; letter-spacing: .6px; text-transform: uppercase; display: block; }
+.knoepfe { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+button { font: inherit; font-weight: 600; font-size: 14px; padding: 7px 14px; border-radius: 999px; cursor: pointer; border: 1.5px solid var(--ink); }
+button.haupt { background: var(--lime); color: var(--ink); }
+button.neben { background: #fff; color: var(--ink); }
+button:focus-visible { outline: 3px solid var(--pink); outline-offset: 2px; }
+.hinweis { margin: 8px 0 0; font-size: 12px; color: var(--muted); }
+textarea { width: 100%; margin-top: 8px; font: 13px/1.5 var(--font-sans); padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; color: var(--ink); resize: vertical; }
+.offen { color: var(--muted); font-size: 14px; }
+</style>
+</head>
+<body>
+<div id="check">
+  <p class="eyebrow">1-Minuten-Check</p>
+  <h2>Würde Ihr letzter Auftrag den KI-Test bestehen?</h2>
+  <p class="intro">Denken Sie an den letzten Auftrag, den Sie vergeben haben, an einen Menschen oder an die KI. Was davon haben Sie gesagt oder aufgeschrieben?</p>
+  <form id="fragen"></form>
+  <div id="ergebnis" aria-live="polite"><p class="offen">Beantworten Sie alle vier Fragen, dann sehen Sie hier Ihr Ergebnis.</p></div>
+</div>
+<script>
+(() => {
+const teile = [
+  { key: 'ergebnis', titel: 'Ergebnis', frage: 'Ich habe gesagt, was am Ende da sein soll.',
+    satz: 'Am Ende brauche ich … (zum Beispiel: eine Seite mit drei Möglichkeiten und Ihrer Empfehlung).' },
+  { key: 'unterlagen', titel: 'Unterlagen', frage: 'Ich habe gesagt, welche Unterlagen es schon gibt und wo sie liegen.',
+    satz: 'Nutzen Sie dafür … (zum Beispiel: die Vorlage im Ordner X, das Angebot vom letzten Jahr).' },
+  { key: 'fertig', titel: 'Fertig, wenn', frage: 'Ich habe gesagt, woran ich erkenne, dass es fertig ist.',
+    satz: 'Fertig ist es, wenn … (zum Beispiel: höchstens zwei Seiten, bis Donnerstag, in unserer Briefvorlage).' },
+  { key: 'grenzen', titel: 'Grenzen', frage: 'Ich habe gesagt, was tabu ist.',
+    satz: 'Bitte nicht … (zum Beispiel: keine Kundendaten, keine neuen Zusagen, nichts direkt an den Kunden schicken).' }
+];
+const stufen = [['ja', 'Ja', 2], ['teils', 'Teilweise', 1], ['nein', 'Nein', 0]];
+const form = document.getElementById('fragen'), aus = document.getElementById('ergebnis');
+const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+
+form.innerHTML = teile.map(t => `
+  <fieldset>
+    <legend><b>${t.titel}</b><span>${t.frage}</span></legend>
+    <div class="wahl">${stufen.map(([wert, text]) =>
+      `<label><input type="radio" name="${t.key}" value="${wert}"><span>${text}</span></label>`).join('')}</div>
+  </fieldset>`).join('');
+
+function urteil(punkte) {
+  if (punkte >= 7) return { farbe: 'var(--lime)', titel: 'Besteht den KI-Test', text: 'Ihr Gegenüber weiß, was Sie wollen, und muss nicht raten. So bekommen Sie von Menschen und von der KI, was Sie brauchen.' };
+  if (punkte >= 4) return { farbe: 'var(--amber)', titel: 'Fast', text: 'Ein, zwei Lücken füllt Ihr Gegenüber mit Erfahrung oder mit Raten. Die KI fragt nicht nach, sie liefert einfach. Das heißt: Nacharbeit.' };
+  return { farbe: 'var(--pink)', titel: 'Hier muss viel geraten werden', text: 'Ein Mensch füllt die Lücken vielleicht mit Erfahrung. Die KI liefert etwas, das irgendwie passt und doch nicht das ist, was Sie wollten.' };
+}
+
+function zeige() {
+  const daten = new FormData(form);
+  const antworten = teile.map(t => daten.get(t.key));
+  if (antworten.some(a => !a)) return;
+  const punkte = antworten.reduce((s, a) => s + stufen.find(x => x[0] === a)[2], 0);
+  const u = urteil(punkte);
+  const luecken = teile.filter((t, i) => antworten[i] !== 'ja');
+  const vorlage = teile.map(t => `${t.titel}: ${t.satz}`).join('\n');
+  aus.innerHTML = `
+    <div class="ampel" style="--farbe:${u.farbe}">
+      <i class="lampe" aria-hidden="true"></i>
+      <div><h3>${u.titel} (${punkte} von 8 Punkten)</h3><p>${u.text}</p></div>
+    </div>
+    ${luecken.length ? `<div class="fehlt"><h4>Diese Sätze hätten geholfen:</h4><ul>${luecken.map(t => `<li><b>${t.titel}</b>${esc(t.satz)}</li>`).join('')}</ul></div>` : ''}
+    <div class="knoepfe">
+      <button type="button" class="haupt" id="kopieren">Vorlage für den nächsten Auftrag kopieren</button>
+      <button type="button" class="neben" id="neu">Noch einen Auftrag prüfen</button>
+    </div>
+    <textarea id="vorlage" rows="5" readonly hidden>${esc(vorlage)}</textarea>
+    <p class="hinweis">Ihre Antworten bleiben in Ihrem Browser. Wir speichern nichts.</p>`;
+  document.getElementById('kopieren').addEventListener('click', async e => {
+    const feld = document.getElementById('vorlage');
+    try { await navigator.clipboard.writeText(vorlage); e.target.textContent = 'Kopiert ✓'; }
+    catch { feld.hidden = false; feld.focus(); feld.select(); e.target.textContent = 'Bitte markierten Text kopieren'; }
+  });
+  document.getElementById('neu').addEventListener('click', () => {
+    form.reset();
+    aus.innerHTML = '<p class="offen">Beantworten Sie alle vier Fragen, dann sehen Sie hier Ihr Ergebnis.</p>';
+    form.querySelector('input').focus();
+  });
+}
+form.addEventListener('change', zeige);
+})();
+</script>
+</body>
+</html>
